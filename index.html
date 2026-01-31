@@ -5,13 +5,13 @@
   <title>Manjunath Bestha | Exoplanets & Instrumentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Font: SNIGLET -->
+  <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Sniglet', cursive;
       background: radial-gradient(circle at top, #0b1d2a, #020409);
       color: #eaeaea;
       line-height: 1.65;
@@ -40,13 +40,14 @@
 
     header h1 {
       margin: 0.4rem 0;
-      font-weight: 600;
-      letter-spacing: 0.03em;
+      font-weight: 800;
+      letter-spacing: 0.05em;
     }
 
     header p {
       margin: 0.25rem 0;
       opacity: 0.9;
+      font-weight: 400;
     }
 
     nav {
@@ -56,8 +57,9 @@
     nav a {
       margin: 0 0.9rem;
       font-size: 0.95rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      font-weight: 600;
     }
 
     section {
@@ -71,8 +73,8 @@
       display: inline-block;
       padding-bottom: 0.35rem;
       margin-bottom: 1.8rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-weight: 800;
+      letter-spacing: 0.06em;
     }
 
     ul {
@@ -87,9 +89,44 @@
       margin-bottom: 0.7rem;
     }
 
-    .small {
+    /* FIGURES */
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .figure {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(79,195,247,0.25);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .figure img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 0.8rem;
+    }
+
+    .figure p {
+      font-size: 0.9rem;
       opacity: 0.85;
-      font-size: 0.95rem;
+    }
+
+    /* CV BUTTON */
+    .cv-button {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid #4fc3f7;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .cv-button:hover {
+      background: rgba(79,195,247,0.18);
     }
 
     footer {
@@ -104,9 +141,7 @@
 <body>
 
 <header>
-  <!-- Replace image path if needed -->
   <img src="images/profile.jpg" alt="Manjunath Bestha">
-
   <h1>Manjunath Bestha</h1>
   <p>Doctoral Candidate · Astronomical Instrumentation & Exoplanet Spectroscopy</p>
   <p>Indian Institute of Astrophysics, Bengaluru</p>
@@ -115,7 +150,8 @@
     <a href="#about">About</a>
     <a href="#research">Research</a>
     <a href="#publications">Publications</a>
-    <a href="#experience">Experience</a>
+    <a href="#figures">Figures</a>
+    <a href="cv/Manjunath_Bestha_CV.pdf" target="_blank">CV</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -124,13 +160,11 @@
   <h2>About Me</h2>
   <p>
     I am a Doctoral Candidate in Astronomical Instrumentation at the Indian Institute of
-    Astrophysics (IIA), Bengaluru, and Calcutta University. I expect to complete my Ph.D.
-    in August 2026 under the supervision of <strong>Prof. Sivarani Thirupathi</strong>.
+    Astrophysics (IIA), Bengaluru, and Calcutta University, working under the supervision
+    of <strong>Prof. Sivarani Thirupathi</strong>.
   </p>
-
   <p>
-    My research focuses on improving the precision and reliability of
-    <strong>ground-based exoplanet atmospheric characterization</strong> through
+    My research focuses on ground-based exoplanet atmospheric characterization using
     low- and high-resolution transmission spectroscopy, instrumentation development,
     and advanced data-analysis pipelines.
   </p>
@@ -140,120 +174,55 @@
   <h2>Research Interests</h2>
   <ul>
     <li>Low- and high-resolution exoplanet transmission spectroscopy</li>
-    <li>Correction of telluric, stellar (RM & CLV), and instrumental systematics</li>
-    <li>Multi-object observing strategies for atmosphere characterization</li>
-    <li>Optical design of atmospheric dispersion correctors (ADC)</li>
+    <li>Telluric, stellar (RM & CLV), and instrumental systematics</li>
+    <li>Multi-object observing strategies</li>
+    <li>Atmospheric dispersion correctors (ADC)</li>
     <li>Fiber-positioning systems for ELT-class spectrographs</li>
-    <li>Time-series analysis and noise modeling (Gaussian Processes, SYSREM)</li>
   </ul>
 </section>
 
 <section id="publications">
   <h2>Publications</h2>
-
-  <p>
-    My research spans exoplanet atmospheric characterization and astronomical
-    instrumentation, with peer-reviewed publications in
-    <em>RASTI</em>, <em>SPIE</em>, and manuscripts on arXiv.
-  </p>
-
   <ul>
-    <li>
-      <strong>Bestha, M.</strong>, Sivarani, T., Wehbe, B., et al. (2025).  
-      <em>A New Broadband Atmospheric Dispersion Corrector for HROS–TMT</em>.  
-      <strong>RAS Techniques and Instruments</strong>.  
-      <a href="https://academic.oup.com/rasti/article/doi/10.1093/rasti/rzaf057/" target="_blank">[Journal]</a>
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., et al. (2025).  
-      <em>An Initial Assessment of the Hanle Echelle Spectrograph for Exoplanet Atmosphere Studies</em>.  
-      <strong>Proc. SPIE</strong>.  
-      <a href="https://doi.org/10.1117/12.3064331" target="_blank">[SPIE]</a>
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., et al. (2025).  
-      <em>A Multi-Object Approach for Studying Exoplanet Atmospheres Using High-Resolution Spectrographs</em>.  
-      <strong>Proc. SPIE</strong>.  
-      <a href="https://doi.org/10.1117/12.3064406" target="_blank">[SPIE]</a>
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Sivarani, T., Unni, A., et al. (2025).  
-      <em>Atmospheric Dispersion Measurement at the Hanle Site</em>.  
-      <strong>Springer</strong>.  
-      <a href="https://doi.org/10.48550/arXiv.2509.17300" target="_blank">[arXiv]</a>
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Sivarani, T., Surya, A., et al. (2024).  
-      <em>A Multi-Functional Fiber Positioning System for Extremely Large Telescopes</em>.  
-      <strong>Proc. SPIE</strong>.  
-      <a href="https://doi.org/10.1117/12.3019098" target="_blank">[SPIE]</a>
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Hasan, A., Divakar, D., et al. (2023).  
-      <em>Atmospheric Dispersion Corrector for a Multi-Object Spectroscopic Mode of HROS–TMT</em>.  
-      <strong>Proc. SPIE</strong>.  
-      <a href="https://doi.org/10.1117/12.2677192" target="_blank">[SPIE]</a>
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., et al.  
-      <em>An Observational Study of Systematics Affecting Low-Resolution Multi-Object Transmission Spectroscopy</em>.  
-      <strong>Manuscript in preparation</strong>.
-    </li>
-
-    <li>
-      <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., et al.  
-      <em>Probing the Atmosphere of KELT-9 b with High-Resolution Spectroscopy from HCT</em>.  
-      <strong>Manuscript in preparation</strong>.
-    </li>
+    <li><strong>Bestha, M.</strong> et al. (2025) — <em>A New Broadband ADC for HROS–TMT</em>, RASTI</li>
+    <li><strong>Bestha, M.</strong> et al. (2025) — <em>Multi-object HRTS</em>, Proc. SPIE</li>
+    <li><strong>Bestha, M.</strong> et al. (2024) — <em>Fiber Positioning Systems</em>, Proc. SPIE</li>
   </ul>
-
   <p class="small">
-    🔗 Complete and up-to-date list available on
-    <a href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&q=%20author%3A%22Bestha%2CManjunath%22&sort=date%20desc%2C%20bibcode%20desc&p_=0"/a>
+    Full list on <a href="https://ui.adsabs.harvard.edu/" target="_blank">NASA ADS</a>
   </p>
 </section>
 
+<section id="figures">
+  <h2>Selected Figures</h2>
+  <div class="figure-grid">
 
-<section id="experience">
-  <h2>Observational & Technical Experience</h2>
-  <ul>
-    <li>40+ nights of exoplanet observations with HFOSC and HESP on the Himalayan Chandra Telescope</li>
-    <li>High-resolution spectroscopy (R ≈ 30,000) for Na I and Fe II detection</li>
-    <li>Python-based data-reduction pipelines for LRTS and HRTS</li>
-    <li>Optical simulations and ADC design using Zemax</li>
-    <li>Conceptual mechanical design using SolidWorks</li>
-    <li>Distributed proposals to VLT and Gemini</li>
-  </ul>
+    <div class="figure">
+      <img src="images/adc_hros_tmt.png" alt="ADC for HROS-TMT">
+      <p>Broadband atmospheric dispersion corrector designed for HROS–TMT.</p>
+    </div>
+
+    <div class="figure">
+      <img src="images/feii_kelt9_detection.png" alt="Fe II detection">
+      <p>High-resolution detection of Fe II in the atmosphere of KELT-9 b.</p>
+    </div>
+
+    <div class="figure">
+      <img src="images/fiber_positioner.png" alt="Fiber positioner">
+      <p>Multi-functional fiber-positioning system for ELT-class spectrographs.</p>
+    </div>
+
+  </div>
 </section>
 
 <section id="contact">
-  <h2>Contact & Profiles</h2>
+  <h2>Contact</h2>
   <ul>
     <li>Email: <a href="mailto:bestha95@gmail.com">bestha95@gmail.com</a></li>
-    <li>
-      Google Scholar:
-      <a href="https://scholar.google.com" target="_blank">
-        scholar.google.com
-      </a>
-    </li>
-    <li>
-      LinkedIn:
-      <a href="https://www.linkedin.com" target="_blank">
-        linkedin.com
-      </a>
-    </li>
-    <li>
-      GitHub:
-      <a href="https://github.com/yourusername" target="_blank">
-        github.com/yourusername
-      </a>
-    </li>
+    <li><a href="https://scholar.google.com" target="_blank">Google Scholar</a></li>
+    <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+    <li><a href="cv/Manjunath_Bestha_CV.pdf" target="_blank" class="cv-button">Download CV (PDF)</a></li>
   </ul>
 </section>
 
@@ -263,6 +232,8 @@
 
 </body>
 </html>
+
+
 
 
 
