@@ -52,13 +52,16 @@ header {
 }
 
 header img {
-  width: 165px;
-  height: 165px;        /* ← THIS IS THE MISSING PART */
-  object-fit: cover;    /* ← PREVENTS STRETCHING */
+  width: 165px !important;
+  height: 165px !important;
+  aspect-ratio: 1 / 1;     /* EXTRA SAFETY */
+  object-fit: cover;
   border-radius: 50%;
   border: 3px solid #4fc3f7;
   margin-bottom: 1.2rem;
+  display: block;
 }
+
 
 header h1 {
   margin: 0.4rem 0;
