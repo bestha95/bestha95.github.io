@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+<script>
+  let visits = localStorage.getItem("blog_visits");
+
+  if (!visits) {
+    visits = 1;
+  } else {
+    visits = parseInt(visits) + 1;
+  }
+
+  localStorage.setItem("blog_visits", visits);
+  document.getElementById("visit-count").innerText =
+    "👀 Visits from this browser: " + visits;
+</script>
+
 <body>
 
 <header>
@@ -76,12 +90,17 @@
   </ul>
 </section>
 
+<p id="visit-count" style="opacity: 0.8; font-size: 0.95rem;">
+  👀 Visits: loading...
+</p>
+
 <footer>
   © Manjunath Bestha
 </footer>
 
 </body>
 </html>
+
 
 
 
