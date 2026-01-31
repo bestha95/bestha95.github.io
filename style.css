@@ -54,14 +54,13 @@ header {
 header img {
   width: 165px !important;
   height: 165px !important;
-  aspect-ratio: 1 / 1;     /* EXTRA SAFETY */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid #4fc3f7;
-  margin-bottom: 1.2rem;
+  margin: 0 auto 1.2rem;   /* ← THIS LINE FIXES IT */
   display: block;
 }
-
 
 header h1 {
   margin: 0.4rem 0;
