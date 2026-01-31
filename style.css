@@ -58,7 +58,7 @@ header img {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid #4fc3f7;
-  margin: 0 auto 1.2rem;   /* ← THIS LINE FIXES IT */
+  margin-bottom: 1.2rem;
 }
 
 header h1 {
