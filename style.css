@@ -1,0 +1,165 @@
+/* =====================
+   GLOBAL THEME
+===================== */
+body {
+  margin: 0;
+  font-family: 'Sniglet', cursive;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79,195,247,0.10), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(155,231,255,0.07), transparent 45%),
+    linear-gradient(180deg, #040a12, #010307 75%);
+  color: #eaeaea;
+  line-height: 1.75;
+  font-size: 18px;
+  overflow-x: hidden;
+}
+
+/* =====================
+   STAR FIELD (CSS ONLY)
+===================== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 90%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 80%, #fff, transparent);
+  opacity: 0.25;
+  animation: stars 120s linear infinite;
+  z-index: -1;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-1000px); }
+}
+
+/* =====================
+   LINKS
+===================== */
+a { color: #4fc3f7; text-decoration: none; }
+a:hover { color: #9be7ff; }
+
+/* =====================
+   HEADER
+===================== */
+header {
+  text-align: center;
+  padding: 4.5rem 1.5rem 2.5rem;
+}
+
+header img {
+  width: 165px;
+  border-radius: 50%;
+  border: 3px solid #4fc3f7;
+  margin-bottom: 1.2rem;
+}
+
+header h1 {
+  margin: 0.4rem 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.06em;
+}
+
+header p {
+  margin: 0.3rem 0;
+  opacity: 0.9;
+  font-size: 1.05rem;
+}
+
+/* =====================
+   STICKY NAVBAR
+===================== */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(2, 6, 12, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 0.8rem 0;
+  z-index: 10;
+}
+
+nav a {
+  margin: 0 0.9rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+section {
+  max-width: 950px;
+  margin: 2.5rem auto;
+  padding: 3rem 1.8rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 14px;
+}
+
+h2 {
+  border-bottom: 2px solid #4fc3f7;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.6rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.06em;
+}
+
+/* =====================
+   LISTS
+===================== */
+ul { list-style: none; padding-left: 0; }
+
+ul li {
+  padding: 0.6rem 0;
+  border-left: 3px solid #4fc3f7;
+  padding-left: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* =====================
+   FIGURE GRID
+===================== */
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+.figure {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(79,195,247,0.25);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.figure img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 768px) {
+  body { font-size: 17px; }
+  header h1 { font-size: 2rem; }
+  nav a { font-size: 0.8rem; margin: 0 0.5rem; }
+  section { padding: 2.2rem 1.3rem; }
+}
