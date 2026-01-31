@@ -8,19 +8,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<script>
-  let visits = localStorage.getItem("blog_visits");
-
-  if (!visits) {
-    visits = 1;
-  } else {
-    visits = parseInt(visits) + 1;
-  }
-
-  localStorage.setItem("blog_visits", visits);
-  document.getElementById("visit-count").innerText =
-    "👀 Visits from this browser: " + visits;
-</script>
 
 <body>
 
@@ -90,7 +77,7 @@
   </ul>
 </section>
 
-<p id="visit-count" style="opacity: 0.8; font-size: 0.95rem;">
+<p id="visit-count">
   👀 Visits: loading...
 </p>
 
@@ -98,8 +85,29 @@
   © Manjunath Bestha
 </footer>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let visits = localStorage.getItem("blog_visits");
+
+    if (!visits) {
+      visits = 1;
+    } else {
+      visits = parseInt(visits) + 1;
+    }
+
+    localStorage.setItem("blog_visits", visits);
+    document.getElementById("visit-count").innerText =
+      "👀 Visits from this browser: " + visits;
+  });
+</script>
+
+<footer>
+  © Manjunath Bestha
+</footer>
+
 </body>
 </html>
+
 
 
 
