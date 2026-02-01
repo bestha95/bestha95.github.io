@@ -169,10 +169,10 @@ ul li {
 } */
 
 .ramanujan img {
-  width: 180px;
+  width: 300px;
   height: auto;
   border-radius: 10px;   /* or 50% if you want circle */
-  border: 2px solid #ffffff;
+  border: 2px solid #020409;
   display: block;
   margin: 0 auto 0.6rem;
 }
