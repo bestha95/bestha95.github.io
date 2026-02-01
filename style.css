@@ -169,7 +169,7 @@ ul li {
 } */
 
 .ramanujan img {
-  width: 300px;
+  width: 450px;
   height: auto;
   border-radius: 10px;   /* or 50% if you want circle */
   border: 2px solid #020409;
@@ -178,7 +178,7 @@ ul li {
 }
 
 .ramanujan figcaption {
-  font-size: 1rem;
+  font-size: 1.2rem;
   opacity: 0.85;
 }
 
