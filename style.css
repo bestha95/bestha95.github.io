@@ -4,10 +4,10 @@
 body {
   margin: 0;
   font-family: 'Sniglet', cursive;
-  background:
+  /* background:
     radial-gradient(circle at 20% 20%, rgba(68,114,196,0.10), transparent 40%),
     radial-gradient(circle at 80% 30%, rgba(68,114,196,0.06), transparent 45%),
-    linear-gradient(180deg, #05080f, #010204 75%);
+    linear-gradient(180deg, #05080f, #010204 75%); */
   background-attachment: fixed;   /* 🔒 background stays static */
   color: #ffffff;
   line-height: 1.75;
@@ -19,7 +19,7 @@ body {
 /* =====================
    STAR FIELD (CSS ONLY)
 ===================== */
-body::before {
+/* body::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -31,7 +31,7 @@ body::before {
     radial-gradient(1px 1px at 90% 80%, #fff, transparent);
   opacity: 0.25;
   z-index: -1;
-}
+} */
 
 
 /* @keyframes stars {
