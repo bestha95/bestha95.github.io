@@ -51,12 +51,12 @@ header {
 }
 
 header img {
-  width: 165px !important;
-  height: 165px !important;
+  width: 300px !important;
+  height: 300px !important;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #f7fcf9;
+  border: 3px solid #4472c4;
   margin-bottom: 1.2rem;
 }
 
