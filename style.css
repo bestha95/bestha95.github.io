@@ -5,14 +5,16 @@ body {
   margin: 0;
   font-family: 'Sniglet', cursive;
   background:
-    radial-gradient(circle at 20% 20%, rgba(79,195,247,0.10), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(155,231,255,0.07), transparent 45%),
-    linear-gradient(180deg, #040a12, #010307 75%);
-  color: #eaeaea;
+    radial-gradient(circle at 20% 20%, rgba(68,114,196,0.10), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(68,114,196,0.06), transparent 45%),
+    linear-gradient(180deg, #05080f, #010204 75%);
+  background-attachment: fixed;   /* 🔒 background stays static */
+  color: #ffffff;
   line-height: 1.75;
   font-size: 18px;
   overflow-x: hidden;
 }
+
 
 /* =====================
    STAR FIELD (CSS ONLY)
@@ -28,20 +30,20 @@ body::before {
     radial-gradient(1px 1px at 30% 90%, #fff, transparent),
     radial-gradient(1px 1px at 90% 80%, #fff, transparent);
   opacity: 0.25;
-  animation: stars 120s linear infinite;
   z-index: -1;
 }
 
-@keyframes stars {
+
+/* @keyframes stars {
   from { transform: translateY(0); }
   to   { transform: translateY(-1000px); }
-}
+} */
 
 /* =====================
    LINKS
 ===================== */
-a { color: #4fc3f7; text-decoration: none; }
-a:hover { color: #9be7ff; }
+a { color: #4472c4; text-decoration: none; }
+a:hover { color: #4472c4; }
 
 /* =====================
    HEADER
