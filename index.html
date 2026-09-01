@@ -1,112 +1,108 @@
-<main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manjunath Bestha | Exoplanets & Instrumentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-  <!-- ABOUT -->
 
-  <section>
+<body>
 
-    <h2>About</h2>
+<header>
+  <img src="images/profile.jpg" alt="Manjunath Bestha">
+  <h1>Manjunath Bestha</h1>
+  <p>Doctoral Candidate · Astronomical Instrumentation & Exoplanet Spectroscopy</p>
+  <p>Indian Institute of Astrophysics, Bengaluru</p>
 
-    <div class="research-box">
-
-      <p>
-        I am a doctoral researcher at the Indian Institute of Astrophysics,
-        Bengaluru, working in the field of astronomical instrumentation and
-        Exoplanet atmospheric characterization.
-      </p>
-
-      <p>
-        My research combines observational astronomy, astronomical
-        instrumentation, and data analysis to improve our ability to study
-        the atmospheres of planets beyond our Solar System. I am particularly
-        interested in ground-based transmission spectroscopy and the challenges
-        associated with achieving high-precision measurements.
-      </p>
-
-      <p>
-        My work involves both low- and high-resolution spectroscopy, together
-        with the development and evaluation of observational strategies,
-        correction of stellar and instrumental systematics, and the design of
-        Instrumentation for future astronomical facilities.
-      </p>
-
+  <!-- <nav>
+    <a href="index.html">About</a>
+    <a href="publications.html">Publications</a>
+    <a href="figures.html">Research Highlights</a>
+    <a href="cv/cv.pdf" target="_blank">CV</a>
+    <a href="contact.html">Contact</a>
+  </nav> -->
+  <nav>
+  <a href="index.html">About</a>
+  <a href="figures.html">Research Highlights</a>
+  <a href="publications.html">Publications</a>
+  <div class="nav-dropdown">
+    <span>More ▾</span>
+    <div class="dropdown-content">
+      <a href="thoughts.html">Thoughts</a>
+      <a href="achievements.html">Honors & Recognitions</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="ul.html">Useful Links</a>
+      <a href="cv/cv.pdf" target="_blank">CV</a>
+      <a href="contact.html">Contact</a>
     </div>
+  </div>
+</nav>
 
-  </section>
+</header>
+
+<section>
+  <div class="center-text">
+    <h2>About Me</h2>
+    <p style="font-size: 1.8rem;">Hi !</p>
+
+<p>
+  My academic journey began in Mechanical Engineering, but my interests gradually
+  moved towards physics and astronomy. This path eventually brought me to the
+  Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program
+  in Astronomical Instrumentation, and am currently pursuing my PhD.
+</p>
+  </div>
+</section>
 
 
 
-  <!-- RESEARCH -->
-
-  <section>
-
+<section>
+  <div class="center-text">
     <h2>Research Interests</h2>
+    <p>
+      My research focuses on ground-based low- and high-resolution transmission
+      spectroscopy of exoplanet atmospheres, with an emphasis on correcting
+      stellar and instrumental systematics in observational data. I am also
+      interested in the design and simulation of astronomical instrumentation,
+      including ray-tracing–based instrument design and fiber positioners for
+      multi-object spectroscopy.
+    </p>
+  </div>
+</section>
 
-    <div class="research-box">
-
-      <p>
-        My primary research interests are focused on the spectroscopic
-        characterization of exoplanet atmospheres using ground-based
-        observations. I work with low- and high-resolution transmission
-        spectroscopy and investigate the effects of stellar, telluric, and
-        instrumental systematics on atmospheric measurements.
-      </p>
-
-      <p>
-        Alongside exoplanet science, I work on astronomical instrumentation,
-        including optical design and simulation, atmospheric dispersion
-        correction, and fiber-positioning concepts for multi-object
-        spectrographs on future large telescopes.
-      </p>
-
-    </div>
+<!-- 
+<p id="visit-count" style="opacity: 0.8; font-size: 0.95rem; text-align: center;">
+  👀 Visits: loading...
+</p>
 
 
-    <div class="research-tags">
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let visits = localStorage.getItem("blog_visits");
 
-      <div class="tag">Exoplanet Atmospheres</div>
+    if (!visits) {
+      visits = 1;
+    } else {
+      visits = parseInt(visits) + 1;
+    }
 
-      <div class="tag">Transmission Spectroscopy</div>
+    localStorage.setItem("blog_visits", visits);
+    document.getElementById("visit-count").innerText =
+      "👀 Visits: " + visits;
+  });
+</script> -->
+<!-- <header>
+  <img src="images/profile.jpg" alt="Manjunath Bestha">
+<header> -->
+<footer>
+  © Manjunath Bestha
+</footer>
 
-      <div class="tag">High-Resolution Spectroscopy</div>
-
-      <div class="tag">Astronomical Instrumentation</div>
-
-      <div class="tag">Optical Design</div>
-
-      <div class="tag">Atmospheric Dispersion Correction</div>
-
-      <div class="tag">Multi-Object Spectroscopy</div>
-
-      <div class="tag">Time-Series Spectroscopy</div>
-
-      <div class="tag">Stellar & Instrumental Systematics</div>
-
-    </div>
-
-  </section>
-
-
-  <!-- RESEARCH OVERVIEW -->
-
-  <section>
-
-    <h2>Current Focus</h2>
-
-    <div class="research-box">
-
-      <p>
-        My current work explores the precision limits of ground-based
-        transmission spectroscopy and the observational and instrumental
-        strategies required for reliable exoplanet atmosphere measurements.
-        I am also interested in connecting instrumentation development with
-        the scientific requirements of future exoplanet observations.
-      </p>
-
-    </div>
-
-  </section>
-
-</main>
+</body>
+</html>
 
 
 
