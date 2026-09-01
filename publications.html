@@ -4,161 +4,624 @@
   <meta charset="UTF-8">
   <title>Publications | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =========================
+       PUBLICATIONS PAGE
+    ========================= */
+
+    .publications-container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .publications-intro {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+
+    .publications-intro p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+
+    .publication-section {
+      margin-top: 4rem;
+    }
+
+    .publication-section h2 {
+      margin-bottom: 2rem;
+    }
+
+    .publication-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .publication-card {
+      position: relative;
+      padding: 2rem;
+      margin-bottom: 1.8rem;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid #4fc3f7;
+      border-radius: 8px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .publication-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(79, 195, 247, 0.6);
+    }
+
+    .publication-title {
+      display: block;
+      font-size: 1.3rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .publication-authors {
+      display: block;
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+      opacity: 0.9;
+    }
+
+    /* YOUR NAME */
+
+    .my-name {
+      color: #4fc3f7;
+      font-weight: normal;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      background: rgba(79, 195, 247, 0.12);
+      white-space: nowrap;
+    }
+
+    .publication-journal {
+      display: block;
+      margin-top: 0.7rem;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .publication-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(79, 195, 247, 0.5);
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background 0.25s ease;
+    }
+
+    .publication-link:hover {
+      background: rgba(79, 195, 247, 0.12);
+    }
+
+    .publication-status {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      opacity: 0.85;
+    }
+
+    .ads-box {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ads-box a {
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 700px) {
+
+      .publication-card {
+        padding: 1.4rem;
+      }
+
+      .publication-title {
+        font-size: 1.1rem;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
 
+
 <header>
+
   <h1>Publications</h1>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="figures.html">Research Highlights</a>
+    <a href="publications.html">Publications</a>
     <a href="contact.html">Contact</a>
   </nav>
+
 </header>
-  
-<!-- =========================
-     PUBLICATIONS
-========================= -->
-
-<h2>Journal Articles</h2>
-
-<ul>
-
-  <li>
-    <em>A New Broadband Atmospheric Dispersion Corrector for HROS–TMT</em><br>
-    <strong>Bestha, M.</strong>, Sivarani, T., Wehbe, B., Hasan, A., Chandra, B. P.,
-    Divakar, D. K., Unni, A., Menon, P., Surya, A., Saraf, P., et al. (2025).<br>
-    <strong>RAS Techniques and Instruments (RASTI)</strong>.
-    <a href="https://academic.oup.com/rasti/article/doi/10.1093/rasti/rzaf057/8327618" target="_blank">[Journal]</a>
-  </li>
-
-  <li>
-    <em>A Quiet Host in an Active Planet-Forming Disk: Optical Spectroscopy of WISPIT 2</em><br>
-    Swastik, C., <strong>Bestha, M.</strong>, Sonith, L. S., Facchini, S.,
-    Sivarani, T., Banyal, R. K., Wahhaj, Z., et al. (2026).<br>
-    <strong>A&amp;A Letters</strong>.
-    <a href="https://doi.org/10.1051/0004-6361/202661622" target="_blank">[Journal]</a>
-  </li>
-
-  <li>
-    <em>Doppler Shifted Transient Sodium Detection by KECK/HIRES</em><br>
-    Unni, A., Oza, A. V., Hoeijmakers, H. J., Seidel, J. V., Sivarani, T.,
-    Schmidt, C. A., Kesseli, A. Y., et al., <strong>Bestha, M.</strong> (2025).<br>
-    <strong>arXiv</strong>.
-    <a href="https://doi.org/10.48550/arXiv.2504.03974" target="_blank">[arXiv]</a>
-  </li>
-
-</ul>
 
 
-<h2>Conference Proceedings & Other Publications</h2>
-
-<ul>
-
-  <li>
-    <em>An Observational Study of Systematics Affecting Low-Resolution Multi-Object Transmission Spectroscopy</em><br>
-    <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., Surya, A., Parvathy, M.,
-    Divakar, D., et al. (2026).<br>
-    <strong>Proc. SPIE</strong>.
-    <a href="https://arxiv.org/abs/2608.06749" target="_blank">[arXiv]</a>
-  </li>
-
-  <li>
-    <em>An Initial Assessment of the Hanle Echelle Spectrograph for Exoplanet Atmosphere Studies</em><br>
-    <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., Menon, S., Parvathy, M.,
-    Surya, A., Saraf, P., Divakar, D., Manickavasaham, L. (2025).<br>
-    <strong>Proc. SPIE</strong>.
-    <a href="https://doi.org/10.1117/12.3064331" target="_blank">[SPIE]</a>
-  </li>
-
-  <li>
-    <em>A Multi-Object Approach for Studying Exoplanet Atmospheres Using High-Resolution Spectrographs</em><br>
-    <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., Dhanush, S. R.,
-    Manickavasaham, L., Parvathy, M., Divakar, D. K., Surya, A. (2025).<br>
-    <strong>Proc. SPIE</strong>.
-    <a href="https://doi.org/10.1117/12.3064406" target="_blank">[SPIE]</a>
-  </li>
-
-  <li>
-    <em>Atmospheric Dispersion Measurement at Hanle Site</em><br>
-    <strong>Bestha, M.</strong>, Sivarani, T., Unni, A., Parvathy, M.,
-    Divakar, D. (2025).<br>
-    <strong>Springer / arXiv</strong>.
-    <a href="https://doi.org/10.48550/arXiv.2509.17300" target="_blank">[arXiv]</a>
-  </li>
-
-  <li>
-    <em>Addressing Wavelength-Correlated Systematics in Exoplanet Transmission Spectroscopy: A 2D Gaussian Process Approach</em><br>
-    Manickavasaham, L., <strong>Bestha, M.</strong>, Sivarani, T., Surya, A.,
-    Unni, A. (2025).<br>
-    <strong>arXiv</strong>.
-    <a href="https://doi.org/10.48550/arXiv.2510.20423" target="_blank">[arXiv]</a>
-  </li>
-
-  <li>
-    <em>High-Resolution Echelle Spectroscopy for Solar System Planets: A Planet-as-Point-Source Analogy</em><br>
-    Menon, P., Sivarani, T., Sriram, S., <strong>Bestha, M.</strong>,
-    Divakar, D. K., Rajaguru, S. P., Surya, A. (2025).<br>
-    <strong>arXiv</strong>.
-    <a href="https://doi.org/10.48550/arXiv.2510.20559" target="_blank">[arXiv]</a>
-  </li>
-
-  <li>
-    <em>A Multi-Functional Fiber Positioning System for Extremely Large Telescopes</em><br>
-    <strong>Bestha, M.</strong>, Sivarani, T., Surya, A., Yadav, S., Unni, A.,
-    Parvathy, M., Divakar, D., Sriram, S., Prakash, A., Hasan, A. (2024).<br>
-    <strong>Proc. SPIE</strong>.
-    <a href="https://doi.org/10.1117/12.3019098" target="_blank">[SPIE]</a>
-  </li>
-
-  <li>
-    <em>Slitless Spectroscopy Simulations of Milky Way Dwarf Satellite Galaxies Using TMT-WFOS</em><br>
-    Divakar, D. K., Sivarani, T., Sethuram, R., Fucik, J., Steidel, C.,
-    <strong>Bestha, M.</strong>, Deshmukh, P. (2024).<br>
-    <strong>Proc. SPIE 13099</strong>.
-    <a href="https://doi.org/10.1117/12.3019070" target="_blank">[SPIE]</a>
-  </li>
-
-  <li>
-    <em>Atmospheric Dispersion Corrector for a Multi-Object Spectroscopic Mode of HROS–TMT</em><br>
-    <strong>Bestha, M.</strong>, Hasan, A., Divakar, D., Surya, A., Sivarani, T.,
-    Sriram, S., Prakash, A., Parvathy, M., Yadav, S. (2023).<br>
-    <strong>Proc. SPIE</strong>.
-    <a href="https://doi.org/10.1117/12.2677192" target="_blank">[SPIE]</a>
-  </li>
-
-</ul>
+<main class="publications-container">
 
 
-<h2>Manuscripts in Preparation</h2>
+  <div class="publications-intro">
 
-<ul>
+    <p>
+      My research publications span exoplanet atmospheric characterization,
+      high- and low-resolution transmission spectroscopy, astronomical
+      instrumentation, atmospheric dispersion correction, and future
+      spectroscopic facilities.
+    </p>
 
-  <li>
-    <em>Measurement and Characterization of Atmospheric Dispersion for Spectrophotometric Precision at IAO</em><br>
-    <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., Parvathy, M.,
-    Divakar, D.<br>
-    <strong>[Manuscript in preparation]</strong>
-  </li>
+  </div>
 
-  <li>
-    <em>Probing the Atmosphere of KELT-9 b with High-Resolution Spectroscopy from a 2-m Himalayan Chandra Telescope</em><br>
-    <strong>Bestha, M.</strong>, Unni, A., Sivarani, T., Surya, A.,
-    Parvathy, M., Divakar, D.<br>
-    <strong>[Manuscript in preparation]</strong>
-  </li>
 
-</ul>
 
-    <p class="small">
-    🔗 Complete and up-to-date list available on
-    <a href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&q=%20author%3A%22Bestha%2CManjunath%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">NASA ADS</a>
-  </p>
+  <!-- =========================
+       JOURNAL ARTICLES
+  ========================= -->
 
-<footer>© Manjunath Bestha</footer>
+  <div class="publication-section">
+
+    <h2>Journal Articles</h2>
+
+    <ul class="publication-list">
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          A New Broadband Atmospheric Dispersion Corrector for HROS–TMT
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>, Sivarani, T., Wehbe, B.,
+          Hasan, A., Chandra, B. P., Divakar, D. K., Unni, A.,
+          Menon, P., Surya, A., Saraf, P., et al. (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>RAS Techniques and Instruments (RASTI)</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://academic.oup.com/rasti/article/doi/10.1093/rasti/rzaf057/8327618"
+           target="_blank">
+          Read Journal Article →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          A Quiet Host in an Active Planet-Forming Disk:
+          Optical Spectroscopy of WISPIT 2
+        </em>
+
+        <span class="publication-authors">
+          Swastik, C., <span class="my-name">Bestha, M.</span>,
+          Sonith, L. S., Facchini, S., Sivarani, T.,
+          Banyal, R. K., Wahhaj, Z., et al. (2026)
+        </span>
+
+        <span class="publication-journal">
+          <strong>A&amp;A Letters</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.1051/0004-6361/202661622"
+           target="_blank">
+          Read Journal Article →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Doppler Shifted Transient Sodium Detection by KECK/HIRES
+        </em>
+
+        <span class="publication-authors">
+          Unni, A., Oza, A. V., Hoeijmakers, H. J.,
+          Seidel, J. V., Sivarani, T., Schmidt, C. A.,
+          Kesseli, A. Y., et al.,
+          <span class="my-name">Bestha, M.</span> (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>arXiv</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.48550/arXiv.2504.03974"
+           target="_blank">
+          View on arXiv →
+        </a>
+
+      </li>
+
+
+    </ul>
+
+  </div>
+
+
+
+  <!-- =========================
+       CONFERENCE PROCEEDINGS
+  ========================= -->
+
+  <div class="publication-section">
+
+    <h2>Conference Proceedings &amp; Other Publications</h2>
+
+    <ul class="publication-list">
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          An Observational Study of Systematics Affecting
+          Low-Resolution Multi-Object Transmission Spectroscopy
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>, Unni, A.,
+          Sivarani, T., Surya, A., Parvathy, M.,
+          Divakar, D., et al. (2026)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Proc. SPIE</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://arxiv.org/abs/2608.06749"
+           target="_blank">
+          View on arXiv →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          An Initial Assessment of the Hanle Echelle Spectrograph
+          for Exoplanet Atmosphere Studies
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>, Unni, A.,
+          Sivarani, T., Menon, S., Parvathy, M.,
+          Surya, A., Saraf, P., Divakar, D.,
+          Manickavasaham, L. (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Proc. SPIE</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.1117/12.3064331"
+           target="_blank">
+          Read Publication →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          A Multi-Object Approach for Studying Exoplanet Atmospheres
+          Using High-Resolution Spectrographs
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>, Unni, A.,
+          Sivarani, T., Dhanush, S. R.,
+          Manickavasaham, L., Parvathy, M.,
+          Divakar, D. K., Surya, A. (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Proc. SPIE</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.1117/12.3064406"
+           target="_blank">
+          Read Publication →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Atmospheric Dispersion Measurement at Hanle Site
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>, Sivarani, T.,
+          Unni, A., Parvathy, M., Divakar, D. (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Springer / arXiv</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.48550/arXiv.2509.17300"
+           target="_blank">
+          View on arXiv →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Addressing Wavelength-Correlated Systematics in Exoplanet
+          Transmission Spectroscopy: A 2D Gaussian Process Approach
+        </em>
+
+        <span class="publication-authors">
+          Manickavasaham, L.,
+          <span class="my-name">Bestha, M.</span>,
+          Sivarani, T., Surya, A., Unni, A. (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>arXiv</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.48550/arXiv.2510.20423"
+           target="_blank">
+          View on arXiv →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          High-Resolution Echelle Spectroscopy for Solar System Planets:
+          A Planet-as-Point-Source Analogy
+        </em>
+
+        <span class="publication-authors">
+          Menon, P., Sivarani, T., Sriram, S.,
+          <span class="my-name">Bestha, M.</span>,
+          Divakar, D. K., Rajaguru, S. P.,
+          Surya, A. (2025)
+        </span>
+
+        <span class="publication-journal">
+          <strong>arXiv</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.48550/arXiv.2510.20559"
+           target="_blank">
+          View on arXiv →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          A Multi-Functional Fiber Positioning System
+          for Extremely Large Telescopes
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>,
+          Sivarani, T., Surya, A., Yadav, S.,
+          Unni, A., Parvathy, M., Divakar, D.,
+          Sriram, S., Prakash, A., Hasan, A. (2024)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Proc. SPIE</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.1117/12.3019098"
+           target="_blank">
+          Read Publication →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Slitless Spectroscopy Simulations of Milky Way
+          Dwarf Satellite Galaxies Using TMT-WFOS
+        </em>
+
+        <span class="publication-authors">
+          Divakar, D. K., Sivarani, T., Sethuram, R.,
+          Fucik, J., Steidel, C.,
+          <span class="my-name">Bestha, M.</span>,
+          Deshmukh, P. (2024)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Proc. SPIE 13099</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.1117/12.3019070"
+           target="_blank">
+          Read Publication →
+        </a>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Atmospheric Dispersion Corrector for a Multi-Object
+          Spectroscopic Mode of HROS–TMT
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>,
+          Hasan, A., Divakar, D., Surya, A.,
+          Sivarani, T., Sriram, S., Prakash, A.,
+          Parvathy, M., Yadav, S. (2023)
+        </span>
+
+        <span class="publication-journal">
+          <strong>Proc. SPIE</strong>
+        </span>
+
+        <a class="publication-link"
+           href="https://doi.org/10.1117/12.2677192"
+           target="_blank">
+          Read Publication →
+        </a>
+
+      </li>
+
+
+    </ul>
+
+  </div>
+
+
+
+  <!-- =========================
+       MANUSCRIPTS
+  ========================= -->
+
+  <div class="publication-section">
+
+    <h2>Manuscripts in Preparation</h2>
+
+    <ul class="publication-list">
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Measurement and Characterization of Atmospheric Dispersion
+          for Spectrophotometric Precision at IAO
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>,
+          Unni, A., Sivarani, T.,
+          Parvathy, M., Divakar, D.
+        </span>
+
+        <span class="publication-status">
+          Manuscript in Preparation
+        </span>
+
+      </li>
+
+
+
+      <li class="publication-card">
+
+        <em class="publication-title">
+          Probing the Atmosphere of KELT-9 b with High-Resolution
+          Spectroscopy from a 2-m Himalayan Chandra Telescope
+        </em>
+
+        <span class="publication-authors">
+          <span class="my-name">Bestha, M.</span>,
+          Unni, A., Sivarani, T.,
+          Surya, A., Parvathy, M.,
+          Divakar, D.
+        </span>
+
+        <span class="publication-status">
+          Manuscript in Preparation
+        </span>
+
+      </li>
+
+
+    </ul>
+
+  </div>
+
+
+
+  <!-- NASA ADS -->
+
+  <div class="ads-box">
+
+    <p>
+      For a complete and up-to-date list of publications:
+    </p>
+
+    <a href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&q=%20author%3A%22Bestha%2CManjunath%22&sort=date%20desc%2C%20bibcode%20desc&p_=0"
+       target="_blank">
+
+      NASA ADS Publication List →
+
+    </a>
+
+  </div>
+
+
+</main>
+
+
+<footer>
+  © Manjunath Bestha
+</footer>
+
 
 </body>
 </html>
