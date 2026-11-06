@@ -96,62 +96,55 @@
       color: var(--heading);
       line-height: 1.9;
       margin-bottom: 20px;
-      min-height: 3.8em; /* Prevents layout jump while typing */
     }
 
-    /* Greeting & Blinking Caret */
+    /* Greeting */
     .greeting-heading {
       font-size: 1.6rem;
       font-family: 'Space Grotesk', sans-serif;
       color: var(--heading);
       margin-bottom: 20px;
-      display: inline-block;
+      animation: fadeGlowIn 1s ease forwards;
     }
 
-    .typing-cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1.05em;
-      background-color: var(--heading, #ffffff);
-      margin-left: 4px;
-      vertical-align: text-bottom;
-      animation: blinkCaret 0.9s step-end infinite;
-    }
-
-    @keyframes blinkCaret {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* Typing Effect */
-    .bio-paragraph {
-      display: inline;
-      text-align: left;
-      line-height: 1.8;
-      max-width: 100%;
-    }
-
-    .typed-char {
+    /* Paragraph-Wise Reveal with Mild Flash & Smooth Rise */
+    .para-reveal {
       opacity: 0;
-      display: inline;
-      animation: fadeInChar 0.05s forwards;
+      transform: translateY(14px);
+      filter: blur(3px);
+      transition:
+        opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.1s ease;
     }
 
-    @keyframes fadeInChar {
-      from { opacity: 0; text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); }
-      to { opacity: 1; text-shadow: none; }
-    }
-
-    /* Smooth Staggered Reveal for Subsequent Paragraphs */
-    .fade-up-para {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .fade-up-para.visible {
+    .para-reveal.visible {
       opacity: 1;
       transform: translateY(0);
+      filter: blur(0);
+      animation: mildParaFlash 1.6s ease-out forwards;
+    }
+
+    @keyframes mildParaFlash {
+      0% {
+        text-shadow: 0 0 14px rgba(255, 255, 255, 0.55);
+      }
+      100% {
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+      }
+    }
+
+    @keyframes fadeGlowIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: none;
+      }
     }
 
     /* Interactive Research Tabs */
@@ -362,20 +355,20 @@
 
   <div class="center-text">
 
-    <p class="greeting-heading" id="greeting-text">
+    <p class="greeting-heading">
       Hi there!
     </p>
 
     <div class="intro-text">
 
-      <p class="intro-lead" id="typewriter-lead">
+      <p class="intro-lead para-reveal">
         I am an astronomer working at the intersection of astronomical
         instrumentation and exoplanet science, with a particular interest
         in understanding planetary atmospheres through ground-based
         spectroscopy.
       </p>
 
-      <p class="fade-up-para">
+      <p class="para-reveal">
         My research explores how observations from ground-based telescopes
         can reveal the physical and chemical properties of distant
         exoplanets. Alongside observational astronomy, I work on the design
@@ -383,7 +376,7 @@
         optical engineering, mechanical design, and data analysis.
       </p>
 
-      <p class="fade-up-para">
+      <p class="para-reveal">
         I completed the Integrated M.Tech–PhD program in Astronomical
         Instrumentation at the Indian Institute of Astrophysics (IIA),
         Bengaluru, and have submitted my PhD thesis to the University of
@@ -513,58 +506,20 @@
   }
 
 
-  // 2. Engaging Typewriter & Staggered Bio Reveal
+  // 2. Paragraph-by-Paragraph Reveal with 4-Second Delay
   document.addEventListener("DOMContentLoaded", function () {
-    const greetingEl = document.getElementById("greeting-text");
-    const leadEl = document.getElementById("typewriter-lead");
-    const followUpParas = document.querySelectorAll(".fade-up-para");
+    const paragraphs = document.querySelectorAll(".para-reveal");
+    const delayBetweenParas = 4000; // 4 seconds (4000ms) between each paragraph
 
-    if (!leadEl) return;
-
-    // Normalize whitespace while preserving exact text
-    const fullText = leadEl.textContent.replace(/\s+/g, " ").trim();
-    leadEl.textContent = "";
-
-    // Create blinking cursor
-    const cursor = document.createElement("span");
-    cursor.className = "typing-cursor";
-    greetingEl.appendChild(cursor);
-
-    // Move cursor to lead paragraph and type each character with mild glow
-    setTimeout(() => {
-      leadEl.appendChild(cursor);
-      let charIndex = 0;
-
-      function typeNextChar() {
-        if (charIndex < fullText.length) {
-          const span = document.createElement("span");
-          span.className = "typed-char";
-          span.textContent = fullText.charAt(charIndex);
-          leadEl.insertBefore(span, cursor);
-          charIndex++;
-          setTimeout(typeNextChar, 18); // Smooth, brisk typing speed
-        } else {
-          // Reveal remaining paragraphs smoothly once lead finishes typing
-          followUpParas.forEach((p, idx) => {
-            setTimeout(() => {
-              p.classList.add("visible");
-            }, idx * 250);
-          });
-
-          // Fade out cursor cleanly after completion
-          setTimeout(() => {
-            cursor.style.transition = "opacity 0.6s ease";
-            cursor.style.opacity = "0";
-          }, 2500);
-        }
-      }
-
-      typeNextChar();
-    }, 450);
+    paragraphs.forEach((para, index) => {
+      setTimeout(() => {
+        para.classList.add("visible");
+      }, index * delayBetweenParas);
+    });
   });
 
 
-  // 3. Background Credit Fade-Out (with re-appear on bottom-corner mouse movement)
+  // 3. Background Credit Fade-Out
   window.addEventListener("load", function () {
     const credit = document.querySelector('.bg-credit');
     if (!credit) return;
