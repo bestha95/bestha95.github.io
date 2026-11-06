@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +9,8 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Dynamic Interactive Enhancements */
-    
     /* Live Status / Milestone Banner */
+
     .live-banner {
       display: inline-flex;
       align-items: center;
@@ -41,9 +41,27 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* Clean Typing Paragraph Styles */
+    /* Introduction */
+
+    .intro-text {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: left;
+      line-height: 1.9;
+    }
+
+    .intro-lead {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      color: var(--heading);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    /* Typing Effect */
+
     .bio-paragraph {
-      display: inline-block;
+      display: inline;
       text-align: left;
       line-height: 1.8;
       max-width: 100%;
@@ -60,6 +78,7 @@
     }
 
     /* Interactive Research Tabs */
+
     .research-tabs {
       display: flex;
       justify-content: center;
@@ -81,7 +100,8 @@
       transition: var(--transition);
     }
 
-    .tab-btn:hover, .tab-btn.active-tab {
+    .tab-btn:hover,
+    .tab-btn.active-tab {
       background: #ffffff;
       color: var(--background);
       border-color: #ffffff;
@@ -103,7 +123,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Background Credit Fade-Out Effect */
+    /* Background Image Credit */
+
     .bg-credit {
       transition: opacity 1.2s ease, background 0.2s ease, color 0.2s ease;
     }
@@ -117,6 +138,22 @@
       opacity: 1 !important;
       pointer-events: auto;
     }
+
+    @media (max-width: 600px) {
+      .live-banner {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+      }
+
+      .intro-lead {
+        font-size: 1.05rem;
+      }
+
+      .tab-btn {
+        padding: 9px 14px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 
@@ -128,17 +165,18 @@
   <p>PhD Candidate · Astronomical Instrumentation & Exoplanet Spectroscopy</p>
   <p>Indian Institute of Astrophysics, Bengaluru</p>
 
-  <!-- Dynamic Live Status Banner -->
+  <!-- Thesis Status -->
   <div>
     <div class="live-banner">
       <span class="pulse-dot"></span>
-      <span>Thesis submitted to the University of Calcutta — Awaiting Defense (2026)</span>
+      <span>PhD Thesis Submitted — Awaiting Defense (2026)</span>
     </div>
   </div>
 
-  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
+  <!-- Universal Navigation -->
+
   <nav>
-    <!-- Home Dropdown (Active Page) -->
+    <!-- About Dropdown -->
     <div class="nav-dropdown active" tabindex="0">
       <span class="active-sub">About</span>
       <div class="dropdown-content">
@@ -148,7 +186,7 @@
       </div>
     </div>
 
-    <!-- Research Highlights Dropdown -->
+    <!-- Research Dropdown -->
     <div class="nav-dropdown" tabindex="0">
       <a href="figures.html">Research</a>
       <div class="dropdown-content">
@@ -173,7 +211,7 @@
       </div>
     </div>
 
-    <!-- "More" Dropdown to access all remaining subsections -->
+    <!-- More Dropdown -->
     <div class="nav-dropdown more-menu" tabindex="0">
       <span>More</span>
       <div class="dropdown-content">
@@ -193,17 +231,22 @@
 
 
 <!-- SECTION 1: ABOUT ME -->
+
 <section id="about">
+
   <div class="section-header-bar">
     <h2>About Me</h2>
 
     <div class="subsection-switcher" tabindex="0">
       <span class="subsection-switcher-btn">Jump to Section ▾</span>
+
       <div class="dropdown-content">
         <span class="dropdown-label">Home Page</span>
         <a href="#about">About Me</a>
         <a href="#research-interests">Research Interests</a>
+
         <div class="dropdown-divider"></div>
+
         <span class="dropdown-label">Other Pages</span>
         <a href="figures.html">Research Highlights</a>
         <a href="publications.html">Publications</a>
@@ -213,63 +256,117 @@
   </div>
 
   <div class="center-text">
+
     <p style="font-size: 1.6rem; font-family: 'Space Grotesk', sans-serif; color: var(--heading); margin-bottom: 20px;">
-      Hi there! 👋
+      Hi there!
     </p>
 
-    <!-- Clean Typing Paragraph without trailing cursor line -->
-    <p>
-      <span class="bio-paragraph" id="typing-bio"></span>
-    </p>
+    <div class="intro-text">
+
+      <p class="intro-lead">
+        I am an astronomer working at the intersection of astronomical
+        instrumentation and exoplanet science, with a particular interest
+        in understanding planetary atmospheres through ground-based
+        spectroscopy.
+      </p>
+
+      <p>
+        My research explores how observations from ground-based telescopes
+        can reveal the physical and chemical properties of distant
+        exoplanets. Alongside observational astronomy, I work on the design
+        and simulation of astronomical instruments, bringing together
+        optical engineering, mechanical design, and data analysis.
+      </p>
+
+      <p>
+        I completed the Integrated M.Tech–PhD program in Astronomical
+        Instrumentation at the Indian Institute of Astrophysics (IIA),
+        Bengaluru, and have submitted my PhD thesis to the University of
+        Calcutta. I am currently awaiting my thesis defense.
+      </p>
+
+    </div>
   </div>
+
 </section>
 
 
-<!-- SECTION 2: INTERACTIVE RESEARCH INTERESTS -->
+<!-- SECTION 2: RESEARCH INTERESTS -->
+
 <section id="research-interests">
+
   <h2>Research Interests</h2>
 
-  <!-- <div class="center-text" style="margin-bottom: 10px;">
-    <p style="font-size: 0.95rem; color: var(--text-muted);">Click the tabs below to explore my primary core research areas:</p>
-  </div> -->
+  <div class="center-text" style="margin-bottom: 10px;">
+    <p style="font-size: 0.95rem; color: var(--text-muted);">
+      Explore my primary research areas:
+    </p>
+  </div>
 
   <!-- Interactive Tab Buttons -->
+
   <div class="research-tabs">
-    <button class="tab-btn active-tab" onclick="openTab(event, 'tab-exoplanets')">Exoplanet Atmospheres</button>
-    <button class="tab-btn" onclick="openTab(event, 'tab-instrumentation')">Instrumentation & Optics</button>
-    <button class="tab-btn" onclick="openTab(event, 'tab-systematics')">Observational Systematics</button>
+    <button class="tab-btn active-tab" onclick="openTab(event, 'tab-exoplanets')">
+      Exoplanet Atmospheres
+    </button>
+
+    <button class="tab-btn" onclick="openTab(event, 'tab-instrumentation')">
+      Instrumentation
+    </button>
+
+    <button class="tab-btn" onclick="openTab(event, 'tab-systematics')">
+      Observational Systematics
+    </button>
   </div>
 
   <!-- Tab 1: Exoplanets -->
+
   <div id="tab-exoplanets" class="tab-content active-content center-text">
     <p>
-      My research focuses on ground-based low- and high-resolution transmission
-      spectroscopy of exoplanet atmospheres. I investigate ultra-hot Jupiters like KELT-9 b 
-      and transiting systems using data from facilities such as the Himalayan Chandra Telescope (HCT).
+      My research focuses on ground-based low- and high-resolution
+      transmission spectroscopy of exoplanet atmospheres. I investigate
+      ultra-hot Jupiters like KELT-9 b and transiting systems using data
+      from facilities such as the Himalayan Chandra Telescope (HCT).
     </p>
-    <a href="figures.html" class="button" style="margin-top: 15px;">View Research Highlights →</a>
+
+    <a href="figures.html" class="button" style="margin-top: 15px;">
+      View Research Highlights →
+    </a>
   </div>
 
   <!-- Tab 2: Instrumentation -->
+
   <div id="tab-instrumentation" class="tab-content center-text">
     <p>
-      I specialize in the design and simulation of astronomical instruments. 
-      This includes optical design of broadband Atmospheric Dispersion Correctors (ADCs) 
-      for the High-Resolution Optical Spectrograph on the Thirty Meter Telescope (HROS-TMT) 
-      and mechanical design of multi-functional fiber positioning systems for extremely large telescopes.
+      I specialize in the design and simulation of astronomical instruments.
+      This includes optical design of broadband Atmospheric Dispersion
+      Correctors (ADCs) for the High-Resolution Optical Spectrograph on
+      the Thirty Meter Telescope (HROS-TMT) and mechanical design of
+      multi-functional fiber positioning systems for extremely large
+      telescopes.
     </p>
-    <a href="figures.html#adc-tmt" class="button" style="margin-top: 15px;">Explore TMT & Fiber Designs →</a>
+
+    <a href="figures.html#adc-tmt" class="button" style="margin-top: 15px;">
+      Explore TMT & Fiber Designs →
+    </a>
   </div>
 
   <!-- Tab 3: Systematics -->
+
   <div id="tab-systematics" class="tab-content center-text">
     <p>
-      Extracting tiny planetary signals from stellar spectra requires rigorous treatment of observational errors. 
-      I work on identifying elevation-dependent systematics, instrumental flexure, 
-      and atmospheric refraction models to ensure robust, artifact-free exoplanet transmission spectra.
+      Extracting tiny planetary signals from stellar spectra requires
+      rigorous treatment of observational errors. I work on identifying
+      elevation-dependent systematics, instrumental flexure, and
+      atmospheric refraction models to ensure robust, artifact-free
+      exoplanet transmission spectra.
     </p>
-    <a href="publications.html" class="button" style="margin-top: 15px;">Read Related Papers →</a>
+
+    <a href="publications.html" class="button" style="margin-top: 15px;">
+      Read Related Papers →
+    </a>
   </div>
+
 </section>
 
 
@@ -277,58 +374,59 @@
   <p>© Manjunath Bestha</p>
 </footer>
 
-<!-- Background Image Credit Badge -->
+
+<!-- Background Image Credit -->
+
 <div class="bg-credit">
-  Background: Himalayan Chandra Telescope (IAO Hanle) — Photo by <a href="https://x.com/dorje_angchuk" target="_blank">Dorje Angchuk</a>
+  Background: Himalayan Chandra Telescope (IAO Hanle) — Photo by
+  <a href="https://x.com/dorje_angchuk" target="_blank">
+    Dorje Angchuk
+  </a>
 </div>
 
-<!-- Interactive Scripts (Typing Effect & Tab Switcher) -->
+
+<!-- Interactive Scripts -->
+
 <script>
-  // Typing Effect
-  const bioText = "My academic journey began in Mechanical Engineering, but my interests gradually moved towards physics and astronomy. This path eventually brought me to the Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program in Astronomical Instrumentation, and have submitted my PhD thesis to the University of Calcutta, currently awaiting defense.";
-  
-  const container = document.getElementById("typing-bio");
-  let i = 0;
-  const speed = 25; // Smooth typing speed
-
-  function typeWriter() {
-    if (i < bioText.length) {
-      const span = document.createElement("span");
-      span.className = "typed-char";
-      span.textContent = bioText.charAt(i);
-      container.appendChild(span);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-
-  window.onload = function() {
-    setTimeout(typeWriter, 400); // Small delay before typing starts
-
-    // Fade away credit badge after 2 seconds
-    setTimeout(() => {
-      const credit = document.querySelector('.bg-credit');
-      if (credit && !credit.matches(':hover')) {
-        credit.classList.add('fade-out');
-      }
-    }, 2000);
-  };
 
   // Interactive Tab Switcher
+
   function openTab(evt, tabId) {
+
     let contents = document.getElementsByClassName("tab-content");
+
     for (let j = 0; j < contents.length; j++) {
       contents[j].classList.remove("active-content");
     }
 
     let buttons = document.getElementsByClassName("tab-btn");
+
     for (let j = 0; j < buttons.length; j++) {
       buttons[j].classList.remove("active-tab");
     }
 
     document.getElementById(tabId).classList.add("active-content");
     evt.currentTarget.classList.add("active-tab");
+
   }
+
+
+  // Background Credit Fade-Out
+
+  window.addEventListener("load", function () {
+
+    setTimeout(() => {
+
+      const credit = document.querySelector('.bg-credit');
+
+      if (credit && !credit.matches(':hover')) {
+        credit.classList.add('fade-out');
+      }
+
+    }, 2000);
+
+  });
+
 </script>
 
 </body>
