@@ -1,67 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Manjunath Bestha | Exoplanets & Instrumentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
 <header>
   <img src="images/profile.jpg" alt="Manjunath Bestha">
   <h1>Manjunath Bestha</h1>
-  <p>Doctoral Candidate · Astronomical Instrumentation & Exoplanet Spectroscopy</p>
+  <p>PhD Candidate · Astronomical Instrumentation & Exoplanet Spectroscopy</p>
   <p>Indian Institute of Astrophysics, Bengaluru</p>
 
-  <!-- <nav>
-    <a href="index.html">About</a>
-    <a href="publications.html">Publications</a>
-    <a href="figures.html">Research Highlights</a>
-    <a href="cv/cv.pdf" target="_blank">CV</a>
-    <a href="contact.html">Contact</a>
-  </nav> -->
+  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
   <nav>
-  <a href="index.html">About</a>
-  <a href="figures.html">Research Highlights</a>
-  <a href="publications.html">Publications</a>
-  <div class="nav-dropdown">
-    <span>More ▾</span>
-    <div class="dropdown-content">
-      <a href="thoughts.html">Thoughts</a>
-      <a href="achievements.html">Honors & Recognitions</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="ul.html">Useful Links</a>
-      <a href="cv/cv.pdf" target="_blank">CV</a>
-      <a href="contact.html">Contact</a>
+    <!-- Home Dropdown (Active Page) -->
+    <div class="nav-dropdown active" tabindex="0">
+      <span class="active-sub">About</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">On This Page</span>
+        <a href="#about" class="active-sub">About Me</a>
+        <a href="#research-interests">Research Interests</a>
+      </div>
     </div>
-  </div>
-</nav>
 
+    <!-- Research Highlights Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="figures.html">Research</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+        <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+        <a href="figures.html#mots-systematics">Transmission Systematics</a>
+        <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+        <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+        <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+      </div>
+    </div>
+
+    <!-- Publications Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="publications.html">Publications</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Publications & CV</span>
+        <a href="publications.html#journals">Journal Articles</a>
+        <a href="publications.html#proceedings">Conference Proceedings</a>
+        <a href="publications.html#manuscripts">Manuscripts in Prep</a>
+        <div class="dropdown-divider"></div>
+        <a href="cv/cv.pdf" target="_blank">Download Full CV (PDF)</a>
+      </div>
+    </div>
+
+    <!-- "More" Dropdown to access all remaining subsections -->
+    <div class="nav-dropdown more-menu" tabindex="0">
+      <span>More</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Explore More</span>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Quick Navigation</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
-<section>
-  <div class="center-text">
-    <h2>About Me</h2>
-    <p style="font-size: 1.8rem;">Hi !</p>
 
-<p>
-  My academic journey began in Mechanical Engineering, but my interests gradually
-  moved towards physics and astronomy. This path eventually brought me to the
-  Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program
-  in Astronomical Instrumentation, and am currently pursuing my PhD.
-</p>
+<!-- SECTION 1: ABOUT ME -->
+<section id="about">
+  <div class="section-header-bar">
+    <h2>About Me</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Home Page</span>
+        <a href="#about">About Me</a>
+        <a href="#research-interests">Research Interests</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Other Pages</span>
+        <a href="figures.html">Research Highlights</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-text">
+    <p style="font-size: 1.6rem; font-family: 'Space Grotesk', sans-serif; color: var(--heading); margin-bottom: 20px;">
+      Hi there! 👋
+    </p>
+
+    <p>
+      My academic journey began in Mechanical Engineering, but my interests gradually
+      moved towards physics and astronomy. This path eventually brought me to the
+      Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program
+      in Astronomical Instrumentation, and am currently pursuing my PhD.
+    </p>
   </div>
 </section>
 
 
+<!-- SECTION 2: RESEARCH INTERESTS -->
+<section id="research-interests">
+  <h2>Research Interests</h2>
 
-<section>
   <div class="center-text">
-    <h2>Research Interests</h2>
     <p>
       My research focuses on ground-based low- and high-resolution transmission
       spectroscopy of exoplanet atmospheres, with an emphasis on correcting
@@ -73,76 +124,10 @@
   </div>
 </section>
 
-<!-- 
-<p id="visit-count" style="opacity: 0.8; font-size: 0.95rem; text-align: center;">
-  👀 Visits: loading...
-</p>
 
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    let visits = localStorage.getItem("blog_visits");
-
-    if (!visits) {
-      visits = 1;
-    } else {
-      visits = parseInt(visits) + 1;
-    }
-
-    localStorage.setItem("blog_visits", visits);
-    document.getElementById("visit-count").innerText =
-      "👀 Visits: " + visits;
-  });
-</script> -->
-<!-- <header>
-  <img src="images/profile.jpg" alt="Manjunath Bestha">
-<header> -->
 <footer>
-  © Manjunath Bestha
+  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
 </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
