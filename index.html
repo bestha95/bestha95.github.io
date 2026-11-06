@@ -102,6 +102,21 @@
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Background Credit Fade-Out Effect */
+    .bg-credit {
+      transition: opacity 1.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .bg-credit.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .bg-credit:hover {
+      opacity: 1 !important;
+      pointer-events: auto;
+    }
   </style>
 </head>
 
@@ -290,6 +305,14 @@
 
   window.onload = function() {
     setTimeout(typeWriter, 400); // Small delay before typing starts
+
+    // Fade away credit badge after 2 seconds
+    setTimeout(() => {
+      const credit = document.querySelector('.bg-credit');
+      if (credit && !credit.matches(':hover')) {
+        credit.classList.add('fade-out');
+      }
+    }, 2000);
   };
 
   // Interactive Tab Switcher
