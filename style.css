@@ -1,716 +1,693 @@
 
 /* =========================================================
-   MANJUNATH BESTHA — ASTRONOMY PORTFOLIO
-   DARK OBSERVATORY THEME
+   MANJUNATH BESTHA — PERSONAL RESEARCH WEBSITE
+   Dark Observatory Theme
 ========================================================= */
 
+/* -------------------------
+   1. IMPORT FONTS
+------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* -------------------------
+   2. ROOT VARIABLES
+------------------------- */
+
 :root {
-  --background: #020711;
-  --accent: #78aaff;
-  --accent-light: #4fc3f7;
-  --text: #e8edf7;
-  --muted: #b8c5d9;
-  --border: rgba(140, 180, 230, 0.16);
-  --card: rgba(5, 12, 25, 0.78);
+    --background: #030711;
+    --background-soft: #080f1d;
+
+    --panel: rgba(7, 14, 27, 0.88);
+    --panel-light: rgba(12, 22, 40, 0.88);
+
+    --border: rgba(150, 180, 220, 0.13);
+    --border-hover: rgba(130, 180, 245, 0.35);
+
+    --text: #dce5f2;
+    --text-muted: #9aaac2;
+    --heading: #f4f7fc;
+
+    --accent: #8bbcff;
+    --accent-hover: #b6d8ff;
+
+    --radius: 10px;
+    --content-width: 900px;
 }
 
-/* =========================
-   GLOBAL THEME
-========================= */
+
+/* -------------------------
+   3. GLOBAL RESET
+------------------------- */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
 }
 
 body {
-  margin: 0;
-  font-family: 'Sniglet', cursive;
-  color: var(--text);
-  background-color: var(--background);
+    margin: 0;
+    padding: 0;
 
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(2, 7, 17, 0.25) 0%,
-      rgba(2, 7, 17, 0.45) 30%,
-      rgba(2, 7, 17, 0.78) 65%,
-      #020711 100%
-    ),
-    url("images/hanle.jpeg");
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
 
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+    color: var(--text);
+    background-color: var(--background);
 
-  line-height: 1.8;
-  font-size: 20px;
-  overflow-x: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* =========================
-   REMOVE CSS STARFIELD
-========================= */
+
+/* -------------------------
+   4. BACKGROUND
+------------------------- */
+
+/* Fixed background image */
 
 body::before {
-  content: none;
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(2, 6, 15, 0.40),
+            rgba(2, 6, 15, 0.72) 55%,
+            rgba(2, 6, 15, 0.96)
+        ),
+        url("images/milkyway.jpg");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transform: scale(1.02);
 }
 
-/* =========================
-   LINKS
-========================= */
+/* Subtle atmosphere */
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.2s ease;
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(70, 115, 190, 0.09),
+            transparent 55%
+        );
 }
 
-a:hover {
-  color: var(--accent-light);
+
+/* -------------------------
+   5. TYPOGRAPHY
+------------------------- */
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--heading);
+    font-weight: 500;
+    line-height: 1.35;
 }
 
-/* =========================
-   PROFILE HEADER
-========================= */
-
-header {
-  min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  padding: 4rem 1.5rem;
-
-  background: linear-gradient(
-    to bottom,
-    transparent 75%,
-    rgba(2, 7, 17, 0.9)
-  );
-}
-
-header img {
-  width: 200px !important;
-  height: 200px !important;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-
-  border-radius: 50%;
-  border: 2px solid rgba(180, 210, 255, 0.65);
-
-  box-shadow: 0 0 30px rgba(80, 140, 255, 0.12);
-
-  margin-bottom: 1.5rem;
-}
-
-header h1 {
-  margin: 0.5rem 0;
-  font-size: 2.8rem;
-  font-weight: 400;
-  letter-spacing: 0.035em;
-  color: #ffffff;
-}
-
-header p {
-  margin: 0.3rem 0;
-  font-size: 1rem;
-  color: #c4d0e5;
-  opacity: 0.9;
-}
-
-/* =========================
-   STICKY NAVIGATION
-========================= */
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-
-  text-align: center;
-  padding: 1.15rem 0;
-
-  background: rgba(2, 7, 17, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-nav a,
-.nav-dropdown,
-.nav-trigger {
-  font-family: 'Sniglet', cursive;
-  font-size: 0.85rem;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #b8cce9;
-}
-
-nav a {
-  margin: 0 0.85rem;
-}
-
-nav a:hover,
-.nav-dropdown:hover,
-.nav-trigger:hover {
-  color: #ffffff;
-}
-
-/* =========================
-   DROPDOWN NAVIGATION
-========================= */
-
-.nav-dropdown {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  margin: 0 0.85rem;
-}
-
-.nav-trigger {
-  display: inline-block;
-  cursor: pointer;
-  padding: 0.4rem 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  min-width: 200px;
-  padding: 0.5rem 0;
-
-  text-align: left;
-  background: rgba(5, 12, 25, 0.97);
-
-  border: 1px solid var(--border);
-  border-radius: 10px;
-
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-
-  z-index: 200;
-}
-
-.dropdown-content a {
-  display: block;
-  margin: 0;
-  padding: 0.65rem 1.2rem;
-
-  font-size: 0.78rem;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-}
-
-.dropdown-content a:hover {
-  background: rgba(79, 195, 247, 0.07);
-}
-
-.nav-dropdown:hover .dropdown-content,
-.nav-dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
-/* =========================
-   GENERAL SECTIONS
-========================= */
-
-section {
-  max-width: 1000px;
-  margin: 3rem auto;
-  padding: 3rem 2rem;
-
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-
-.center-text {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.center-text p {
-  color: var(--muted);
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
 }
 
 h2 {
-  border-bottom: 2px solid var(--accent);
-  display: inline-block;
-
-  padding-bottom: 0.45rem;
-  margin-bottom: 1.6rem;
-
-  font-size: 1.65rem;
-  font-weight: 400;
-  letter-spacing: 0.035em;
-  color: #ffffff;
+    font-size: 1.7rem;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 h3 {
-  font-weight: 400;
-  color: #ffffff;
+    font-size: 1.25rem;
 }
 
-/* =========================
-   LISTS
-========================= */
-
-ul {
-  list-style: none;
-  padding-left: 0;
+p {
+    margin: 0 0 18px;
 }
 
-ul li {
-  padding: 0.7rem 0 0.7rem 1rem;
-  border-left: 2px solid var(--accent);
-  margin-bottom: 0.8rem;
-  color: var(--muted);
+small {
+    color: var(--text-muted);
 }
 
-/* =========================
-   FIGURE GRID
-========================= */
 
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.8rem;
+/* -------------------------
+   6. LINKS
+------------------------- */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
 }
 
-.figure {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-
-  padding: 1.2rem;
-  text-align: center;
-
-  transition: border-color 0.25s ease, transform 0.25s ease;
+a:hover {
+    color: var(--accent-hover);
 }
 
-.figure:hover {
-  border-color: rgba(112, 167, 255, 0.5);
-  transform: translateY(-3px);
+
+/* -------------------------
+   7. MAIN HEADER
+------------------------- */
+
+header {
+    text-align: center;
+    padding: 65px 20px 20px;
 }
 
-.figure img {
-  width: 100%;
-  border-radius: 8px;
+/* Profile image */
+
+header img {
+    width: 155px;
+    height: 155px;
+
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    display: block;
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+    border: 2px solid rgba(150, 190, 245, 0.35);
+
+    box-shadow:
+        0 0 25px rgba(80, 140, 230, 0.12);
 }
 
-/* =========================
-   RAMANUJAN FIGURE
-========================= */
+/* Name */
+
+header h1 {
+    margin: 0 0 8px;
+    letter-spacing: -1px;
+}
+
+/* Header subtitle */
+
+header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+
+/* -------------------------
+   8. NAVIGATION
+------------------------- */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: fit-content;
+    max-width: 95%;
+
+    margin: 25px auto 45px;
+    padding: 7px;
+
+    background: rgba(4, 10, 21, 0.94);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    position: relative;
+    z-index: 1000;
+}
+
+/* Main navigation items */
+
+nav > a,
+.nav-group > a,
+.nav-dropdown > span,
+.nav-dropdown > a {
+    display: block;
+
+    padding: 12px 16px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    color: #b9c9df;
+    text-decoration: none;
+
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav > a:hover,
+.nav-group:hover > a,
+.nav-dropdown:hover > span,
+.nav-dropdown:hover > a {
+    color: white;
+    background: rgba(100, 155, 230, 0.12);
+}
+
+
+/* -------------------------
+   9. DROPDOWN NAVIGATION
+------------------------- */
+
+.nav-dropdown,
+.nav-group {
+    position: relative;
+}
+
+/* Dropdown container */
+
+.dropdown-content,
+.nav-menu {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 220px;
+    padding: 7px;
+
+    background: #070e1c;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* Show dropdown */
+
+.nav-dropdown:hover .dropdown-content,
+.nav-dropdown:focus-within .dropdown-content,
+.nav-group:hover .nav-menu,
+.nav-group:focus-within .nav-menu {
+    display: block;
+}
+
+/* Dropdown links */
+
+.dropdown-content a,
+.nav-menu a {
+    display: block;
+
+    padding: 11px 13px;
+
+    color: #aebfd6;
+    font-size: 13px;
+    text-decoration: none;
+
+    border-radius: 4px;
+}
+
+.dropdown-content a:hover,
+.nav-menu a:hover {
+    color: white;
+    background: rgba(90, 150, 230, 0.13);
+}
+
+
+/* -------------------------
+   10. CONTENT SECTIONS
+------------------------- */
+
+section {
+    width: min(90%, var(--content-width));
+    margin: 30px auto;
+    padding: 35px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+}
+
+/* Section headings */
+
+section h2 {
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+/* Centered text */
+
+.center-text {
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+}
+
+.center-text p {
+    color: var(--text);
+}
+
+
+/* -------------------------
+   11. RESEARCH / PUBLICATION CARDS
+------------------------- */
+
+.card,
+.publication,
+.research-card,
+.link-card {
+    background: rgba(10, 19, 35, 0.75);
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 22px;
+    margin: 18px 0;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.card:hover,
+.publication:hover,
+.research-card:hover,
+.link-card:hover {
+    border-color: var(--border-hover);
+    background: rgba(13, 25, 45, 0.90);
+}
+
+/* Card headings */
+
+.card h3,
+.publication h3,
+.research-card h3,
+.link-card h3 {
+    margin-top: 0;
+    color: var(--heading);
+}
+
+/* Card text */
+
+.card p,
+.publication p,
+.research-card p,
+.link-card p {
+    color: var(--text-muted);
+}
+
+
+/* -------------------------
+   12. IMAGES AND FIGURES
+------------------------- */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+figure {
+    margin: 25px auto;
+    text-align: center;
+}
+
+figure img {
+    display: block;
+    margin: auto;
+
+    border-radius: 6px;
+}
+
+figcaption {
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* Ramanujan portrait */
 
 .ramanujan {
-  margin: 2.5rem auto;
-  text-align: center;
+    text-align: center;
 }
 
 .ramanujan img {
-  width: 450px;
-  max-width: 100%;
-  height: auto;
-
-  border-radius: 10px;
-  border: 1px solid var(--border);
-
-  display: block;
-  margin: 0 auto 0.8rem;
+    max-width: 220px;
+    margin: auto;
 }
 
-.ramanujan figcaption {
-  font-size: 0.95rem;
-  color: var(--muted);
+
+/* -------------------------
+   13. LISTS
+------------------------- */
+
+ul, ol {
+    padding-left: 25px;
 }
 
-/* =========================
-   RESEARCH HIGHLIGHTS
-========================= */
-
-.research-highlight {
-  max-width: 1100px;
-  margin: 4rem auto;
-  padding: 2.5rem;
-
-  display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
-
-  gap: 3rem;
-  align-items: center;
-
-  border-bottom: 1px solid var(--border);
+li {
+    margin-bottom: 8px;
 }
 
-.research-highlight .figure img {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+li::marker {
+    color: var(--accent);
 }
 
-.highlight-text h3 {
-  font-size: 1.45rem;
-  font-weight: 400;
-  margin: 0 0 1.2rem;
-  color: #ffffff;
+
+/* -------------------------
+   14. BLOCKQUOTES
+------------------------- */
+
+blockquote {
+    margin: 25px 0;
+    padding: 18px 25px;
+
+    border-left: 3px solid var(--accent);
+    background: rgba(100, 150, 220, 0.06);
+
+    color: var(--text-muted);
 }
 
-.highlight-text p {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--muted);
+
+/* -------------------------
+   15. TABLES
+------------------------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+
+    background: rgba(5, 12, 24, 0.65);
 }
 
-.importance {
-  border-left: 2px solid var(--accent-light);
-  padding-left: 1rem;
-  margin-top: 1.5rem;
-  color: var(--text) !important;
-  opacity: 1 !important;
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+
+    border-bottom: 1px solid var(--border);
 }
 
-/* =========================
-   PERSONAL GALLERY
-========================= */
-
-.page-subtitle {
-  max-width: 700px;
-  margin: 0.8rem auto 1.5rem;
-  text-align: center;
-  color: var(--muted);
+th {
+    color: var(--heading);
+    background: rgba(100, 150, 220, 0.08);
 }
 
-.gallery-section {
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 1.5rem 5rem;
+td {
+    color: var(--text-muted);
 }
 
-.gallery-intro {
-  max-width: 780px;
-  margin: 0 auto 3rem;
-  text-align: center;
-  color: var(--muted);
+
+/* -------------------------
+   16. BUTTONS
+------------------------- */
+
+button,
+.button {
+    display: inline-block;
+
+    padding: 11px 22px;
+
+    color: #dceaff;
+    background: rgba(70, 120, 190, 0.15);
+
+    border: 1px solid rgba(120, 170, 230, 0.35);
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+button:hover,
+.button:hover {
+    background: rgba(90, 150, 230, 0.25);
+    border-color: rgba(140, 190, 250, 0.6);
 }
 
-.gallery-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
 
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.gallery-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(112, 167, 255, 0.55);
-}
-
-.gallery-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-.gallery-text {
-  padding: 1.4rem 1.5rem 1.6rem;
-}
-
-.gallery-text h2 {
-  font-family: 'Sniglet', cursive;
-  font-size: 1.25rem;
-  font-weight: 400;
-
-  margin: 0 0 0.7rem;
-  border: none;
-  padding: 0;
-}
-
-.gallery-text p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* =========================
-   USEFUL LINKS PAGE
-========================= */
-
-.useful-links-section {
-  max-width: 1150px;
-  margin: auto;
-  padding: 2rem 1.5rem 5rem;
-}
-
-.links-category {
-  margin-bottom: 4rem;
-}
-
-.category-heading {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-
-  margin-bottom: 2rem;
-  max-width: 900px;
-}
-
-.category-icon {
-  font-size: 1.8rem;
-  line-height: 1.4;
-}
-
-.category-heading h2 {
-  font-family: 'Sniglet', cursive;
-  font-weight: 400;
-  font-size: 1.55rem;
-
-  margin: 0 0 0.4rem;
-  padding: 0;
-  border: none;
-}
-
-.category-heading p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.link-card {
-  display: block;
-  padding: 1.7rem;
-  border-radius: 16px;
-
-  background: var(--card);
-  border: 1px solid var(--border);
-
-  color: var(--text);
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease;
-}
-
-.link-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(112, 167, 255, 0.55);
-  background: rgba(79, 195, 247, 0.055);
-}
-
-.link-card h3 {
-  font-family: 'Sniglet', cursive;
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0 0 0.8rem;
-}
-
-.link-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-  font-size: 0.95rem;
-}
-
-.link-card span {
-  display: inline-block;
-  margin-top: 1.3rem;
-  color: var(--accent-light);
-  font-size: 0.9rem;
-}
-
-/* =========================
-   VISITOR COUNTER
-========================= */
-
-#visit-count {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin: 1.5rem auto;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* -------------------------
+   17. FOOTER
+------------------------- */
 
 footer {
-  text-align: center;
-  padding: 2.5rem 1rem;
+    text-align: center;
 
-  font-size: 0.85rem;
-  color: var(--muted);
+    padding: 35px 20px 45px;
 
-  border-top: 1px solid var(--border);
-  margin-top: 4rem;
+    color: #7788a2;
+    font-size: 13px;
 }
 
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
-
-@media (max-width: 900px) {
-
-  body {
-    font-size: 18px;
-  }
-
-  header img {
-    width: 180px !important;
-    height: 180px !important;
-  }
-
-  header h1 {
-    font-size: 2.1rem;
-  }
-
-  section {
-    margin: 2rem 1rem;
-    padding: 2.3rem 1.5rem;
-  }
-
-  .research-highlight {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
-    padding: 1.5rem;
-    margin: 2.5rem 1rem;
-  }
-
-  .research-highlight .figure {
-    max-width: 650px;
-    margin: auto;
-  }
+footer a {
+    color: var(--text-muted);
 }
 
-@media (max-width: 600px) {
 
-  body {
-    font-size: 17px;
-    line-height: 1.75;
-    background-attachment: scroll;
-  }
+/* -------------------------
+   18. HORIZONTAL RULE
+------------------------- */
 
-  header {
-    min-height: 75vh;
-    padding: 3rem 1rem;
-  }
+hr {
+    border: none;
+    height: 1px;
 
-  header img {
-    width: 150px !important;
-    height: 150px !important;
-  }
-
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  header p {
-    font-size: 0.9rem;
-  }
-
-  nav {
-    padding: 0.8rem 0.2rem;
-    line-height: 2.4;
-  }
-
-  nav a,
-  .nav-dropdown {
-    font-size: 0.7rem;
-    margin: 0 0.35rem;
-    letter-spacing: 0.04em;
-  }
-
-  .dropdown-content {
-    min-width: 175px;
-  }
-
-  section {
-    margin: 1.5rem 0.7rem;
-    padding: 1.8rem 1.1rem;
-    border-radius: 10px;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  .gallery-section,
-  .useful-links-section {
-    padding: 1.5rem 1rem 3rem;
-  }
-
-  .gallery-grid,
-  .links-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-card img {
-    height: 230px;
-  }
-
-  .category-heading h2 {
-    font-size: 1.3rem;
-  }
-
-  .category-icon {
-    font-size: 1.4rem;
-  }
-
-  .link-card {
-    padding: 1.3rem;
-  }
-
-  footer {
-    margin-top: 2rem;
-  }
+    background: var(--border);
+    margin: 30px 0;
 }
 
-/* =========================
-   ACCESSIBILITY
-========================= */
 
-a:focus-visible,
-.nav-dropdown:focus-visible {
-  outline: 2px solid var(--accent-light);
-  outline-offset: 4px;
+/* -------------------------
+   19. CODE BLOCKS
+------------------------- */
+
+pre {
+    overflow-x: auto;
+
+    padding: 20px;
+
+    background: #050a14;
+    border: 1px solid var(--border);
+    border-radius: 7px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition: none !important;
-  }
+code {
+    font-family: monospace;
+    color: #b9d7ff;
+}
+
+
+/* -------------------------
+   20. MOBILE RESPONSIVENESS
+------------------------- */
+
+@media (max-width: 700px) {
+
+    header {
+        padding-top: 40px;
+    }
+
+    header img {
+        width: 125px;
+        height: 125px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav {
+        width: 94%;
+        margin: 22px auto 30px;
+        gap: 2px;
+    }
+
+    nav > a,
+    .nav-group > a,
+    .nav-dropdown > span,
+    .nav-dropdown > a {
+        padding: 10px 11px;
+        font-size: 11px;
+    }
+
+    section {
+        width: 94%;
+        padding: 22px;
+        margin: 20px auto;
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    .dropdown-content,
+    .nav-menu {
+        min-width: 190px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+/* -------------------------
+   21. SMALL MOBILE
+------------------------- */
+
+@media (max-width: 420px) {
+
+    header img {
+        width: 110px;
+        height: 110px;
+    }
+
+    nav {
+        padding: 4px;
+    }
+
+    nav > a,
+    .nav-group > a,
+    .nav-dropdown > span,
+    .nav-dropdown > a {
+        padding: 9px 8px;
+        font-size: 10px;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
 }
