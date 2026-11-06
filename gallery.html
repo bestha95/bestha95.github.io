@@ -1,34 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Gallery | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Additional inline adjustments specific to gallery layout */
+    .gallery-container {
+      width: min(92%, var(--content-width));
+      margin: 0 auto;
+      padding: 10px 0 60px;
+    }
+
+    .gallery-intro {
+      max-width: 780px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .gallery-intro p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .gallery-card {
+      background: rgba(12, 22, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      background: rgba(16, 30, 56, 0.88);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-text {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .gallery-text h2 {
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 14px;
+      color: var(--heading);
+      border: none;
+      padding: 0;
+    }
+
+    .gallery-text h2::after {
+      display: none;
+    }
+
+    .gallery-text p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .gallery-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
   <h1>Gallery</h1>
+  <p class="page-subtitle">A few moments from my journey beyond research.</p>
 
-  <p class="page-subtitle">
-    A few moments from my journey beyond research.
-  </p>
-
+  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="figures.html">Research Highlights</a>
-    <a href="publications.html">Publications</a>
-    <a href="achievements.html">Honors & Recognitions</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">About</a>
+
+    <!-- Research Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="figures.html">Research</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+        <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+        <a href="figures.html#mots-systematics">Transmission Systematics</a>
+        <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+        <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+        <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+      </div>
+    </div>
+
+    <!-- Publications Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="publications.html">Publications</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Publications & CV</span>
+        <a href="publications.html#journals">Journal Articles</a>
+        <a href="publications.html#proceedings">Conference Proceedings</a>
+        <a href="publications.html#manuscripts">Manuscripts in Prep</a>
+        <div class="dropdown-divider"></div>
+        <a href="cv/cv.pdf" target="_blank">Download Full CV (PDF)</a>
+      </div>
+    </div>
+
+    <!-- "More" Dropdown (Active Page Container) -->
+    <div class="nav-dropdown active more-menu" tabindex="0">
+      <span class="active-sub">More</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Explore More</span>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html" class="active-sub">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Quick Navigation</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
   </nav>
 </header>
 
 
-<section class="gallery-section">
+<main class="gallery-container">
+
+  <!-- In-Section Header Bar with Quick Subsection Switcher -->
+  <div class="section-header-bar" style="margin-bottom: 35px;">
+    <h2>Moments & Experiences</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">About (Home)</a>
+        <a href="figures.html">Research Highlights</a>
+        <a href="publications.html">Publications</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="ul.html">Useful Links</a>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 
   <div class="gallery-intro">
     <p>
@@ -40,27 +189,24 @@
 
   <div class="gallery-grid">
 
+    <!-- Card 1: PRL / Michel Mayor -->
     <div class="gallery-card">
-      <img src="images/PRL.jpeg" alt=" Discussing my WASP-33b observations with Prof. Michel Mayor at PRL, Ahmedabad">
-    
+      <img src="images/PRL.jpeg" alt="Discussing my WASP-33b observations with Prof. Michel Mayor at PRL, Ahmedabad">
       <div class="gallery-text">
         <h2>A Memorable Scientific Moment</h2>
-    
         <p>
           I had the opportunity to interact with
           <strong>Prof. Michel Mayor</strong>, Nobel Laureate and co-discoverer
           of the first exoplanet orbiting a Sun-like star, during a conference
           at the Physical Research Laboratory (PRL), Ahmedabad.
         </p>
-    
         <p>
           I presented my first observed transit light curve of
           <strong>WASP-33b</strong> and discussed my work on exoplanet
           transmission spectroscopy. It was especially memorable to share
-          My early observational results with someone whose pioneering work
+          my early observational results with someone whose pioneering work
           helped establish the field of exoplanet research.
         </p>
-    
         <p>
           I also received the <strong>Best Poster Award</strong> at the same
           conference as a graduate student.
@@ -68,18 +214,15 @@
       </div>
     </div>
 
-
+    <!-- Card 2: Mudbidri Outreach -->
     <div class="gallery-card">
-      <img src="images/Mudubidri.jpeg" alt=" Interacting with school students during a science outreach program in Mudbidri, Karnataka">
-    
+      <img src="images/Mudubidri.jpeg" alt="Interacting with school students during a science outreach program in Mudbidri, Karnataka">
       <div class="gallery-text">
         <h2>Connecting Astronomy with Young Minds</h2>
-    
         <p>
           Interacting with school students as part of a science outreach
-          Program in <strong>Mudbidri, Karnataka</strong>.
+          program in <strong>Mudbidri, Karnataka</strong>.
         </p>
-    
         <p>
           One of the most rewarding parts of being a researcher is having the
           opportunity to share the excitement of science and astronomy with
@@ -88,18 +231,16 @@
       </div>
     </div>
 
+    <!-- Card 3: Chess Championship -->
     <div class="gallery-card">
       <img src="images/chess.jpeg" alt="Receiving the IIA Chess Championship trophy from Prof. Sivarani Thirupathi">
-    
       <div class="gallery-text">
         <h2>IIA Chess Championship</h2>
-    
         <p>
           A memorable moment from the <strong>IIA Chess Championship 2025</strong>,
-          Receiving the championship trophy from my PhD supervisor,
+          receiving the championship trophy from my PhD supervisor,
           <strong>Prof. Sivarani Thirupathi</strong>.
         </p>
-    
         <p>
           Chess has been one of my favorite pursuits outside of research, and
           winning the championship was a particularly special achievement.
@@ -107,58 +248,33 @@
       </div>
     </div>
 
-
-  <div class="gallery-card">
-    <img src="images/IITR.jpeg" alt="Receiving the Early Career Research Award at IPSC 2025 and S2-STEP at IIT Roorkee">
-  
-    <div class="gallery-text">
-      <h2>Early Career Research Award</h2>
-  
-      <p>
-        Receiving the <strong>Early Career Research Award</strong> at the
-        <strong>6th Indian Planetary Science Conference (IPSC 2025)</strong>
-        and the <strong>S2-STEP 2025</strong> conference at
-        <strong>Indian Institute of Technology Roorkee</strong>.
-      </p>
-  
-      <p>
-        The award recognized my poster presentation on
-        <strong>Atmospheric dispersion measurements at the Hanle site</strong>,
-        an important part of my work on understanding and characterizing
-        atmospheric dispersion for precision ground-based spectroscopy.
-      </p>
-    </div>
-  </div>
-
-
-    <!-- <div class="gallery-card">
-      <img src="images/gallery/photo5.jpg" alt="Personal photograph">
-      <div class="gallery-text">
-        <h2>A Place I Enjoyed</h2>
-        <p>
-         A few words about the place.
-        </p>
-      </div>
-    </div>
-
-
+    <!-- Card 4: IIT Roorkee Award -->
     <div class="gallery-card">
-      <img src="images/gallery/photo6.jpg" alt="Personal photograph">
+      <img src="images/IITR.jpeg" alt="Receiving the Early Career Research Award at IPSC 2025 and S2-STEP at IIT Roorkee">
       <div class="gallery-text">
-        <h2>Another Chapter</h2>
+        <h2>Early Career Research Award</h2>
         <p>
-          Every photograph carries a small story.
+          Receiving the <strong>Early Career Research Award</strong> at the
+          <strong>6th Indian Planetary Science Conference (IPSC 2025)</strong>
+          and the <strong>S2-STEP 2025</strong> conference at
+          <strong>Indian Institute of Technology Roorkee</strong>.
+        </p>
+        <p>
+          The award recognized my poster presentation on
+          <strong>Atmospheric dispersion measurements at the Hanle site</strong>,
+          an important part of my work on understanding and characterizing
+          atmospheric dispersion for precision ground-based spectroscopy.
         </p>
       </div>
-    </div> -->
+    </div>
 
   </div>
 
-</section>
+</main>
 
 
 <footer>
-  © Manjunath Bestha
+  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
 </footer>
 
 </body>
