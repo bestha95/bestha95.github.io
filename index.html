@@ -41,6 +41,21 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
+    /* Typing Animation Effect */
+    .typing-text {
+      border-right: 2px solid var(--accent);
+      white-space: normal;
+      overflow: hidden;
+      display: inline-block;
+      max-width: 100%;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--accent); }
+    }
+
     /* Interactive Research Tabs */
     .research-tabs {
       display: flex;
@@ -184,12 +199,8 @@
       Hi there! 👋
     </p>
 
-    <p>
-      My academic journey began in Mechanical Engineering, but my interests gradually
-      moved towards physics and astronomy. This path eventually brought me to the
-      Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program
-      in Astronomical Instrumentation, and have submitted my PhD thesis to the University of Calcutta, currently awaiting defense.
-    </p>
+    <!-- Typing Animation Paragraph -->
+    <p class="typing-text" id="typing-bio"></p>
   </div>
 </section>
 
@@ -247,17 +258,36 @@
   <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
 </footer>
 
-<!-- Interactive Tab Switcher Script -->
+<!-- Interactive Scripts (Typing Effect & Tab Switcher) -->
 <script>
+  // Typing Animation Effect
+  const bioText = "My academic journey began in Mechanical Engineering, but my interests gradually moved towards physics and astronomy. This path eventually brought me to the Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program in Astronomical Instrumentation, and have submitted my PhD thesis to the University of Calcutta, currently awaiting defense.";
+  
+  let i = 0;
+  const speed = 20; // Speed of typing in milliseconds
+
+  function typeWriter() {
+    if (i < bioText.length) {
+      document.getElementById("typing-bio").innerHTML += bioText.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  window.onload = function() {
+    setTimeout(typeWriter, 300); // Small delay before typing starts
+  };
+
+  // Interactive Tab Switcher
   function openTab(evt, tabId) {
     let contents = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < contents.length; i++) {
-      contents[i].classList.remove("active-content");
+    for (let j = 0; j < contents.length; j++) {
+      contents[j].classList.remove("active-content");
     }
 
     let buttons = document.getElementsByClassName("tab-btn");
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove("active-tab");
+    for (let j = 0; j < buttons.length; j++) {
+      buttons[j].classList.remove("active-tab");
     }
 
     document.getElementById(tabId).classList.add("active-content");
