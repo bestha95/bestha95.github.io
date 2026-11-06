@@ -1,41 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Thoughts | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Additional inline adjustments specific to thoughts layout */
+    .thoughts-container {
+      width: min(92%, var(--content-width));
+      margin: 0 auto;
+      padding: 10px 0 60px;
+    }
+
+    .thoughts-intro {
+      max-width: 780px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .thoughts-intro p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .thoughts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .thought-card {
+      background: rgba(12, 22, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thought-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      background: rgba(16, 30, 56, 0.88);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .thought-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.35;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .thought-card h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 14px;
+      color: var(--heading);
+      border: none;
+      padding: 0;
+    }
+
+    .thought-card h2::after {
+      display: none;
+    }
+
+    .thought-card p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .thought-card:hover .read-more {
+      color: var(--accent-hover);
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      .thoughts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
   <h1>Thoughts</h1>
+  <p class="page-subtitle">A collection of questions, reflections, and thoughts about life and the universe.</p>
 
-  <p class="page-subtitle">
-    A collection of questions, reflections, and thoughts about life and the universe.
-  </p>
-
+  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="figures.html">Research Highlights</a>
-    <a href="publications.html">Publications</a>
-    <a href="achievements.html">Honors & Recognitions</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">About</a>
+
+    <!-- Research Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="figures.html">Research</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+        <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+        <a href="figures.html#mots-systematics">Transmission Systematics</a>
+        <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+        <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+        <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+      </div>
+    </div>
+
+    <!-- Publications Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="publications.html">Publications</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Publications & CV</span>
+        <a href="publications.html#journals">Journal Articles</a>
+        <a href="publications.html#proceedings">Conference Proceedings</a>
+        <a href="publications.html#manuscripts">Manuscripts in Prep</a>
+        <div class="dropdown-divider"></div>
+        <a href="cv/cv.pdf" target="_blank">Download Full CV (PDF)</a>
+      </div>
+    </div>
+
+    <!-- "More" Dropdown (Active Page Container) -->
+    <div class="nav-dropdown active more-menu" tabindex="0">
+      <span class="active-sub">More</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Explore More</span>
+        <a href="thoughts.html" class="active-sub">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Quick Navigation</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
   </nav>
 </header>
 
 
-<section class="thoughts-section">
+<main class="thoughts-container">
+
+  <!-- In-Section Header Bar with Quick Subsection Switcher -->
+  <div class="section-header-bar" style="margin-bottom: 35px;">
+    <h2>Reflections & Ideas</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">About (Home)</a>
+        <a href="figures.html">Research Highlights</a>
+        <a href="publications.html">Publications</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 
   <div class="thoughts-intro">
     <p>
-    A collection of reflections and ideas on life, science, curiosity,
-    and our place in the universe. This section is currently being developed
-    and new pieces will be added soon.
+      A collection of reflections and ideas on life, science, curiosity,
+      and our place in the universe. This section is currently being developed
+      and new pieces will be added soon.
     </p>
   </div>
 
@@ -43,75 +196,64 @@
   <div class="thoughts-grid">
 
     <!-- THOUGHT 1 -->
-
     <a href="thought-1.html" class="thought-card">
-      <span class="thought-number">01</span>
-
-      <h2>Why do we want to understand the universe?</h2>
-
-      <p>
-        We may never be able to explore most of the universe, yet we continue
-        to build instruments and ask questions about what lies beyond us.
-      </p>
-
+      <div>
+        <span class="thought-number">01</span>
+        <h2>Why do we want to understand the universe?</h2>
+        <p>
+          We may never be able to explore most of the universe, yet we continue
+          to build instruments and ask questions about what lies beyond us.
+        </p>
+      </div>
       <span class="read-more">In preparation →</span>
     </a>
-
 
     <!-- THOUGHT 2 -->
-
     <a href="thought-2.html" class="thought-card">
-      <span class="thought-number">02</span>
-
-      <h2>What does it mean to live without regret?</h2>
-
-      <p>
-        Perhaps a life without regret is not about making perfect decisions,
-        but about accepting the decisions that brought us here.
-      </p>
-
+      <div>
+        <span class="thought-number">02</span>
+        <h2>What does it mean to live without regret?</h2>
+        <p>
+          Perhaps a life without regret is not about making perfect decisions,
+          but about accepting the decisions that brought us here.
+        </p>
+      </div>
       <span class="read-more">In preparation →</span>
     </a>
-
 
     <!-- THOUGHT 3 -->
-
     <a href="thought-3.html" class="thought-card">
-      <span class="thought-number">03</span>
-
-      <h2>Are we searching for aliens or for ourselves?</h2>
-
-      <p>
-        The search for life beyond Earth may also be a search for a better
-        understanding of what it means for us to exist.
-      </p>
-
+      <div>
+        <span class="thought-number">03</span>
+        <h2>Are we searching for aliens or for ourselves?</h2>
+        <p>
+          The search for life beyond Earth may also be a search for a better
+          understanding of what it means for us to exist.
+        </p>
+      </div>
       <span class="read-more">In preparation →</span>
     </a>
 
-
     <!-- THOUGHT 4 -->
-
     <a href="thought-4.html" class="thought-card">
-      <span class="thought-number">04</span>
-
-      <h2>Curiosity as a way of living</h2>
-
-      <p>
-        Some questions do not need immediate answers. Perhaps curiosity itself
-        is one of the reasons we continue moving forward.
-      </p>
-
+      <div>
+        <span class="thought-number">04</span>
+        <h2>Curiosity as a way of living</h2>
+        <p>
+          Some questions do not need immediate answers. Perhaps curiosity itself
+          is one of the reasons we continue moving forward.
+        </p>
+      </div>
       <span class="read-more">In preparation →</span>
     </a>
 
   </div>
 
-</section>
+</main>
 
 
 <footer>
-  © Manjunath Bestha
+  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
 </footer>
 
 </body>
