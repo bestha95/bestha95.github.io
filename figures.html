@@ -1,46 +1,99 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-
-  <title>Research Highlights | Manjunath Bestha</title>
-
+  <title>Research Highlights</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-
 <header>
-
- <h1>Research Highlights</h1>
-
-  <nav>
-
-    <a href="index.html">Home</a>
-
-    <a href="publications.html">Publications</a>
-
-    <a href="contact.html">Contact</a>
-
-  </nav>
-
-
+  <h1>Research Highlights</h1>
+  <p>Exoplanet Transmission Spectroscopy • Astronomical Instrumentation • Observational Systematics</p>
 </header>
+
+<!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
+<nav>
+  <a href="index.html">Home</a>
+
+  <!-- Research Dropdown (Active Page) -->
+  <div class="nav-dropdown active" tabindex="0">
+    <span>Research</span>
+    <div class="dropdown-content">
+      <span class="dropdown-label">On This Page</span>
+      <a href="#adc-tmt" class="active-sub">Broadband ADC (HROS–TMT)</a>
+      <a href="#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+      <a href="#mots-systematics">Transmission Systematics</a>
+      <a href="#kelt9b-feii">KELT-9 b Atmosphere (Fe II)</a>
+      <a href="#mo-hrts">MO-HRTS Simulations</a>
+      <a href="#elt-fiber">ELT Fiber Positioning</a>
+    </div>
+  </div>
+
+  <!-- Publications Dropdown -->
+  <div class="nav-dropdown" tabindex="0">
+    <a href="publications.html">Publications</a>
+    <div class="dropdown-content">
+      <span class="dropdown-label">Publications & CV</span>
+      <a href="publications.html#peer-reviewed">Peer-Reviewed Journals</a>
+      <a href="publications.html#proceedings">Conference Proceedings</a>
+      <a href="publications.html#thesis">Doctoral Thesis</a>
+      <div class="dropdown-divider"></div>
+      <a href="cv.pdf" target="_blank">Download CV (PDF)</a>
+    </div>
+  </div>
+
+  <a href="contact.html">Contact</a>
+
+  <!-- "More" Dropdown to access all remaining subsections -->
+  <div class="nav-dropdown more-menu" tabindex="0">
+    <span>More</span>
+    <div class="dropdown-content">
+      <span class="dropdown-label">More Sections</span>
+      <a href="index.html#about">About Me</a>
+      <a href="software.html">Software & Pipelines</a>
+      <a href="blog.html">Research Blog</a>
+      <a href="gallery.html">Observatory Gallery</a>
+      <div class="dropdown-divider"></div>
+      <span class="dropdown-label">Quick Navigation</span>
+      <a href="publications.html">All Publications</a>
+      <a href="contact.html">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
 
 <section>
 
-  <div class="center-text">
-    <!-- <h2>Research Highlights</h2> -->
+  <!-- In-Section Header Bar with Quick Subsection Switcher -->
+  <div class="section-header-bar">
+    <h2>Selected Doctoral Research</h2>
 
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="#adc-tmt">1. Broadband ADC (TMT)</a>
+        <a href="#hanle-dispersion">2. Hanle Dispersion</a>
+        <a href="#mots-systematics">3. MOTS Systematics</a>
+        <a href="#kelt9b-feii">4. KELT-9 b Fe II</a>
+        <a href="#mo-hrts">5. MO-HRTS Framework</a>
+        <a href="#elt-fiber">6. ELT Fiber Positioning</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">Home</a>
+        <a href="publications.html">Publications</a>
+        <a href="software.html">Software & Tools</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-text">
     <p class="small">
       Selected results from my doctoral research on exoplanet transmission spectroscopy,
       astronomical instrumentation, and observational systematics.
@@ -48,8 +101,8 @@
   </div>
 
 
-  <div class="research-highlight">
-
+  <!-- 1. HROS-TMT -->
+  <div class="research-highlight" id="adc-tmt">
     <div class="figure">
       <img src="images/tmt.jpg" alt="Broadband Atmospheric Dispersion Corrector for HROS-TMT">
     </div>
@@ -73,15 +126,12 @@
         precision spectroscopy. This design provides a solution for broadband observations
         with future extremely large telescopes.
       </p>
-
-
     </div>
-
   </div>
 
 
-  <div class="research-highlight">
-
+  <!-- 2. Hanle Dispersion -->
+  <div class="research-highlight" id="hanle-dispersion">
     <div class="figure">
       <img src="images/dispersion.jpg" alt="Atmospheric dispersion measurements at Hanle">
     </div>
@@ -106,14 +156,12 @@
         and are directly relevant for precision spectroscopy and atmospheric dispersion
         correction.
       </p>
-
     </div>
-
   </div>
 
 
-  <div class="research-highlight">
-
+  <!-- 3. Systematics -->
+  <div class="research-highlight" id="mots-systematics">
     <div class="figure">
       <img src="images/systematics.jpg" alt="Systematics in multi-object transmission spectroscopy">
     </div>
@@ -139,21 +187,19 @@
         spectra is essential for distinguishing genuine planetary signals from
         observational systematics.
       </p>
-
     </div>
-
   </div>
 
 
-  <div class="research-highlight">
-
+  <!-- 4. KELT-9 b -->
+  <div class="research-highlight" id="kelt9b-feii">
     <div class="figure">
       <img src="images/sys.jpg" alt="Possible Fe II detection in KELT-9 b">
     </div>
 
     <div class="highlight-text">
       <h3>Evidence of Fe II in the Atmosphere of KELT-9 b</h3>
-  
+
       <p>
         I developed and applied a high-resolution transmission spectroscopy analysis
         pipeline to observations obtained with the Hanle Echelle Spectrograph.
@@ -169,14 +215,12 @@
         extremely irradiated atmosphere. Detecting ionized species such as Fe II
         helps probe the composition and physical conditions of its atmosphere.
       </p>
-
     </div>
-
   </div>
 
 
-  <div class="research-highlight">
-
+  <!-- 5. MO-HRTS -->
+  <div class="research-highlight" id="mo-hrts">
     <div class="figure">
       <img src="images/mohrts.jpg" alt="Multi-Object High-Resolution Transmission Spectroscopy simulations">
     </div>
@@ -200,14 +244,12 @@
         toward combining the complementary strengths of low- and high-resolution
         transmission spectroscopy in future multi-object spectroscopic observations.
       </p>
-
     </div>
-
   </div>
 
 
-  <div class="research-highlight">
-
+  <!-- 6. Fiber Positioning -->
+  <div class="research-highlight" id="elt-fiber">
     <div class="figure">
       <img src="images/fiber.jpg" alt="Multi-functional fiber positioning system">
     </div>
@@ -229,13 +271,17 @@
       <p class="importance">
         <strong>Why it matters:</strong> Efficient fiber positioning is important
         for future highly multiplexed spectroscopic facilities, where maximizing
-        The number of simultaneously observed targets directly improves scientific
+        the number of simultaneously observed targets directly improves scientific
         efficiency.
       </p>
-
-
     </div>
-
   </div>
 
 </section>
+
+<footer>
+  <p>© Personal Research Portfolio • All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
