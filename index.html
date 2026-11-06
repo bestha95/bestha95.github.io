@@ -41,19 +41,26 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* Typing Animation Effect */
-    .typing-text {
-      border-right: 2px solid var(--accent);
-      white-space: normal;
-      overflow: hidden;
+    /* Smooth Moving Typing Cursor */
+    .typing-container {
       display: inline-block;
-      max-width: 100%;
-      animation: blink-caret 0.75s step-end infinite;
+      text-align: left;
+      line-height: 1.8;
     }
 
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: var(--accent); }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background-color: var(--accent);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     /* Interactive Research Tabs */
@@ -199,8 +206,10 @@
       Hi there! 👋
     </p>
 
-    <!-- Typing Animation Paragraph -->
-    <p class="typing-text" id="typing-bio"></p>
+    <!-- Typing Animation Container -->
+    <p>
+      <span class="typing-container" id="typing-bio"></span><span class="cursor" id="typing-cursor"></span>
+    </p>
   </div>
 </section>
 
@@ -260,22 +269,25 @@
 
 <!-- Interactive Scripts (Typing Effect & Tab Switcher) -->
 <script>
-  // Typing Animation Effect
+  // Typing Animation Effect (Slower Speed & Moving Cursor)
   const bioText = "My academic journey began in Mechanical Engineering, but my interests gradually moved towards physics and astronomy. This path eventually brought me to the Indian Institute of Astrophysics (IIA), where I joined the Integrated M.Tech–PhD program in Astronomical Instrumentation, and have submitted my PhD thesis to the University of Calcutta, currently awaiting defense.";
   
   let i = 0;
-  const speed = 20; // Speed of typing in milliseconds
+  const speed = 42; // Slower, natural reading speed in milliseconds
 
   function typeWriter() {
     if (i < bioText.length) {
       document.getElementById("typing-bio").innerHTML += bioText.charAt(i);
       i++;
       setTimeout(typeWriter, speed);
+    } else {
+      // Hide cursor smoothly once typing finishes
+      document.getElementById("typing-cursor").style.display = 'none';
     }
   }
 
   window.onload = function() {
-    setTimeout(typeWriter, 300); // Small delay before typing starts
+    setTimeout(typeWriter, 400); // Small delay before typing starts
   };
 
   // Interactive Tab Switcher
