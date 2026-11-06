@@ -126,7 +126,7 @@
       background: rgba(37, 99, 235, 0.15);
       border: 1px solid rgba(147, 197, 253, 0.35);
       border-radius: var(--radius-sm);
-      font-size: 0.85srem;
+      font-size: 0.85rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -186,62 +186,59 @@
 <header>
   <h1>Publications</h1>
   <p>Peer-Reviewed Journals • Conference Proceedings • Manuscripts</p>
+
+  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
+  <nav>
+    <a href="index.html">About</a>
+
+    <!-- Research Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="figures.html">Research</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+        <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+        <a href="figures.html#mots-systematics">Transmission Systematics</a>
+        <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+        <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+        <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+      </div>
+    </div>
+
+    <!-- Publications Dropdown (Active Page) -->
+    <div class="nav-dropdown active" tabindex="0">
+      <span class="active-sub">Publications</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">On This Page</span>
+        <a href="#journals" class="active-sub">Journal Articles</a>
+        <a href="#proceedings">Conference Proceedings</a>
+        <a href="#manuscripts">Manuscripts in Prep</a>
+        <div class="dropdown-divider"></div>
+        <a href="cv/cv.pdf" target="_blank">Download Full CV (PDF)</a>
+      </div>
+    </div>
+
+    <!-- "More" Dropdown matching site structure -->
+    <div class="nav-dropdown more-menu" tabindex="0">
+      <span>More</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Explore More</span>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Quick Navigation</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
 </header>
-
-<!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
-<nav>
-  <a href="index.html">Home</a>
-
-  <!-- Research Dropdown -->
-  <div class="nav-dropdown" tabindex="0">
-    <a href="figures.html">Research</a>
-    <div class="dropdown-content">
-      <span class="dropdown-label">Research Highlights</span>
-      <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
-      <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
-      <a href="figures.html#mots-systematics">Transmission Systematics</a>
-      <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
-      <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
-      <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
-    </div>
-  </div>
-
-  <!-- Publications Dropdown (Active Page) -->
-  <div class="nav-dropdown active" tabindex="0">
-    <span class="active-sub">Publications</span>
-    <div class="dropdown-content">
-      <span class="dropdown-label">On This Page</span>
-      <a href="#journals" class="active-sub">Journal Articles</a>
-      <a href="#proceedings">Conference Proceedings</a>
-      <a href="#manuscripts">Manuscripts in Prep</a>
-      <div class="dropdown-divider"></div>
-      <a href="cv.pdf" target="_blank">Download Full CV (PDF)</a>
-    </div>
-  </div>
-
-  <a href="contact.html">Contact</a>
-
-  <!-- "More" Dropdown to access all remaining subsections -->
-  <div class="nav-dropdown more-menu" tabindex="0">
-    <span>More</span>
-    <div class="dropdown-content">
-      <span class="dropdown-label">More Sections</span>
-      <a href="index.html#about">About Me</a>
-      <a href="software.html">Software & Pipelines</a>
-      <a href="blog.html">Research Blog</a>
-      <a href="gallery.html">Observatory Gallery</a>
-      <div class="dropdown-divider"></div>
-      <span class="dropdown-label">Quick Navigation</span>
-      <a href="figures.html">Research Highlights</a>
-      <a href="contact.html">Get in Touch</a>
-    </div>
-  </div>
-</nav>
 
 
 <main class="publications-container">
 
-  <!-- In-Section Subsection Switcher Bar -->
+  <!-- In-Section Header Bar with Quick Subsection Switcher -->
   <div class="section-header-bar" style="margin-bottom: 35px;">
     <h2>Overview</h2>
 
@@ -254,8 +251,12 @@
         <a href="#manuscripts">Manuscripts in Prep</a>
         <div class="dropdown-divider"></div>
         <span class="dropdown-label">Other Pages</span>
-        <a href="index.html">Home</a>
+        <a href="index.html">About (Home)</a>
         <a href="figures.html">Research Highlights</a>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
