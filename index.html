@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +8,26 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Live Status / Milestone Banner */
+    /* Profile Image Ambient Breathing Glow */
+    header img {
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+      animation: profileFloat 5s ease-in-out infinite;
+    }
 
+    header img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 28px rgba(255, 255, 255, 0.25);
+    }
+
+    @keyframes profileFloat {
+      0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.06); }
+      50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.18); }
+    }
+
+    /* Live Status / Milestone Banner with Mild Glass Shimmer */
     .live-banner {
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -24,6 +40,30 @@
       color: var(--heading);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.04);
       text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Subtle Periodic Shimmer Sweep Across Banner */
+    .live-banner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.14),
+        transparent
+      );
+      transform: skewX(-20deg);
+      animation: shimmerSweep 6s infinite;
+    }
+
+    @keyframes shimmerSweep {
+      0%, 65% { left: -120%; }
+      100% { left: 160%; }
     }
 
     .pulse-dot {
@@ -33,16 +73,16 @@
       border-radius: 50%;
       box-shadow: 0 0 10px #ffffff;
       animation: pulse 2s infinite;
+      flex-shrink: 0;
     }
 
     @keyframes pulse {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 15px #ffffff; }
-      100% { transform: scale(0.95); opacity: 0.8; }
+      0% { transform: scale(0.95); opacity: 0.75; }
+      50% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 16px #ffffff, 0 0 6px #ffffff; }
+      100% { transform: scale(0.95); opacity: 0.75; }
     }
 
     /* Introduction */
-
     .intro-text {
       max-width: 850px;
       margin: 0 auto;
@@ -56,10 +96,34 @@
       color: var(--heading);
       line-height: 1.9;
       margin-bottom: 20px;
+      min-height: 3.8em; /* Prevents layout jump while typing */
+    }
+
+    /* Greeting & Blinking Caret */
+    .greeting-heading {
+      font-size: 1.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--heading);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.05em;
+      background-color: var(--heading, #ffffff);
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blinkCaret 0.9s step-end infinite;
+    }
+
+    @keyframes blinkCaret {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     /* Typing Effect */
-
     .bio-paragraph {
       display: inline;
       text-align: left;
@@ -70,15 +134,27 @@
     .typed-char {
       opacity: 0;
       display: inline;
-      animation: fadeInChar 0.08s forwards;
+      animation: fadeInChar 0.05s forwards;
     }
 
     @keyframes fadeInChar {
-      to { opacity: 1; }
+      from { opacity: 0; text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); }
+      to { opacity: 1; text-shadow: none; }
+    }
+
+    /* Smooth Staggered Reveal for Subsequent Paragraphs */
+    .fade-up-para {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up-para.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Interactive Research Tabs */
-
     .research-tabs {
       display: flex;
       justify-content: center;
@@ -88,7 +164,9 @@
     }
 
     .tab-btn {
-      padding: 10px 20px;
+      position: relative;
+      overflow: hidden;
+      padding: 10px 22px;
       background: rgba(16, 16, 24, 0.7);
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -97,34 +175,57 @@
       font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    .tab-btn:hover,
+    .tab-btn:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+
     .tab-btn.active-tab {
       background: #ffffff;
-      color: var(--background);
+      color: var(--background, #0b0b12);
       border-color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 22px rgba(255, 255, 255, 0.25);
     }
 
+    /* Glass Card Styling for Tab Contents */
     .tab-content {
       display: none;
-      animation: fadeIn 0.4s ease forwards;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 26px 30px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      animation: tabFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     .tab-content.active-content {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    .tab-content .button {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .tab-content .button:hover {
+      transform: translateX(4px);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* Background Image Credit */
-
     .bg-credit {
       transition: opacity 1.2s ease, background 0.2s ease, color 0.2s ease;
     }
@@ -152,6 +253,10 @@
       .tab-btn {
         padding: 9px 14px;
         font-size: 0.8rem;
+      }
+
+      .tab-content {
+        padding: 20px 18px;
       }
     }
   </style>
@@ -257,20 +362,20 @@
 
   <div class="center-text">
 
-    <p style="font-size: 1.6rem; font-family: 'Space Grotesk', sans-serif; color: var(--heading); margin-bottom: 20px;">
+    <p class="greeting-heading" id="greeting-text">
       Hi there!
     </p>
 
     <div class="intro-text">
 
-      <p class="intro-lead">
+      <p class="intro-lead" id="typewriter-lead">
         I am an astronomer working at the intersection of astronomical
         instrumentation and exoplanet science, with a particular interest
         in understanding planetary atmospheres through ground-based
         spectroscopy.
       </p>
 
-      <p>
+      <p class="fade-up-para">
         My research explores how observations from ground-based telescopes
         can reveal the physical and chemical properties of distant
         exoplanets. Alongside observational astronomy, I work on the design
@@ -278,7 +383,7 @@
         optical engineering, mechanical design, and data analysis.
       </p>
 
-      <p>
+      <p class="fade-up-para">
         I completed the Integrated M.Tech–PhD program in Astronomical
         Instrumentation at the Indian Institute of Astrophysics (IIA),
         Bengaluru, and have submitted my PhD thesis to the University of
@@ -305,23 +410,23 @@
 
   <!-- Interactive Tab Buttons -->
 
-  <div class="research-tabs">
-    <button class="tab-btn active-tab" onclick="openTab(event, 'tab-exoplanets')">
+  <div class="research-tabs" role="tablist">
+    <button class="tab-btn active-tab" role="tab" aria-selected="true" onclick="openTab(event, 'tab-exoplanets')">
       Exoplanet Atmospheres
     </button>
 
-    <button class="tab-btn" onclick="openTab(event, 'tab-instrumentation')">
+    <button class="tab-btn" role="tab" aria-selected="false" onclick="openTab(event, 'tab-instrumentation')">
       Instrumentation
     </button>
 
-    <button class="tab-btn" onclick="openTab(event, 'tab-systematics')">
+    <button class="tab-btn" role="tab" aria-selected="false" onclick="openTab(event, 'tab-systematics')">
       Observational Systematics
     </button>
   </div>
 
   <!-- Tab 1: Exoplanets -->
 
-  <div id="tab-exoplanets" class="tab-content active-content center-text">
+  <div id="tab-exoplanets" class="tab-content active-content center-text" role="tabpanel">
     <p>
       My research focuses on ground-based low- and high-resolution
       transmission spectroscopy of exoplanet atmospheres. I investigate
@@ -336,7 +441,7 @@
 
   <!-- Tab 2: Instrumentation -->
 
-  <div id="tab-instrumentation" class="tab-content center-text">
+  <div id="tab-instrumentation" class="tab-content center-text" role="tabpanel">
     <p>
       I specialize in the design and simulation of astronomical instruments.
       This includes optical design of broadband Atmospheric Dispersion
@@ -353,7 +458,7 @@
 
   <!-- Tab 3: Systematics -->
 
-  <div id="tab-systematics" class="tab-content center-text">
+  <div id="tab-systematics" class="tab-content center-text" role="tabpanel">
     <p>
       Extracting tiny planetary signals from stellar spectra requires
       rigorous treatment of observational errors. I work on identifying
@@ -379,7 +484,7 @@
 
 <div class="bg-credit">
   Background: Himalayan Chandra Telescope (IAO Hanle) — Photo by
-  <a href="https://x.com/dorje_angchuk" target="_blank">
+  <a href="https://x.com/dorje_angchuk" target="_blank" rel="noopener noreferrer">
     Dorje Angchuk
   </a>
 </div>
@@ -389,42 +494,86 @@
 
 <script>
 
-  // Interactive Tab Switcher
-
+  // 1. Interactive Tab Switcher
   function openTab(evt, tabId) {
-
-    let contents = document.getElementsByClassName("tab-content");
-
+    const contents = document.getElementsByClassName("tab-content");
     for (let j = 0; j < contents.length; j++) {
       contents[j].classList.remove("active-content");
     }
 
-    let buttons = document.getElementsByClassName("tab-btn");
-
+    const buttons = document.getElementsByClassName("tab-btn");
     for (let j = 0; j < buttons.length; j++) {
       buttons[j].classList.remove("active-tab");
+      buttons[j].setAttribute("aria-selected", "false");
     }
 
     document.getElementById(tabId).classList.add("active-content");
     evt.currentTarget.classList.add("active-tab");
-
+    evt.currentTarget.setAttribute("aria-selected", "true");
   }
 
 
-  // Background Credit Fade-Out
+  // 2. Engaging Typewriter & Staggered Bio Reveal
+  document.addEventListener("DOMContentLoaded", function () {
+    const greetingEl = document.getElementById("greeting-text");
+    const leadEl = document.getElementById("typewriter-lead");
+    const followUpParas = document.querySelectorAll(".fade-up-para");
 
-  window.addEventListener("load", function () {
+    if (!leadEl) return;
 
+    // Normalize whitespace while preserving exact text
+    const fullText = leadEl.textContent.replace(/\s+/g, " ").trim();
+    leadEl.textContent = "";
+
+    // Create blinking cursor
+    const cursor = document.createElement("span");
+    cursor.className = "typing-cursor";
+    greetingEl.appendChild(cursor);
+
+    // Move cursor to lead paragraph and type each character with mild glow
     setTimeout(() => {
+      leadEl.appendChild(cursor);
+      let charIndex = 0;
 
-      const credit = document.querySelector('.bg-credit');
+      function typeNextChar() {
+        if (charIndex < fullText.length) {
+          const span = document.createElement("span");
+          span.className = "typed-char";
+          span.textContent = fullText.charAt(charIndex);
+          leadEl.insertBefore(span, cursor);
+          charIndex++;
+          setTimeout(typeNextChar, 18); // Smooth, brisk typing speed
+        } else {
+          // Reveal remaining paragraphs smoothly once lead finishes typing
+          followUpParas.forEach((p, idx) => {
+            setTimeout(() => {
+              p.classList.add("visible");
+            }, idx * 250);
+          });
 
-      if (credit && !credit.matches(':hover')) {
-        credit.classList.add('fade-out');
+          // Fade out cursor cleanly after completion
+          setTimeout(() => {
+            cursor.style.transition = "opacity 0.6s ease";
+            cursor.style.opacity = "0";
+          }, 2500);
+        }
       }
 
-    }, 2000);
+      typeNextChar();
+    }, 450);
+  });
 
+
+  // 3. Background Credit Fade-Out (with re-appear on bottom-corner mouse movement)
+  window.addEventListener("load", function () {
+    const credit = document.querySelector('.bg-credit');
+    if (!credit) return;
+
+    setTimeout(() => {
+      if (!credit.matches(':hover')) {
+        credit.classList.add('fade-out');
+      }
+    }, 3500);
   });
 
 </script>
