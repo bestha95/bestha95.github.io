@@ -1,6 +1,6 @@
 /* =========================================================
    PERSONAL RESEARCH WEBSITE
-   Obsidian, Ivory White & Subtle Gold Observatory Theme
+   Obsidian, Steel Silver & Crisp White Observatory Theme
 ========================================================= */
 
 /* -------------------------
@@ -11,42 +11,39 @@
 
 
 /* -------------------------
-   2. ROOT VARIABLES (Obsidian, Ivory & Gold Palette)
+   2. ROOT VARIABLES (Obsidian, Silver & White Palette)
 ------------------------- */
 
 :root {
-    --background: #070709;       /* Deep Obsidian Night Sky */
-    --background-soft: #0e0e12;
+    --background: #060608;       /* Deep Observatory Night */
+    --background-soft: #0b0b10;
 
     /* Translucent glass panels */
-    --panel: rgba(15, 15, 22, 0.86);
-    --panel-light: rgba(22, 22, 32, 0.92);
-    --panel-solid: #0a0a0f;
+    --panel: rgba(14, 14, 20, 0.88);
+    --panel-light: rgba(20, 20, 28, 0.94);
+    --panel-solid: #09090e;
 
     /* Refined specular borders */
-    --border: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(212, 175, 55, 0.4); /* Elegant Gold Hover Border */
+    --border: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(203, 213, 225, 0.4); /* Clean Silver Hover Border */
 
-    /* Rich Cream & Ivory Typography */
-    --text: #e6dec5;             /* Warm Cream Text */
-    --text-muted: #a39b85;       /* Muted Warm Gray */
-    --heading: #f9f6ed;          /* Crisp Ivory White Headings */
+    /* Crisp White & Silver Typography */
+    --text: #cbd5e1;             /* Clean Cool Silver Gray */
+    --text-muted: #94a3b8;       /* Muted Slate Gray */
+    --heading: #ffffff;          /* Pure White Headings */
 
-    /* Sophisticated Gold / Champagne Accents (Replacing heavy red) */
-    --accent: #d4af37;          /* Classic Gold */
-    --accent-hover: #f3d06c;    /* Bright Champagne Gold */
-    --accent-royal: #b38f27;    /* Deep Antique Gold */
-    --accent-glow: rgba(212, 175, 55, 0.15);
-
-    /* Muted Crimson ONLY for specific badges/alerts if needed */
-    --crimson: #c53030;
+    /* Professional Steel Silver & White Accents */
+    --accent: #94a3b8;          /* Steel Silver Accent */
+    --accent-hover: #ffffff;    /* Pure White Highlight */
+    --accent-royal: #334155;    /* Deep Slate Blue-Gray */
+    --accent-glow: rgba(255, 255, 255, 0.08);
 
     --radius: 12px;
     --radius-sm: 6px;
     --content-width: 1040px;
 
-    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.7);
-    --shadow-hover: 0 24px 48px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 175, 55, 0.12);
+    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.75);
+    --shadow-hover: 0 24px 48px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.08);
     --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -95,9 +92,9 @@ body::before {
     background-image:
         linear-gradient(
             to bottom,
-            rgba(7, 7, 9, 0.4) 0%,
-            rgba(11, 11, 16, 0.78) 45%,
-            rgba(7, 7, 9, 0.98) 90%
+            rgba(6, 6, 8, 0.4) 0%,
+            rgba(10, 10, 15, 0.8) 45%,
+            rgba(6, 6, 8, 0.98) 90%
         ),
         url("images/milkyway.jpg");
 
@@ -107,7 +104,7 @@ body::before {
     transform: scale(1.03);
 }
 
-/* Subtle, neutral starlight horizon glow (Clean & Professional) */
+/* Subtle neutral starlight glow */
 body::after {
     content: "";
     position: fixed;
@@ -118,13 +115,8 @@ body::after {
     background:
         radial-gradient(
             ellipse 90% 45% at 50% 0%,
-            rgba(212, 175, 55, 0.06),
+            rgba(255, 255, 255, 0.04),
             transparent 70%
-        ),
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(255, 255, 255, 0.02),
-            transparent 60%
         );
 }
 
@@ -175,13 +167,13 @@ small {
 ------------------------- */
 
 a {
-    color: var(--accent);
+    color: var(--heading);
     text-decoration: none;
     transition: var(--transition);
 }
 
 a:hover {
-    color: var(--accent-hover);
+    color: var(--text-muted);
 }
 
 
@@ -208,22 +200,22 @@ header img {
     margin: 0 auto 28px;
 
     border-radius: 50%;
-    border: 3px solid rgba(212, 175, 55, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     padding: 4px;
-    background: rgba(15, 15, 22, 0.8);
+    background: rgba(14, 14, 20, 0.8);
 
     box-shadow:
         0 15px 40px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(212, 175, 55, 0.12);
+        0 0 30px rgba(255, 255, 255, 0.08);
     transition: var(--transition);
 }
 
 header img:hover {
     transform: scale(1.03);
-    border-color: var(--accent-hover);
+    border-color: #ffffff;
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.9),
-        0 0 40px rgba(212, 175, 55, 0.25);
+        0 0 40px rgba(255, 255, 255, 0.15);
 }
 
 header h1 {
@@ -258,7 +250,7 @@ nav {
     margin: 20px auto 50px;
     padding: 8px 14px;
 
-    background: rgba(10, 10, 15, 0.9);
+    background: rgba(10, 10, 15, 0.92);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
@@ -304,7 +296,7 @@ nav > a,
 .nav-group > a::after {
     content: "▾";
     font-size: 11px;
-    color: var(--accent);
+    color: var(--text-muted);
     transition: transform 0.25s ease;
 }
 
@@ -324,8 +316,8 @@ nav > a.active,
 .nav-dropdown.active > span,
 .nav-dropdown.active > a {
     color: var(--heading);
-    background: rgba(212, 175, 55, 0.15);
-    box-shadow: inset 0 0 0 1px rgba(243, 208, 108, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 
@@ -352,19 +344,18 @@ nav > a.active,
     min-width: 240px;
     padding: 8px;
 
-    background: rgba(12, 12, 18, 0.97);
+    background: rgba(12, 12, 18, 0.98);
     backdrop-filter: blur(22px);
     -webkit-backdrop-filter: blur(22px);
 
     border: 1px solid var(--border-hover);
     border-radius: var(--radius);
 
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 255, 255, 0.05);
     transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
     z-index: 10000;
 }
 
-/* Right-align the last or "More" dropdown so it never overflows off screen */
 .nav-dropdown.more-menu .dropdown-content,
 .nav-dropdown:last-child .dropdown-content {
     left: auto;
@@ -372,7 +363,6 @@ nav > a.active,
     transform: translateY(8px);
 }
 
-/* Invisible hover bridge across the gap */
 .dropdown-content::before,
 .nav-menu::before {
     content: "";
@@ -383,7 +373,6 @@ nav > a.active,
     height: 14px;
 }
 
-/* Trigger Dropdown on Hover, Focus, or Touch */
 .nav-dropdown:hover .dropdown-content,
 .nav-dropdown:focus-within .dropdown-content,
 .nav-group:hover .nav-menu,
@@ -401,7 +390,6 @@ nav > a.active,
     transform: translateY(0);
 }
 
-/* Dropdown Header Labels & Dividers */
 .dropdown-label {
     display: block;
     padding: 6px 14px 4px;
@@ -409,8 +397,7 @@ nav > a.active,
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.4px;
-    color: var(--accent);
-    opacity: 0.9;
+    color: var(--text-muted);
 }
 
 .dropdown-divider {
@@ -419,7 +406,6 @@ nav > a.active,
     background: var(--border);
 }
 
-/* Dropdown Links */
 .dropdown-content a,
 .nav-menu a {
     display: flex;
@@ -440,16 +426,15 @@ nav > a.active,
 .nav-menu a:hover,
 .dropdown-content a.active-sub {
     color: var(--heading);
-    background: rgba(212, 175, 55, 0.18);
+    background: rgba(255, 255, 255, 0.1);
     padding-left: 18px;
 }
 
-/* Subtle arrow indicator on hover inside dropdown items */
 .dropdown-content a::after {
     content: "→";
     opacity: 0;
     font-size: 12px;
-    color: var(--accent);
+    color: var(--heading);
     transform: translateX(-6px);
     transition: var(--transition);
 }
@@ -497,17 +482,18 @@ nav > a.active,
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--accent-hover);
-    background: rgba(212, 175, 55, 0.08);
-    border: 1px solid var(--border-hover);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
     border-radius: 20px;
     cursor: pointer;
     transition: var(--transition);
 }
 
 .subsection-switcher-btn:hover {
-    background: var(--accent-royal);
+    background: rgba(255, 255, 255, 0.15);
     color: var(--heading);
+    border-color: var(--border-hover);
 }
 
 .subsection-switcher .dropdown-content {
@@ -547,10 +533,10 @@ section {
 }
 
 section:hover {
-    border-color: rgba(212, 175, 55, 0.25);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Section headings with elegant gold accent underline */
+/* Section headings with crisp white accent underline */
 section h2 {
     position: relative;
     padding-bottom: 14px;
@@ -567,7 +553,7 @@ section h2::after {
     left: 0;
     width: 65px;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
+    background: linear-gradient(90deg, #ffffff, transparent);
 }
 
 .center-text {
@@ -579,7 +565,7 @@ section h2::after {
 .center-text h2::after {
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
     width: 120px;
 }
 
@@ -592,7 +578,6 @@ section h2::after {
    12. MULTI-COLUMN & BIO LAYOUT UTILITIES
 ------------------------- */
 
-/* 2-Column Split Bio */
 .about-split {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -603,11 +588,10 @@ section h2::after {
 .about-split img {
     width: 100%;
     border-radius: var(--radius-sm);
-    box-shadow: -12px 12px 0px rgba(212, 175, 55, 0.12), 0 15px 35px rgba(0, 0, 0, 0.6);
+    box-shadow: -12px 12px 0px rgba(255, 255, 255, 0.06), 0 15px 35px rgba(0, 0, 0, 0.6);
     border: 1px solid var(--border);
 }
 
-/* 3-Column Feature/Portal Grid */
 .grid-3,
 .portal-grid {
     display: grid;
@@ -679,25 +663,23 @@ section h2::after {
     margin-bottom: 0;
 }
 
-/* Circular Icon Badge */
 .icon-circle {
     width: 72px;
     height: 72px;
     margin: 0 auto 18px;
     border-radius: 50%;
-    border: 1px solid var(--border-hover);
-    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.6rem;
-    color: var(--accent);
+    color: var(--heading);
     transition: var(--transition);
 }
 
 .card:hover .icon-circle {
-    background: var(--accent-royal);
-    color: var(--heading);
+    background: rgba(255, 255, 255, 0.15);
     transform: scale(1.08);
 }
 
@@ -760,7 +742,7 @@ li {
 }
 
 li::marker {
-    color: var(--accent);
+    color: var(--heading);
 }
 
 
@@ -772,8 +754,8 @@ blockquote {
     margin: 28px 0;
     padding: 22px 28px;
 
-    border-left: 3px solid var(--accent);
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), transparent);
+    border-left: 3px solid #ffffff;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 
     font-family: 'Playfair Display', Georgia, serif;
@@ -806,7 +788,7 @@ th, td {
 
 th {
     color: var(--heading);
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(255, 255, 255, 0.06);
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -819,7 +801,7 @@ td {
 }
 
 tr:hover td {
-    background: rgba(212, 175, 55, 0.04);
+    background: rgba(255, 255, 255, 0.02);
     color: var(--text);
 }
 
@@ -834,9 +816,9 @@ button,
     padding: 12px 26px;
 
     color: var(--heading);
-    background: rgba(212, 175, 55, 0.15);
+    background: rgba(255, 255, 255, 0.08);
 
-    border: 1px solid rgba(243, 208, 108, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 4px;
 
     font-family: 'Inter', sans-serif;
@@ -854,11 +836,11 @@ button,
 
 button:hover,
 .button:hover {
-    color: var(--heading);
-    background: var(--accent-royal);
-    border-color: var(--accent-hover);
+    color: var(--background);
+    background: #ffffff;
+    border-color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
 }
 
 
@@ -890,7 +872,7 @@ footer a:hover {
 hr {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     margin: 35px 0;
 }
 
@@ -906,7 +888,7 @@ pre {
 code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9em;
-    color: #f3d06c;
+    color: #e2e8f0;
 }
 
 
@@ -1031,7 +1013,7 @@ code {
 input[type="text"]:focus,
 textarea:focus {
     outline: none;
-    border-color: var(--accent-hover);
+    border-color: #ffffff;
     background: rgba(22, 22, 32, 0.85);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
 }
