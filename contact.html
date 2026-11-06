@@ -1,64 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Contact | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <h1>Contact</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="publications.html">Publications</a>
-    <a href="figures.html">Research Highlights</a>
-  </nav>
+  <h1>Get in Touch</h1>
+  <p>Collaborations • Research Inquiries • Academic Discussions</p>
 </header>
 
-<section>
-  <ul>
-    <li>Email: <a href="mailto:bestha95@gmail.com">bestha95@gmail.com</a></li>
-    <li><a href="https://scholar.google.com/citations?hl=en&user=hmMUeOAAAAAJ" target="_blank">Google Scholar</a></li>
-    <li><a href="https://www.linkedin.com/in/manjunath-bestha/" target="_blank">LinkedIn</a></li>
-    <li><a href="https://github.com/bestha95" target="_blank">GitHub</a></li>
-  </ul>
+<!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
+<nav>
+  <a href="index.html">Home</a>
+
+  <!-- Research Dropdown -->
+  <div class="nav-dropdown" tabindex="0">
+    <a href="figures.html">Research</a>
+    <div class="dropdown-content">
+      <span class="dropdown-label">Research Highlights</span>
+      <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+      <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+      <a href="figures.html#mots-systematics">Transmission Systematics</a>
+      <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+      <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+      <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+    </div>
+  </div>
+
+  <!-- Publications Dropdown -->
+  <div class="nav-dropdown" tabindex="0">
+    <a href="publications.html">Publications</a>
+    <div class="dropdown-content">
+      <span class="dropdown-label">Publications & CV</span>
+      <a href="publications.html#peer-reviewed">Peer-Reviewed Journals</a>
+      <a href="publications.html#proceedings">Conference Proceedings</a>
+      <a href="publications.html#thesis">Doctoral Thesis</a>
+      <div class="dropdown-divider"></div>
+      <a href="cv.pdf" target="_blank">Download CV (PDF)</a>
+    </div>
+  </div>
+
+  <!-- Contact Dropdown (Active Page) -->
+  <div class="nav-dropdown active" tabindex="0">
+    <span class="active-sub">Contact</span>
+    <div class="dropdown-content">
+      <span class="dropdown-label">On This Page</span>
+      <a href="#connect" class="active-sub">Direct Channels</a>
+      <a href="#message">Send a Message</a>
+    </div>
+  </div>
+
+  <!-- "More" Dropdown to access all remaining subsections -->
+  <div class="nav-dropdown more-menu" tabindex="0">
+    <span>More</span>
+    <div class="dropdown-content">
+      <span class="dropdown-label">More Sections</span>
+      <a href="index.html#about">About Me</a>
+      <a href="software.html">Software & Pipelines</a>
+      <a href="blog.html">Research Blog</a>
+      <a href="gallery.html">Observatory Gallery</a>
+      <div class="dropdown-divider"></div>
+      <span class="dropdown-label">Quick Navigation</span>
+      <a href="figures.html">Research Highlights</a>
+      <a href="publications.html">Publications</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- SECTION 1: DIRECT CONTACT CHANNELS -->
+<section id="connect">
+  <div class="section-header-bar">
+    <h2>Direct Channels</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Contact Page</span>
+        <a href="#connect">Direct Channels</a>
+        <a href="#message">Leave a Message</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">Home</a>
+        <a href="figures.html">Research Highlights</a>
+        <a href="publications.html">Publications</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="center-text" style="margin-bottom: 30px;">
+    You can reach out via email or connect with me through professional academic networks and repositories below.
+  </p>
+
+  <!-- 4-Column Grid for Professional Links -->
+  <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
+    
+    <!-- Email -->
+    <a href="mailto:bestha95@gmail.com" class="card" style="text-align: center; text-decoration: none;">
+      <div class="icon-circle">✉</div>
+      <h3>Email</h3>
+      <p style="font-size: 0.85rem; word-break: break-all;">bestha95@gmail.com</p>
+    </a>
+
+    <!-- Google Scholar -->
+    <a href="https://scholar.google.com/citations?hl=en&user=hmMUeOAAAAAJ" target="_blank" class="card" style="text-align: center; text-decoration: none;">
+      <div class="icon-circle">🎓</div>
+      <h3>Google Scholar</h3>
+      <p style="font-size: 0.85rem;">Publications & Citations</p>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/manjunath-bestha/" target="_blank" class="card" style="text-align: center; text-decoration: none;">
+      <div class="icon-circle">in</div>
+      <h3>LinkedIn</h3>
+      <p style="font-size: 0.85rem;">Professional Network</p>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/bestha95" target="_blank" class="card" style="text-align: center; text-decoration: none;">
+      <div class="icon-circle">git</div>
+      <h3>GitHub</h3>
+      <p style="font-size: 0.85rem;">Code & Pipelines</p>
+    </a>
+
+  </div>
 </section>
 
-<section>
+
+<!-- SECTION 2: LEAVE A MESSAGE FORM -->
+<section id="message">
   <h2>Leave a Message</h2>
 
   <p>
-    If you’d like to share a thought, ask something, or just say hi, feel free
-    to leave a message 🙂
+    If you’d like to share a thought, ask something regarding my research, or just say hi, feel free
+    to drop a message below 🙂
   </p>
 
-  <form action="mailto:bestha95@gmail.com" method="post" enctype="text/plain">
-    <p>
-      <input type="text" name="name" placeholder="Your name"
-             style="width: 100%; padding: 0.6rem; margin-bottom: 0.8rem;">
-    </p>
+  <form action="mailto:bestha95@gmail.com" method="post" enctype="text/plain" style="margin-top: 25px;">
+    
+    <div style="margin-bottom: 20px;">
+      <label for="name" style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px;">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required
+             style="width: 100%; padding: 14px 18px; background: rgba(5, 12, 24, 0.7); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: inherit; font-size: 0.95rem; transition: var(--transition);">
+    </div>
 
-    <p>
-      <textarea name="message" placeholder="Your message"
-                rows="4"
-                style="width: 100%; padding: 0.6rem;"></textarea>
-    </p>
+    <div style="margin-bottom: 24px;">
+      <label for="msg" style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px;">Your Message</label>
+      <textarea id="msg" name="message" placeholder="Write your message here..." rows="5" required
+                style="width: 100%; padding: 14px 18px; background: rgba(5, 12, 24, 0.7); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: inherit; font-size: 0.95rem; resize: vertical; transition: var(--transition);"></textarea>
+    </div>
 
-    <p>
-      <button type="submit"
-              style="padding: 0.6rem 1.2rem; cursor: pointer;">
-        Send
-      </button>
-    </p>
+    <button type="submit" class="button">
+      Send Message ➔
+    </button>
   </form>
 </section>
 
 
-<footer>© Manjunath Bestha</footer>
+<footer>
+  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
+</footer>
 
 </body>
 </html>
