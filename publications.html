@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Publications | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
   <style>
-
-    /* =========================
-       PUBLICATIONS PAGE
-    ========================= */
-
+    /* Additional inline adjustments specific to publications layout */
     .publications-container {
-      max-width: 1050px;
-      margin: auto;
-      padding: 2rem 1.5rem 4rem;
+      width: min(92%, var(--content-width));
+      margin: 0 auto;
+      padding: 10px 0 60px;
     }
 
     .publications-intro {
-      max-width: 800px;
-      margin: 0 auto 4rem;
+      max-width: 780px;
+      margin: 0 auto 40px;
       text-align: center;
     }
 
     .publications-intro p {
       font-size: 1.05rem;
-      opacity: 0.85;
+      color: var(--text);
       line-height: 1.8;
     }
 
     .publication-section {
-      margin-top: 4rem;
+      margin-top: 50px;
     }
 
     .publication-section h2 {
-      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 1.45rem;
+      margin-bottom: 25px;
+    }
+
+    .publication-section h2::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 65px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
     }
 
     .publication-list {
@@ -48,580 +59,479 @@
 
     .publication-card {
       position: relative;
-      padding: 2rem;
-      margin-bottom: 1.8rem;
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-left: 3px solid #4fc3f7;
-      border-radius: 8px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      padding: 26px 30px;
+      margin-bottom: 20px;
+      background: rgba(12, 22, 42, 0.65);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      transition: var(--transition);
     }
 
     .publication-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(79, 195, 247, 0.6);
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      background: rgba(16, 30, 56, 0.88);
+      box-shadow: var(--shadow-hover);
     }
 
     .publication-title {
       display: block;
-      font-size: 1.3rem;
-      line-height: 1.5;
-      margin-bottom: 1rem;
-      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-style: normal;
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      color: var(--heading);
     }
 
     .publication-authors {
       display: block;
-      line-height: 1.8;
-      margin-bottom: 0.8rem;
-      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
-    /* YOUR NAME */
-
+    /* AUTHOR HIGHLIGHT */
     .my-name {
-      color: #4fc3f7;
-      font-weight: normal;
+      color: #93c5fd;
+      font-weight: 600;
       padding: 0.1rem 0.4rem;
       border-radius: 4px;
-      background: rgba(79, 195, 247, 0.12);
+      background: rgba(96, 165, 250, 0.12);
       white-space: nowrap;
+      border: 1px solid rgba(96, 165, 250, 0.25);
     }
 
     .publication-journal {
       display: block;
-      margin-top: 0.7rem;
-      font-size: 0.95rem;
-      opacity: 0.85;
+      margin-top: 10px;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .publication-journal strong {
+      color: var(--accent-hover);
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.02em;
     }
 
     .publication-link {
       display: inline-block;
-      margin-top: 1.2rem;
-      padding: 0.4rem 0.9rem;
-      border: 1px solid rgba(79, 195, 247, 0.5);
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: background 0.25s ease;
+      margin-top: 16px;
+      padding: 8px 16px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      border-radius: var(--radius-sm);
+      font-size: 0.85srem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      transition: var(--transition);
     }
 
     .publication-link:hover {
-      background: rgba(79, 195, 247, 0.12);
+      background: var(--accent-royal);
+      color: #ffffff;
+      border-color: var(--accent-hover);
+      transform: translateY(-2px);
     }
 
     .publication-status {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.3rem 0.8rem;
+      margin-top: 12px;
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.8rem;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      opacity: 0.85;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.1);
+      color: #fcd34d;
     }
 
     .ads-box {
       text-align: center;
-      margin-top: 4rem;
-      padding: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      padding: 35px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
     }
 
-    .ads-box a {
-      font-size: 1.05rem;
+    .ads-box p {
+      color: var(--text-muted);
+      margin-bottom: 15px;
     }
 
-    @media (max-width: 700px) {
-
+    @media (max-width: 768px) {
       .publication-card {
-        padding: 1.4rem;
+        padding: 20px;
       }
-
       .publication-title {
         font-size: 1.1rem;
       }
-
     }
-
   </style>
-
 </head>
 
 <body>
 
-
 <header>
-
   <h1>Publications</h1>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="figures.html">Research Highlights</a>
-    <a href="publications.html">Publications</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
+  <p>Peer-Reviewed Journals • Conference Proceedings • Manuscripts</p>
 </header>
+
+<!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
+<nav>
+  <a href="index.html">Home</a>
+
+  <!-- Research Dropdown -->
+  <div class="nav-dropdown" tabindex="0">
+    <a href="figures.html">Research</a>
+    <div class="dropdown-content">
+      <span class="dropdown-label">Research Highlights</span>
+      <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+      <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+      <a href="figures.html#mots-systematics">Transmission Systematics</a>
+      <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+      <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+      <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+    </div>
+  </div>
+
+  <!-- Publications Dropdown (Active Page) -->
+  <div class="nav-dropdown active" tabindex="0">
+    <span class="active-sub">Publications</span>
+    <div class="dropdown-content">
+      <span class="dropdown-label">On This Page</span>
+      <a href="#journals" class="active-sub">Journal Articles</a>
+      <a href="#proceedings">Conference Proceedings</a>
+      <a href="#manuscripts">Manuscripts in Prep</a>
+      <div class="dropdown-divider"></div>
+      <a href="cv.pdf" target="_blank">Download Full CV (PDF)</a>
+    </div>
+  </div>
+
+  <a href="contact.html">Contact</a>
+
+  <!-- "More" Dropdown to access all remaining subsections -->
+  <div class="nav-dropdown more-menu" tabindex="0">
+    <span>More</span>
+    <div class="dropdown-content">
+      <span class="dropdown-label">More Sections</span>
+      <a href="index.html#about">About Me</a>
+      <a href="software.html">Software & Pipelines</a>
+      <a href="blog.html">Research Blog</a>
+      <a href="gallery.html">Observatory Gallery</a>
+      <div class="dropdown-divider"></div>
+      <span class="dropdown-label">Quick Navigation</span>
+      <a href="figures.html">Research Highlights</a>
+      <a href="contact.html">Get in Touch</a>
+    </div>
+  </div>
+</nav>
 
 
 <main class="publications-container">
 
+  <!-- In-Section Subsection Switcher Bar -->
+  <div class="section-header-bar" style="margin-bottom: 35px;">
+    <h2>Overview</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Publication Sections</span>
+        <a href="#journals">Journal Articles</a>
+        <a href="#proceedings">Conference Proceedings</a>
+        <a href="#manuscripts">Manuscripts in Prep</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">Home</a>
+        <a href="figures.html">Research Highlights</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 
   <div class="publications-intro">
-
     <p>
       My research publications span exoplanet atmospheric characterization,
       high- and low-resolution transmission spectroscopy, astronomical
       instrumentation, atmospheric dispersion correction, and future
       spectroscopic facilities.
     </p>
-
   </div>
 
 
-
   <!-- =========================
-       JOURNAL ARTICLES
+     JOURNAL ARTICLES
   ========================= -->
-
-  <div class="publication-section">
-
+  <div class="publication-section" id="journals">
     <h2>Journal Articles</h2>
 
     <ul class="publication-list">
 
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          A New Broadband Atmospheric Dispersion Corrector for HROS–TMT
-        </em>
-
+        <em class="publication-title">A New Broadband Atmospheric Dispersion Corrector for HROS–TMT</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>, Sivarani, T., Wehbe, B.,
           Hasan, A., Chandra, B. P., Divakar, D. K., Unni, A.,
           Menon, P., Surya, A., Saraf, P., et al. (2025)
         </span>
-
         <span class="publication-journal">
           <strong>RAS Techniques and Instruments (RASTI)</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://academic.oup.com/rasti/article/doi/10.1093/rasti/rzaf057/8327618"
-           target="_blank">
+        <a class="publication-link" href="https://academic.oup.com/rasti/article/doi/10.1093/rasti/rzaf057/8327618" target="_blank">
           Read Journal Article →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          A Quiet Host in an Active Planet-Forming Disk:
-          Optical Spectroscopy of WISPIT 2
-        </em>
-
+        <em class="publication-title">A Quiet Host in an Active Planet-Forming Disk: Optical Spectroscopy of WISPIT 2</em>
         <span class="publication-authors">
           Swastik, C., <span class="my-name">Bestha, M.</span>,
           Sonith, L. S., Facchini, S., Sivarani, T.,
           Banyal, R. K., Wahhaj, Z., et al. (2026)
         </span>
-
         <span class="publication-journal">
           <strong>A&amp;A Letters</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.1051/0004-6361/202661622"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.1051/0004-6361/202661622" target="_blank">
           Read Journal Article →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          Doppler Shifted Transient Sodium Detection by KECK/HIRES
-        </em>
-
+        <em class="publication-title">Doppler Shifted Transient Sodium Detection by KECK/HIRES</em>
         <span class="publication-authors">
           Unni, A., Oza, A. V., Hoeijmakers, H. J.,
           Seidel, J. V., Sivarani, T., Schmidt, C. A.,
           Kesseli, A. Y., et al.,
           <span class="my-name">Bestha, M.</span> (2025)
         </span>
-
         <span class="publication-journal">
           <strong>arXiv</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.48550/arXiv.2504.03974"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.48550/arXiv.2504.03974" target="_blank">
           View on arXiv →
         </a>
-
       </li>
 
-
     </ul>
-
   </div>
 
 
-
   <!-- =========================
-       CONFERENCE PROCEEDINGS
+     CONFERENCE PROCEEDINGS
   ========================= -->
-
-  <div class="publication-section">
-
+  <div class="publication-section" id="proceedings">
     <h2>Conference Proceedings &amp; Other Publications</h2>
 
     <ul class="publication-list">
 
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          An Observational Study of Systematics Affecting
-          Low-Resolution Multi-Object Transmission Spectroscopy
-        </em>
-
+        <em class="publication-title">An Observational Study of Systematics Affecting Low-Resolution Multi-Object Transmission Spectroscopy</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>, Unni, A.,
           Sivarani, T., Surya, A., Parvathy, M.,
           Divakar, D., et al. (2026)
         </span>
-
         <span class="publication-journal">
           <strong>Proc. SPIE</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://arxiv.org/abs/2608.06749"
-           target="_blank">
+        <a class="publication-link" href="https://arxiv.org/abs/2608.06749" target="_blank">
           View on arXiv →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          An Initial Assessment of the Hanle Echelle Spectrograph
-          for Exoplanet Atmosphere Studies
-        </em>
-
+        <em class="publication-title">An Initial Assessment of the Hanle Echelle Spectrograph for Exoplanet Atmosphere Studies</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>, Unni, A.,
           Sivarani, T., Menon, S., Parvathy, M.,
           Surya, A., Saraf, P., Divakar, D.,
           Manickavasaham, L. (2025)
         </span>
-
         <span class="publication-journal">
           <strong>Proc. SPIE</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.1117/12.3064331"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.1117/12.3064331" target="_blank">
           Read Publication →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          A Multi-Object Approach for Studying Exoplanet Atmospheres
-          Using High-Resolution Spectrographs
-        </em>
-
+        <em class="publication-title">A Multi-Object Approach for Studying Exoplanet Atmospheres Using High-Resolution Spectrographs</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>, Unni, A.,
           Sivarani, T., Dhanush, S. R.,
           Manickavasaham, L., Parvathy, M.,
           Divakar, D. K., Surya, A. (2025)
         </span>
-
         <span class="publication-journal">
           <strong>Proc. SPIE</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.1117/12.3064406"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.1117/12.3064406" target="_blank">
           Read Publication →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          Atmospheric Dispersion Measurement at Hanle Site
-        </em>
-
+        <em class="publication-title">Atmospheric Dispersion Measurement at Hanle Site</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>, Sivarani, T.,
           Unni, A., Parvathy, M., Divakar, D. (2025)
         </span>
-
         <span class="publication-journal">
           <strong>Springer / arXiv</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.48550/arXiv.2509.17300"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.48550/arXiv.2509.17300" target="_blank">
           View on arXiv →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          Addressing Wavelength-Correlated Systematics in Exoplanet
-          Transmission Spectroscopy: A 2D Gaussian Process Approach
-        </em>
-
+        <em class="publication-title">Addressing Wavelength-Correlated Systematics in Exoplanet Transmission Spectroscopy: A 2D Gaussian Process Approach</em>
         <span class="publication-authors">
           Manickavasaham, L.,
           <span class="my-name">Bestha, M.</span>,
           Sivarani, T., Surya, A., Unni, A. (2025)
         </span>
-
         <span class="publication-journal">
           <strong>arXiv</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.48550/arXiv.2510.20423"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.48550/arXiv.2510.20423" target="_blank">
           View on arXiv →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          High-Resolution Echelle Spectroscopy for Solar System Planets:
-          A Planet-as-Point-Source Analogy
-        </em>
-
+        <em class="publication-title">High-Resolution Echelle Spectroscopy for Solar System Planets: A Planet-as-Point-Source Analogy</em>
         <span class="publication-authors">
           Menon, P., Sivarani, T., Sriram, S.,
           <span class="my-name">Bestha, M.</span>,
           Divakar, D. K., Rajaguru, S. P.,
           Surya, A. (2025)
         </span>
-
         <span class="publication-journal">
           <strong>arXiv</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.48550/arXiv.2510.20559"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.48550/arXiv.2510.20559" target="_blank">
           View on arXiv →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          A Multi-Functional Fiber Positioning System
-          for Extremely Large Telescopes
-        </em>
-
+        <em class="publication-title">A Multi-Functional Fiber Positioning System for Extremely Large Telescopes</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>,
           Sivarani, T., Surya, A., Yadav, S.,
           Unni, A., Parvathy, M., Divakar, D.,
           Sriram, S., Prakash, A., Hasan, A. (2024)
         </span>
-
         <span class="publication-journal">
           <strong>Proc. SPIE</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.1117/12.3019098"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.1117/12.3019098" target="_blank">
           Read Publication →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          Slitless Spectroscopy Simulations of Milky Way
-          Dwarf Satellite Galaxies Using TMT-WFOS
-        </em>
-
+        <em class="publication-title">Slitless Spectroscopy Simulations of Milky Way Dwarf Satellite Galaxies Using TMT-WFOS</em>
         <span class="publication-authors">
           Divakar, D. K., Sivarani, T., Sethuram, R.,
           Fucik, J., Steidel, C.,
           <span class="my-name">Bestha, M.</span>,
           Deshmukh, P. (2024)
         </span>
-
         <span class="publication-journal">
           <strong>Proc. SPIE 13099</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.1117/12.3019070"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.1117/12.3019070" target="_blank">
           Read Publication →
         </a>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          Atmospheric Dispersion Corrector for a Multi-Object
-          Spectroscopic Mode of HROS–TMT
-        </em>
-
+        <em class="publication-title">Atmospheric Dispersion Corrector for a Multi-Object Spectroscopic Mode of HROS–TMT</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>,
           Hasan, A., Divakar, D., Surya, A.,
           Sivarani, T., Sriram, S., Prakash, A.,
           Parvathy, M., Yadav, S. (2023)
         </span>
-
         <span class="publication-journal">
           <strong>Proc. SPIE</strong>
         </span>
-
-        <a class="publication-link"
-           href="https://doi.org/10.1117/12.2677192"
-           target="_blank">
+        <a class="publication-link" href="https://doi.org/10.1117/12.2677192" target="_blank">
           Read Publication →
         </a>
-
       </li>
 
-
     </ul>
-
   </div>
 
 
-
   <!-- =========================
-       MANUSCRIPTS
+     MANUSCRIPTS
   ========================= -->
-
-  <div class="publication-section">
-
+  <div class="publication-section" id="manuscripts">
     <h2>Manuscripts in Preparation</h2>
 
     <ul class="publication-list">
 
-
       <li class="publication-card">
-
-        <em class="publication-title">
-              On-Sky Atmospheric Dispersion and Its Impact on
-              Spectrophotometric Systematics with HFOSC-HCT
-        </em>
-
+        <em class="publication-title">On-Sky Atmospheric Dispersion and Its Impact on Spectrophotometric Systematics with HFOSC-HCT</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>,
           Unni, A., Sivarani, T.,
           Parvathy, M., Divakar, D.
         </span>
-
         <span class="publication-status">
           Manuscript in Preparation
         </span>
-
       </li>
 
-
-
       <li class="publication-card">
-
-        <em class="publication-title">
-          Probing the Atmosphere of KELT-9 b with High-Resolution
-          Spectroscopy from a 2-m Himalayan Chandra Telescope
-        </em>
-
+        <em class="publication-title">Probing the Atmosphere of KELT-9 b with High-Resolution Spectroscopy from a 2-m Himalayan Chandra Telescope</em>
         <span class="publication-authors">
           <span class="my-name">Bestha, M.</span>,
           Unni, A., Sivarani, T.,
           Surya, A., Parvathy, M.,
           Divakar, D.
         </span>
-
         <span class="publication-status">
           Manuscript in Preparation
         </span>
-
       </li>
 
-
     </ul>
-
   </div>
-
 
 
   <!-- NASA ADS -->
-
   <div class="ads-box">
-
-    <p>
-      For a complete and up-to-date list of publications:
-    </p>
-
-    <a href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&q=%20author%3A%22Bestha%2CManjunath%22&sort=date%20desc%2C%20bibcode%20desc&p_=0"
-       target="_blank">
-
+    <p>For a complete and up-to-date list of publications:</p>
+    <a class="button" href="https://ui.adsabs.harvard.edu/search/fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&q=%20author%3A%22Bestha%2CManjunath%22&sort=date%20desc%2C%20bibcode%20desc&p_=0" target="_blank">
       NASA ADS Publication List →
-
     </a>
-
   </div>
-
 
 </main>
 
 
 <footer>
-  © Manjunath Bestha
+  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
 </footer>
-
 
 </body>
 </html>
