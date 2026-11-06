@@ -6,6 +6,84 @@
   <title>Manjunath Bestha | Exoplanets & Instrumentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Dynamic Interactive Enhancements */
+    
+    /* Live Status / Milestone Banner */
+    .live-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px auto 20px;
+      padding: 8px 18px;
+      background: rgba(96, 165, 250, 0.08);
+      border: 1px solid var(--border-hover);
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #93c5fd;
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.1);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #60a5fa;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #60a5fa;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 15px #93c5fd; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* Interactive Research Tabs */
+    .research-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      background: rgba(12, 22, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover, .tab-btn.active-tab {
+      background: var(--accent-royal);
+      color: #ffffff;
+      border-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .tab-content.active-content {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 
 <body>
@@ -15,6 +93,14 @@
   <h1>Manjunath Bestha</h1>
   <p>PhD Candidate · Astronomical Instrumentation & Exoplanet Spectroscopy</p>
   <p>Indian Institute of Astrophysics, Bengaluru</p>
+
+  <!-- Dynamic Live Status Banner -->
+  <div>
+    <div class="live-banner">
+      <span class="pulse-dot"></span>
+      <span>Focus: Finalizing PhD Dissertation & Instrument Pipelines (2026)</span>
+    </div>
+  </div>
 
   <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
   <nav>
@@ -107,26 +193,75 @@
 </section>
 
 
-<!-- SECTION 2: RESEARCH INTERESTS -->
+<!-- SECTION 2: INTERACTIVE RESEARCH INTERESTS -->
 <section id="research-interests">
   <h2>Research Interests</h2>
 
-  <div class="center-text">
+  <div class="center-text" style="margin-bottom: 10px;">
+    <p style="font-size: 0.95rem; color: var(--text-muted);">Click the tabs below to explore my primary core research areas:</p>
+  </div>
+
+  <!-- Interactive Tab Buttons -->
+  <div class="research-tabs">
+    <button class="tab-btn active-tab" onclick="openTab(event, 'tab-exoplanets')">Exoplanet Atmospheres</button>
+    <button class="tab-btn" onclick="openTab(event, 'tab-instrumentation')">Instrumentation & Optics</button>
+    <button class="tab-btn" onclick="openTab(event, 'tab-systematics')">Observational Systematics</button>
+  </div>
+
+  <!-- Tab 1: Exoplanets -->
+  <div id="tab-exoplanets" class="tab-content active-content center-text">
     <p>
       My research focuses on ground-based low- and high-resolution transmission
-      spectroscopy of exoplanet atmospheres, with an emphasis on correcting
-      stellar and instrumental systematics in observational data. I am also
-      interested in the design and simulation of astronomical instrumentation,
-      including ray-tracing–based instrument design and fiber positioners for
-      multi-object spectroscopy.
+      spectroscopy of exoplanet atmospheres. I investigate ultra-hot Jupiters like KELT-9 b 
+      and transiting systems using data from Indian facilities such as the Himalayan Chandra Telescope (HCT)
     </p>
+    <a href="figures.html" class="button" style="margin-top: 15px;">View Research Highlights →</a>
+  </div>
+
+  <!-- Tab 2: Instrumentation -->
+  <div id="tab-instrumentation" class="tab-content center-text">
+    <p>
+      I specialize in the design and simulation of astronomical instrumentation. 
+      This includes ray-tracing design of broadband Atmospheric Dispersion Correctors (ADCs) 
+      for the High-Resolution Optical Spectrograph on the Thirty Meter Telescope (HROS-TMT) 
+      and multi-functional fiber positioning systems for extremely large telescopes.
+    </p>
+    <a href="figures.html#adc-tmt" class="button" style="margin-top: 15px;">Explore TMT & Fiber Designs →</a>
+  </div>
+
+  <!-- Tab 3: Systematics -->
+  <div id="tab-systematics" class="tab-content center-text">
+    <p>
+      Extracting tiny planetary signals from stellar spectra requires rigorous treatment of observational errors. 
+      I work on identifying and correcting elevation-dependent systematics, instrumental flexure, 
+      and atmospheric refraction models to ensure robust, artifact-free exoplanet transmission spectra.
+    </p>
+    <a href="publications.html" class="button" style="margin-top: 15px;">Read Related Papers →</a>
   </div>
 </section>
 
 
 <footer>
-  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
+  <p>© Manjunath Bestha</p>
 </footer>
+
+<!-- Interactive Tab Switcher Script -->
+<script>
+  function openTab(evt, tabId) {
+    let contents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < contents.length; i++) {
+      contents[i].classList.remove("active-content");
+    }
+
+    let buttons = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove("active-tab");
+    }
+
+    document.getElementById(tabId).classList.add("active-content");
+    evt.currentTarget.classList.add("active-tab");
+  }
+</script>
 
 </body>
 </html>
