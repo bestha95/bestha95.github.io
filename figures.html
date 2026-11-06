@@ -6,6 +6,275 @@
   <title>Research Highlights | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Intro Subtitle Enhancement */
+    .center-text .small {
+      max-width: 720px;
+      margin: 0 auto 45px;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: var(--text-muted, #b0b3c6);
+    }
+
+    /* Distinct Glassmorphic Cards for Each Research Work */
+    .research-highlight {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 36px;
+      align-items: center;
+      margin: 0 auto 56px;
+      padding: 36px 38px;
+      background: rgba(18, 19, 30, 0.65);
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+       counter-increment: research-counter;
+      overflow: hidden;
+
+      /* Scroll Reveal Initial State */
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    /* Alternate Left/Right Figure Layout on Desktop for Clear Visual Separation */
+    .research-highlight:nth-of-type(even) {
+      grid-template-columns: 1.25fr 1fr;
+    }
+
+    .research-highlight:nth-of-type(even) .figure {
+      order: 2;
+    }
+
+    .research-highlight:nth-of-type(even) .highlight-text {
+      order: 1;
+    }
+
+    /* Scroll Reveal Visible State */
+    .research-highlight.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover Elevation & Mild Border Glow */
+    .research-highlight:hover {
+      border-color: rgba(255, 255, 255, 0.32);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 28px rgba(255, 255, 255, 0.06);
+      transform: translateY(-4px);
+    }
+
+    /* Subtle Top Shimmer Line on Each Card */
+    .research-highlight::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      opacity: 0.5;
+      transition: opacity 0.35s ease;
+    }
+
+    .research-highlight:hover::before {
+      opacity: 1;
+    }
+
+    /* Automatic Numbered Watermark Badge (01 - 06) */
+    .research-highlight::after {
+      content: "0" counter(research-counter);
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.06);
+      letter-spacing: 1px;
+      pointer-events: none;
+      transition: color 0.35s ease, transform 0.35s ease;
+    }
+
+    .research-highlight:hover::after {
+      color: rgba(255, 255, 255, 0.14);
+      transform: scale(1.05);
+    }
+
+    /* Figure Container & Interactive Zoom Preview */
+    .research-highlight .figure {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+    }
+
+    .research-highlight .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+    }
+
+    .research-highlight .figure:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+
+    /* Subtle "Click to Enlarge" Hint on Figure Hover */
+    .research-highlight .figure::after {
+      content: "⤢ Enlarge Figure";
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #ffffff;
+      background: rgba(10, 10, 18, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+
+    .research-highlight .figure:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Typography & Spacing Inside Each Highlight Card */
+    .highlight-text {
+      text-align: left;
+      z-index: 1;
+    }
+
+    .highlight-text h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.38rem;
+      line-height: 1.35;
+      color: var(--heading, #ffffff);
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .highlight-text p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+      color: var(--text, #d8dae8);
+    }
+
+    /* Standout Callout Box for "Why it matters:" */
+    .highlight-text p.importance {
+      margin-top: 20px;
+      margin-bottom: 0;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border-left: 3px solid #ffffff;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--heading, #f2f4ff);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight-text p.importance strong {
+      color: #ffffff;
+      letter-spacing: 0.3px;
+    }
+
+    /* Target Highlight Flash When Jumping from Dropdown Menu */
+    .research-highlight:target {
+      animation: targetPulse 1.8s ease-out;
+    }
+
+    @keyframes targetPulse {
+      0% { border-color: #ffffff; box-shadow: 0 0 35px rgba(255, 255, 255, 0.35); }
+      100% { border-color: var(--border, rgba(255, 255, 255, 0.12)); }
+    }
+
+    /* Fullscreen Figure Lightbox Modal */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 7, 12, 0.92);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-overlay img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    /* Responsive Mobile & Tablet Adjustments */
+    @media (max-width: 850px) {
+      .research-highlight,
+      .research-highlight:nth-of-type(even) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 26px 22px;
+        margin-bottom: 38px;
+      }
+
+      .research-highlight:nth-of-type(even) .figure {
+        order: 1;
+      }
+
+      .research-highlight:nth-of-type(even) .highlight-text {
+        order: 2;
+      }
+
+      .highlight-text h3 {
+        font-size: 1.22rem;
+      }
+
+      .research-highlight::after {
+        font-size: 1.8rem;
+        top: 12px;
+        right: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -61,7 +330,7 @@
 </header>
 
 
-<section>
+<section style="counter-reset: research-counter;">
 
   <!-- In-Section Header Bar with Quick Subsection Switcher -->
   <div class="section-header-bar">
@@ -276,9 +545,61 @@
 
 </section>
 
+<!-- Lightbox Container for Enlarging Figures -->
+<div class="lightbox-overlay" id="figure-lightbox" aria-hidden="true">
+  <img src="" alt="Enlarged Research Figure" id="lightbox-img">
+</div>
+
 <footer>
   <p>© Manjunath Bestha</p>
 </footer>
+
+<script>
+  // 1. Scroll-Triggered Reveal for Research Highlight Cards
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".research-highlight");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    // 2. Click-to-Enlarge Figure Lightbox
+    const lightbox = document.getElementById("figure-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const figures = document.querySelectorAll(".research-highlight .figure img");
+
+    figures.forEach((img) => {
+      img.parentElement.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("active")) {
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
