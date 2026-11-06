@@ -1,29 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Awards & Honors | Manjunath Bestha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Additional inline adjustments specific to achievements layout */
+    .achievements-container {
+      width: min(92%, var(--content-width));
+      margin: 0 auto;
+      padding: 10px 0 60px;
+    }
+
+    .achievement-intro {
+      max-width: 780px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .achievement-intro p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .achievement-card {
+      background: rgba(12, 22, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      background: rgba(16, 30, 56, 0.88);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .achievement-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .achievement-card h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--heading);
+      border: none;
+      padding: 0;
+    }
+
+    .achievement-card h2::after {
+      display: none;
+    }
+
+    .achievement-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .achievement-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
   <h1>Awards, Honors & Academic Distinctions</h1>
+  <p>Recognitions, Fellowships, and Competitive Examinations</p>
 
+  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="figures.html">Research Highlights</a>
-    <a href="publications.html">Publications</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">About</a>
+
+    <!-- Research Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="figures.html">Research</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="figures.html#adc-tmt">Broadband ADC (HROS–TMT)</a>
+        <a href="figures.html#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+        <a href="figures.html#mots-systematics">Transmission Systematics</a>
+        <a href="figures.html#kelt9b-feii">KELT-9 b Atmosphere</a>
+        <a href="figures.html#mo-hrts">MO-HRTS Simulations</a>
+        <a href="figures.html#elt-fiber">ELT Fiber Positioning</a>
+      </div>
+    </div>
+
+    <!-- Publications Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="publications.html">Publications</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Publications & CV</span>
+        <a href="publications.html#journals">Journal Articles</a>
+        <a href="publications.html#proceedings">Conference Proceedings</a>
+        <a href="publications.html#manuscripts">Manuscripts in Prep</a>
+        <div class="dropdown-divider"></div>
+        <a href="cv/cv.pdf" target="_blank">Download Full CV (PDF)</a>
+      </div>
+    </div>
+
+    <!-- "More" Dropdown (Active Page Container) -->
+    <div class="nav-dropdown active more-menu" tabindex="0">
+      <span class="active-sub">More</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Explore More</span>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html" class="active-sub">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Quick Navigation</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
   </nav>
 </header>
 
 
-<section class="achievements-section">
+<main class="achievements-container">
+
+  <!-- In-Section Header Bar with Quick Subsection Switcher -->
+  <div class="section-header-bar" style="margin-bottom: 35px;">
+    <h2>Distinctions Overview</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">About (Home)</a>
+        <a href="figures.html">Research Highlights</a>
+        <a href="publications.html">Publications</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 
   <div class="achievement-intro">
     <p>
@@ -46,7 +183,6 @@
       </p>
     </div>
 
-
     <div class="achievement-card">
       <div class="achievement-icon">🥇</div>
       <h2>Best Poster Award</h2>
@@ -55,7 +191,6 @@
         Exoplanets & Astrobiology, NIT Rourkela, India.
       </p>
     </div>
-
 
     <div class="achievement-card">
       <div class="achievement-icon">🏅</div>
@@ -67,9 +202,8 @@
       </p>
     </div>
 
-
     <div class="achievement-card">
-      <div class="achievement-icon"></div>
+      <div class="achievement-icon">🎓</div>
       <h2>Research Fellowships</h2>
       <p>
         Recipient of Senior Research Fellowship, Junior Research Fellowship,
@@ -79,9 +213,8 @@
       </p>
     </div>
 
-
     <div class="achievement-card">
-      <div class="achievement-icon"></div>
+      <div class="achievement-icon">📜</div>
       <h2>GATE Qualification</h2>
       <p>
         Qualified the Graduate Aptitude Test in Engineering (GATE)
@@ -89,9 +222,8 @@
       </p>
     </div>
 
-
     <div class="achievement-card">
-      <div class="achievement-icon"></div>
+      <div class="achievement-icon">📜</div>
       <h2>CSIR-NET Qualification</h2>
       <p>
         Qualified CSIR-NET in Physical Sciences, a national-level
@@ -99,9 +231,8 @@
       </p>
     </div>
 
-
     <div class="achievement-card">
-      <div class="achievement-icon"></div>
+      <div class="achievement-icon">⚡</div>
       <h2>COMED-K & AP-EAMCET</h2>
       <p>
         Qualified through merit-based national and state-level
@@ -109,9 +240,8 @@
       </p>
     </div>
 
-
     <div class="achievement-card">
-      <div class="achievement-icon"></div>
+      <div class="achievement-icon">⭐</div>
       <h2>Rural Development Trust Scholarship Test</h2>
       <p>
         Awarded a scholarship through the Rural Development Trust Scholarship
@@ -122,11 +252,11 @@
 
   </div>
 
-</section>
+</main>
 
 
 <footer>
-  © Manjunath Bestha
+  <p>© Manjunath Bestha • Research Portfolio & Observatory Theme</p>
 </footer>
 
 </body>
