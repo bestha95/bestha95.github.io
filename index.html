@@ -95,7 +95,6 @@
       font-size: 1.15rem;
       color: var(--heading);
       line-height: 1.9;
-      margin-bottom: 20px;
     }
 
     /* Greeting */
@@ -107,22 +106,33 @@
       animation: fadeGlowIn 1s ease forwards;
     }
 
-    /* Paragraph-Wise Reveal with Mild Flash & Smooth Rise */
+    /* Paragraph-Wise Reveal that Smoothly Expands the About Window */
     .para-reveal {
+      max-height: 0;
       opacity: 0;
+      overflow: hidden;
+      margin-bottom: 0;
       transform: translateY(14px);
       filter: blur(3px);
       transition:
+        max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        margin-bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
         transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
         filter 1.1s ease;
     }
 
     .para-reveal.visible {
+      max-height: 360px;
+      margin-bottom: 20px;
       opacity: 1;
       transform: translateY(0);
       filter: blur(0);
       animation: mildParaFlash 1.6s ease-out forwards;
+    }
+
+    .para-reveal.visible:last-child {
+      margin-bottom: 0;
     }
 
     @keyframes mildParaFlash {
@@ -153,7 +163,7 @@
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .tab-btn {
@@ -186,22 +196,32 @@
       box-shadow: 0 5px 22px rgba(255, 255, 255, 0.25);
     }
 
-    /* Glass Card Styling for Tab Contents */
-    .tab-content {
-      display: none;
+    /* Sideways Auto-Sliding Carousel Viewport & Track */
+    .research-slider-viewport {
       max-width: 780px;
       margin: 0 auto;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .research-slider-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    /* Glass Card Styling for Tab Contents */
+    .tab-content {
+      flex: 0 0 100%;
+      width: 100%;
+      box-sizing: border-box;
       padding: 26px 30px;
       background: rgba(255, 255, 255, 0.025);
       border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
       border-radius: 16px;
       backdrop-filter: blur(8px);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-      animation: tabFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .tab-content.active-content {
-      display: block;
     }
 
     .tab-content .button {
@@ -211,11 +231,6 @@
     .tab-content .button:hover {
       transform: translateX(4px);
       box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
-    }
-
-    @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(8px) scale(0.99); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* Background Image Credit */
@@ -241,6 +256,10 @@
 
       .intro-lead {
         font-size: 1.05rem;
+      }
+
+      .para-reveal.visible {
+        max-height: 520px;
       }
 
       .tab-btn {
@@ -272,7 +291,6 @@
   </div>
 
   <!-- Universal Navigation -->
-
   <nav>
     <!-- About Dropdown -->
     <div class="nav-dropdown active" tabindex="0">
@@ -329,7 +347,6 @@
 
 
 <!-- SECTION 1: ABOUT ME -->
-
 <section id="about">
 
   <div class="section-header-bar">
@@ -356,7 +373,7 @@
   <div class="center-text">
 
     <p class="greeting-heading">
-     Hi there! 👋
+      Hi there! 👋
     </p>
 
     <div class="intro-text">
@@ -390,7 +407,6 @@
 
 
 <!-- SECTION 2: RESEARCH INTERESTS -->
-
 <section id="research-interests">
 
   <h2>Research Interests</h2>
@@ -401,61 +417,69 @@
     </p>
   </div>
 
-  <!-- Interactive Tab Buttons -->
+  <!-- Interactive Wrapper (Pauses sideways auto-slide on hover) -->
+  <div id="research-carousel-zone">
 
-  <div class="research-tabs" role="tablist">
-    <button class="tab-btn active-tab" role="tab" aria-selected="true" onclick="openTab(event, 'tab-exoplanets')">
-      Exoplanet Atmospheres
-    </button>
+    <!-- Interactive Tab Buttons -->
+    <div class="research-tabs" role="tablist">
+      <button class="tab-btn active-tab" role="tab" aria-selected="true" onclick="selectTab(0)">
+        Exoplanet Atmospheres
+      </button>
 
-    <button class="tab-btn" role="tab" aria-selected="false" onclick="openTab(event, 'tab-instrumentation')">
-      Instrumentation
-    </button>
+      <button class="tab-btn" role="tab" aria-selected="false" onclick="selectTab(1)">
+        Instrumentation
+      </button>
 
-    <button class="tab-btn" role="tab" aria-selected="false" onclick="openTab(event, 'tab-systematics')">
-      Observational Systematics
-    </button>
-  </div>
+      <button class="tab-btn" role="tab" aria-selected="false" onclick="selectTab(2)">
+        Observational Systematics
+      </button>
+    </div>
 
-  <!-- Tab 1: Exoplanets -->
+    <!-- Sideways Sliding Viewport -->
+    <div class="research-slider-viewport">
+      <div class="research-slider-track" id="research-track">
 
-  <div id="tab-exoplanets" class="tab-content active-content center-text" role="tabpanel">
-    <p>
-My research focuses on ground-based low- and high-resolution transmission spectroscopy of exoplanet atmospheres, particularly ultra-hot Jupiters such as KELT-9 b and other transiting systems. I use observations from ground-based facilities, including the 2 m Himalayan Chandra Telescope (HCT), to investigate planetary atmospheric properties and to develop observational techniques for precise atmospheric characterization.
-    </p>
+        <!-- Tab 1: Exoplanets -->
+        <div id="tab-exoplanets" class="tab-content center-text" role="tabpanel">
+          <p>
+            My research focuses on ground-based low- and high-resolution transmission spectroscopy of exoplanet atmospheres, particularly ultra-hot Jupiters such as KELT-9 b and other transiting systems. I use observations from ground-based facilities, including the 2 m Himalayan Chandra Telescope (HCT), to investigate planetary atmospheric properties and to develop observational techniques for precise atmospheric characterization.
+          </p>
 
-    <a href="research.html" class="button" style="margin-top: 15px;">
-      View Research Highlights →
-    </a>
-  </div>
+          <a href="research.html" class="button" style="margin-top: 15px;">
+            View Research Highlights →
+          </a>
+        </div>
 
-  <!-- Tab 2: Instrumentation -->
+        <!-- Tab 2: Instrumentation -->
+        <div id="tab-instrumentation" class="tab-content center-text" role="tabpanel">
+          <p>
+            I specialize in the design and simulation of astronomical instruments.
+            This includes optical design of broadband Atmospheric Dispersion
+            Correctors (ADCs) for the High-Resolution Optical Spectrograph on
+            the Thirty Meter Telescope (HROS-TMT) and mechanical design of
+            multi-functional fiber positioning systems for extremely large
+            telescopes.
+          </p>
 
-  <div id="tab-instrumentation" class="tab-content center-text" role="tabpanel">
-    <p>
-      I specialize in the design and simulation of astronomical instruments.
-      This includes optical design of broadband Atmospheric Dispersion
-      Correctors (ADCs) for the High-Resolution Optical Spectrograph on
-      the Thirty Meter Telescope (HROS-TMT) and mechanical design of
-      multi-functional fiber positioning systems for extremely large
-      telescopes.
-    </p>
+          <a href="research.html#adc-tmt" class="button" style="margin-top: 15px;">
+            Explore TMT & Fiber Designs →
+          </a>
+        </div>
 
-    <a href="research.html#adc-tmt" class="button" style="margin-top: 15px;">
-      Explore TMT & Fiber Designs →
-    </a>
-  </div>
+        <!-- Tab 3: Systematics -->
+        <div id="tab-systematics" class="tab-content center-text" role="tabpanel">
+          <p>
+            I study the observational systematics that affect ground-based exoplanet transmission spectroscopy, focusing on elevation-dependent effects, instrumental flexure, and atmospheric refraction. By characterizing and correcting these sources of variability, I aim to improve the precision and reliability of planetary atmospheric measurements.
+          </p>
 
-  <!-- Tab 3: Systematics -->
+          <a href="publications.html" class="button" style="margin-top: 15px;">
+            Read Related Papers →
+          </a>
+        </div>
 
-  <div id="tab-systematics" class="tab-content center-text" role="tabpanel">
-    <p>
-    I study the observational systematics that affect ground-based exoplanet transmission spectroscopy, focusing on elevation-dependent effects, instrumental flexure, and atmospheric refraction. By characterizing and correcting these sources of variability, I aim to improve the precision and reliability of planetary atmospheric measurements.
-    </p>
+      </div>
+    </div>
 
-    <a href="publications.html" class="button" style="margin-top: 15px;">
-      Read Related Papers →
-    </a>
   </div>
 
 </section>
@@ -467,7 +491,6 @@ My research focuses on ground-based low- and high-resolution transmission spectr
 
 
 <!-- Background Image Credit -->
-
 <div class="bg-credit">
   Background: Himalayan Chandra Telescope (IAO Hanle) — Photo by
   <a href="https://x.com/dorje_angchuk" target="_blank" rel="noopener noreferrer">
@@ -477,29 +500,52 @@ My research focuses on ground-based low- and high-resolution transmission spectr
 
 
 <!-- Interactive Scripts -->
-
 <script>
 
-  // 1. Interactive Tab Switcher
-  function openTab(evt, tabId) {
-    const contents = document.getElementsByClassName("tab-content");
-    for (let j = 0; j < contents.length; j++) {
-      contents[j].classList.remove("active-content");
-    }
+  // 1. Sideways Auto-Sliding Research Tabs (Pauses when cursor is placed on it)
+  let currentTabIndex = 0;
+  const totalTabs = 3;
+  const slideIntervalMs = 4500; // Changes sideways every 4.5 seconds
+  let autoSlideTimer = null;
 
+  function selectTab(index) {
+    currentTabIndex = index;
+    const track = document.getElementById("research-track");
     const buttons = document.getElementsByClassName("tab-btn");
-    for (let j = 0; j < buttons.length; j++) {
-      buttons[j].classList.remove("active-tab");
-      buttons[j].setAttribute("aria-selected", "false");
+
+    // Slide track horizontally
+    if (track) {
+      track.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    document.getElementById(tabId).classList.add("active-content");
-    evt.currentTarget.classList.add("active-tab");
-    evt.currentTarget.setAttribute("aria-selected", "true");
+    // Update active button state
+    for (let j = 0; j < buttons.length; j++) {
+      if (j === index) {
+        buttons[j].classList.add("active-tab");
+        buttons[j].setAttribute("aria-selected", "true");
+      } else {
+        buttons[j].classList.remove("active-tab");
+        buttons[j].setAttribute("aria-selected", "false");
+      }
+    }
   }
 
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideTimer = setInterval(() => {
+      const nextIndex = (currentTabIndex + 1) % totalTabs;
+      selectTab(nextIndex);
+    }, slideIntervalMs);
+  }
 
-  // 2. Paragraph-by-Paragraph Reveal with 4-Second Delay
+  function stopAutoSlide() {
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  }
+
+  // 2. Paragraph-by-Paragraph Reveal (Expands About Window Smoothly) & Hover Listeners
   document.addEventListener("DOMContentLoaded", function () {
     const paragraphs = document.querySelectorAll(".para-reveal");
     const delayBetweenParas = 4000; // 4 seconds (4000ms) between each paragraph
@@ -509,6 +555,17 @@ My research focuses on ground-based low- and high-resolution transmission spectr
         para.classList.add("visible");
       }, index * delayBetweenParas);
     });
+
+    // Start sideways carousel and pause while cursor is over the tabs or card
+    const carouselZone = document.getElementById("research-carousel-zone");
+    startAutoSlide();
+
+    if (carouselZone) {
+      carouselZone.addEventListener("mouseenter", stopAutoSlide);
+      carouselZone.addEventListener("mouseleave", startAutoSlide);
+      carouselZone.addEventListener("focusin", stopAutoSlide);
+      carouselZone.addEventListener("focusout", startAutoSlide);
+    }
   });
 
 
