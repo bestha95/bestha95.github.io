@@ -10,8 +10,8 @@
   <style>
     /* Profile Image Ambient Breathing Glow */
     header img {
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-      animation: profileFloat 5s ease-in-out infinite;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+      animation: profileFloat 6s ease-in-out infinite;
     }
 
     header img:hover {
@@ -58,7 +58,7 @@
         transparent
       );
       transform: skewX(-20deg);
-      animation: shimmerSweep 6s infinite;
+      animation: shimmerSweep 7s infinite;
     }
 
     @keyframes shimmerSweep {
@@ -72,7 +72,7 @@
       background-color: #ffffff;
       border-radius: 50%;
       box-shadow: 0 0 10px #ffffff;
-      animation: pulse 2s infinite;
+      animation: pulse 2.5s infinite;
       flex-shrink: 0;
     }
 
@@ -102,42 +102,54 @@
       font-size: 1.6rem;
       font-family: 'Space Grotesk', sans-serif;
       color: var(--heading);
-      margin-bottom: 20px;
-      animation: fadeGlowIn 1s ease forwards;
+      margin-bottom: 18px;
+      animation: fadeGlowIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Paragraph-Wise Reveal that Smoothly Expands the About Window */
-    .para-reveal {
-      max-height: 0;
+    /* =====================================================
+       ULTRA-SMOOTH GROWING WINDOW FOR "ABOUT ME" PARAGRAPHS
+       Uses CSS Grid 0fr -> 1fr so the box expands at the
+       exact natural speed of the text without any jumpiness
+    ===================================================== */
+    .para-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
       opacity: 0;
-      overflow: hidden;
+      transform: translateY(12px);
+      filter: blur(4px);
       margin-bottom: 0;
-      transform: translateY(14px);
-      filter: blur(3px);
       transition:
-        max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-        margin-bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1.1s ease;
+        grid-template-rows 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-bottom 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 2.0s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 2.0s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1.8s ease;
     }
 
-    .para-reveal.visible {
-      max-height: 360px;
-      margin-bottom: 20px;
+    .para-wrapper.visible {
+      grid-template-rows: 1fr;
       opacity: 1;
       transform: translateY(0);
       filter: blur(0);
-      animation: mildParaFlash 1.6s ease-out forwards;
+      margin-bottom: 20px;
+      animation: mildParaFlash 2.4s ease-out forwards;
     }
 
-    .para-reveal.visible:last-child {
+    .para-wrapper.visible:last-child {
       margin-bottom: 0;
+    }
+
+    .para-inner {
+      overflow: hidden;
+    }
+
+    .para-inner p {
+      margin: 0;
     }
 
     @keyframes mildParaFlash {
       0% {
-        text-shadow: 0 0 14px rgba(255, 255, 255, 0.55);
+        text-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
       }
       100% {
         text-shadow: 0 0 0px rgba(255, 255, 255, 0);
@@ -157,7 +169,9 @@
       }
     }
 
-    /* Interactive Research Tabs */
+    /* =====================================================
+       SLOW, LIQUID SIDEWAYS SLIDER FOR RESEARCH INTERESTS
+    ===================================================== */
     .research-tabs {
       display: flex;
       justify-content: center;
@@ -178,7 +192,7 @@
       font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .tab-btn:hover {
@@ -207,7 +221,8 @@
     .research-slider-track {
       display: flex;
       width: 100%;
-      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      /* Slow, silky 1.8-second horizontal glide */
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: transform;
     }
 
@@ -216,16 +231,26 @@
       flex: 0 0 100%;
       width: 100%;
       box-sizing: border-box;
-      padding: 26px 30px;
+      padding: 28px 32px;
       background: rgba(255, 255, 255, 0.025);
       border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
       border-radius: 16px;
       backdrop-filter: blur(8px);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      opacity: 0.45;
+      transform: scale(0.985);
+      transition:
+        opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .tab-content.active-slide {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .tab-content .button {
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     .tab-content .button:hover {
@@ -235,7 +260,7 @@
 
     /* Background Image Credit */
     .bg-credit {
-      transition: opacity 1.2s ease, background 0.2s ease, color 0.2s ease;
+      transition: opacity 1.4s ease, background 0.2s ease, color 0.2s ease;
     }
 
     .bg-credit.fade-out {
@@ -256,10 +281,6 @@
 
       .intro-lead {
         font-size: 1.05rem;
-      }
-
-      .para-reveal.visible {
-        max-height: 520px;
       }
 
       .tab-btn {
@@ -378,27 +399,42 @@
 
     <div class="intro-text">
 
-      <p class="intro-lead para-reveal">
-        I am an astronomer working at the intersection of astronomical
-        instrumentation and exoplanet science, with a particular interest
-        in understanding planetary atmospheres through ground-based
-        spectroscopy.
-      </p>
+      <!-- Paragraph 1 -->
+      <div class="para-wrapper">
+        <div class="para-inner">
+          <p class="intro-lead">
+            I am an astronomer working at the intersection of astronomical
+            instrumentation and exoplanet science, with a particular interest
+            in understanding planetary atmospheres through ground-based
+            spectroscopy.
+          </p>
+        </div>
+      </div>
 
-      <p class="para-reveal">
-        My research explores how observations from ground-based telescopes
-        can reveal the physical and chemical properties of distant
-        exoplanets. Alongside observational astronomy, I work on the design
-        and simulation of astronomical instruments, bringing together
-        optical engineering, mechanical design, and data analysis.
-      </p>
+      <!-- Paragraph 2 -->
+      <div class="para-wrapper">
+        <div class="para-inner">
+          <p>
+            My research explores how observations from ground-based telescopes
+            can reveal the physical and chemical properties of distant
+            exoplanets. Alongside observational astronomy, I work on the design
+            and simulation of astronomical instruments, bringing together
+            optical engineering, mechanical design, and data analysis.
+          </p>
+        </div>
+      </div>
 
-      <p class="para-reveal">
-        I completed the Integrated M.Tech–PhD program in Astronomical
-        Instrumentation at the Indian Institute of Astrophysics (IIA),
-        Bengaluru, and have submitted my PhD thesis to the University of
-        Calcutta. I am currently awaiting my thesis defense.
-      </p>
+      <!-- Paragraph 3 -->
+      <div class="para-wrapper">
+        <div class="para-inner">
+          <p>
+            I completed the Integrated M.Tech–PhD program in Astronomical
+            Instrumentation at the Indian Institute of Astrophysics (IIA),
+            Bengaluru, and have submitted my PhD thesis to the University of
+            Calcutta. I am currently awaiting my thesis defense.
+          </p>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -440,7 +476,7 @@
       <div class="research-slider-track" id="research-track">
 
         <!-- Tab 1: Exoplanets -->
-        <div id="tab-exoplanets" class="tab-content center-text" role="tabpanel">
+        <div id="tab-exoplanets" class="tab-content active-slide center-text" role="tabpanel">
           <p>
             My research focuses on ground-based low- and high-resolution transmission spectroscopy of exoplanet atmospheres, particularly ultra-hot Jupiters such as KELT-9 b and other transiting systems. I use observations from ground-based facilities, including the 2 m Himalayan Chandra Telescope (HCT), to investigate planetary atmospheric properties and to develop observational techniques for precise atmospheric characterization.
           </p>
@@ -502,30 +538,33 @@
 <!-- Interactive Scripts -->
 <script>
 
-  // 1. Sideways Auto-Sliding Research Tabs (Pauses when cursor is placed on it)
+  // 1. Slow, Smooth Sideways Auto-Sliding Research Tabs (Pauses on Hover)
   let currentTabIndex = 0;
   const totalTabs = 3;
-  const slideIntervalMs = 4500; // Changes sideways every 4.5 seconds
+  const slideIntervalMs = 7500; // Unhurried 7.5 seconds per slide for comfortable reading
   let autoSlideTimer = null;
 
   function selectTab(index) {
     currentTabIndex = index;
     const track = document.getElementById("research-track");
     const buttons = document.getElementsByClassName("tab-btn");
+    const slides = document.getElementsByClassName("tab-content");
 
-    // Slide track horizontally
+    // Glide track horizontally
     if (track) {
       track.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    // Update active button state
-    for (let j = 0; j < buttons.length; j++) {
+    // Smoothly highlight active button and active card
+    for (let j = 0; j < totalTabs; j++) {
       if (j === index) {
         buttons[j].classList.add("active-tab");
         buttons[j].setAttribute("aria-selected", "true");
+        slides[j].classList.add("active-slide");
       } else {
         buttons[j].classList.remove("active-tab");
         buttons[j].setAttribute("aria-selected", "false");
+        slides[j].classList.remove("active-slide");
       }
     }
   }
@@ -545,15 +584,16 @@
     }
   }
 
-  // 2. Paragraph-by-Paragraph Reveal (Expands About Window Smoothly) & Hover Listeners
+  // 2. Smooth Paragraph-by-Paragraph Expansion (Every 5.5 Seconds)
   document.addEventListener("DOMContentLoaded", function () {
-    const paragraphs = document.querySelectorAll(".para-reveal");
-    const delayBetweenParas = 4000; // 4 seconds (4000ms) between each paragraph
+    const wrappers = document.querySelectorAll(".para-wrapper");
+    const initialDelay = 600;       // Gentle pause after greeting appears
+    const delayBetweenParas = 5500; // 5.5 seconds between each paragraph expansion
 
-    paragraphs.forEach((para, index) => {
+    wrappers.forEach((wrapper, index) => {
       setTimeout(() => {
-        para.classList.add("visible");
-      }, index * delayBetweenParas);
+        wrapper.classList.add("visible");
+      }, initialDelay + index * delayBetweenParas);
     });
 
     // Start sideways carousel and pause while cursor is over the tabs or card
