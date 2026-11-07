@@ -1,1 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <title>Research Highlights | Manjunath Bestha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Intro Subtitle Enhancement */
+    .center-text .small {
+      max-width: 720px;
+      margin: 0 auto 45px;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: var(--text-muted, #b0b3c6);
+    }
+
+    /* Distinct Glassmorphic Cards for Each Research Work */
+    .research-highlight {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 36px;
+      align-items: center;
+      margin: 0 auto 56px;
+      padding: 36px 38px;
+      background: rgba(18, 19, 30, 0.65);
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+       counter-increment: research-counter;
+      overflow: hidden;
+
+      /* Scroll Reveal Initial State */
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    /* Alternate Left/Right Figure Layout on Desktop for Clear Visual Separation */
+    .research-highlight:nth-of-type(even) {
+      grid-template-columns: 1.25fr 1fr;
+    }
+
+    .research-highlight:nth-of-type(even) .figure {
+      order: 2;
+    }
+
+    .research-highlight:nth-of-type(even) .highlight-text {
+      order: 1;
+    }
+
+    /* Scroll Reveal Visible State */
+    .research-highlight.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover Elevation & Mild Border Glow */
+    .research-highlight:hover {
+      border-color: rgba(255, 255, 255, 0.32);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 28px rgba(255, 255, 255, 0.06);
+      transform: translateY(-4px);
+    }
+
+    /* Subtle Top Shimmer Line on Each Card */
+    .research-highlight::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      opacity: 0.5;
+      transition: opacity 0.35s ease;
+    }
+
+    .research-highlight:hover::before {
+      opacity: 1;
+    }
+
+    /* Automatic Numbered Watermark Badge (01 - 06) */
+    .research-highlight::after {
+      content: "0" counter(research-counter);
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.06);
+      letter-spacing: 1px;
+      pointer-events: none;
+      transition: color 0.35s ease, transform 0.35s ease;
+    }
+
+    .research-highlight:hover::after {
+      color: rgba(255, 255, 255, 0.14);
+      transform: scale(1.05);
+    }
+
+    /* Figure Container & Interactive Zoom Preview */
+    .research-highlight .figure {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+    }
+
+    .research-highlight .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+    }
+
+    .research-highlight .figure:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+
+    /* Subtle "Click to Enlarge" Hint on Figure Hover */
+    .research-highlight .figure::after {
+      content: "⤢ Enlarge Figure";
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #ffffff;
+      background: rgba(10, 10, 18, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+
+    .research-highlight .figure:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Typography & Spacing Inside Each Highlight Card */
+    .highlight-text {
+      text-align: left;
+      z-index: 1;
+    }
+
+    .highlight-text h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.38rem;
+      line-height: 1.35;
+      color: var(--heading, #ffffff);
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .highlight-text p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+      color: var(--text, #d8dae8);
+    }
+
+    /* Standout Callout Box for "Why it matters:" */
+    .highlight-text p.importance {
+      margin-top: 20px;
+      margin-bottom: 0;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border-left: 3px solid #ffffff;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.94rem;
+      line-height: 1.75;
+      color: var(--heading, #f2f4ff);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight-text p.importance strong {
+      color: #ffffff;
+      letter-spacing: 0.3px;
+    }
+
+    /* Target Highlight Flash When Jumping from Dropdown Menu */
+    .research-highlight:target {
+      animation: targetPulse 1.8s ease-out;
+    }
+
+    @keyframes targetPulse {
+      0% { border-color: #ffffff; box-shadow: 0 0 35px rgba(255, 255, 255, 0.35); }
+      100% { border-color: var(--border, rgba(255, 255, 255, 0.12)); }
+    }
+
+    /* Fullscreen Figure Lightbox Modal */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 7, 12, 0.92);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-overlay img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .lightbox-overlay.active img {
+      transform: scale(1);
+    }
+
+    /* Responsive Mobile & Tablet Adjustments */
+    @media (max-width: 850px) {
+      .research-highlight,
+      .research-highlight:nth-of-type(even) {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 26px 22px;
+        margin-bottom: 38px;
+      }
+
+      .research-highlight:nth-of-type(even) .figure {
+        order: 1;
+      }
+
+      .research-highlight:nth-of-type(even) .highlight-text {
+        order: 2;
+      }
+
+      .highlight-text h3 {
+        font-size: 1.22rem;
+      }
+
+      .research-highlight::after {
+        font-size: 1.8rem;
+        top: 12px;
+        right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Research Highlights</h1>
+  <p>Exoplanet Transmission Spectroscopy • Astronomical Instrumentation • Observational Systematics</p>
+
+  <!-- UNIVERSAL STICKY NAVIGATION WITH SUBSECTION & "MORE" DROPDOWNS -->
+  <nav>
+    <a href="index.html">About</a>
+
+    <!-- Research Dropdown (Active Page) -->
+    <div class="nav-dropdown active" tabindex="0">
+      <span class="active-sub">Research Highlights</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">On This Page</span>
+        <a href="#adc-tmt" class="active-sub">Broadband ADC (HROS–TMT)</a>
+        <a href="#hanle-dispersion">Atmospheric Dispersion (Hanle)</a>
+        <a href="#mots-systematics">Transmission Systematics</a>
+        <a href="#kelt9b-feii">KELT-9 b Atmosphere (Fe II)</a>
+        <a href="#mo-hrts">MO-HRTS Simulations</a>
+        <a href="#elt-fiber">ELT Fiber Positioning</a>
+      </div>
+    </div>
+
+    <!-- Publications Dropdown -->
+    <div class="nav-dropdown" tabindex="0">
+      <a href="publications.html">Publications</a>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Publications</span>
+        <a href="publications.html#journals">Journal Articles</a>
+        <a href="publications.html#proceedings">Conference Proceedings</a>
+        <a href="publications.html#manuscripts">Manuscripts in Prep</a>
+      </div>
+    </div>
+
+    <!-- "More" Dropdown matching index.html structure -->
+    <div class="nav-dropdown more-menu" tabindex="0">
+      <span>More</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Explore More</span>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Quick Navigation</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<section style="counter-reset: research-counter;">
+
+  <!-- In-Section Header Bar with Quick Subsection Switcher -->
+  <div class="section-header-bar">
+    <h2>Selected Doctoral Research</h2>
+
+    <div class="subsection-switcher" tabindex="0">
+      <span class="subsection-switcher-btn">Jump to Section ▾</span>
+      <div class="dropdown-content">
+        <span class="dropdown-label">Research Highlights</span>
+        <a href="#adc-tmt">1. Broadband ADC (TMT)</a>
+        <a href="#hanle-dispersion">2. Hanle Dispersion</a>
+        <a href="#mots-systematics">3. MOTS Systematics</a>
+        <a href="#kelt9b-feii">4. KELT-9 b Fe II</a>
+        <a href="#mo-hrts">5. MO-HRTS Framework</a>
+        <a href="#elt-fiber">6. ELT Fiber Positioning</a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-label">Other Pages</span>
+        <a href="index.html">About (Home)</a>
+        <a href="publications.html">Publications</a>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="achievements.html">Honors & Recognitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="ul.html">Useful Links</a>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-text">
+    <p class="small">
+      Selected results from my doctoral research on exoplanet transmission spectroscopy,
+      astronomical instrumentation, and observational systematics.
+    </p>
+  </div>
+
+
+  <!-- 1. HROS-TMT -->
+  <div class="research-highlight" id="adc-tmt">
+    <div class="figure">
+      <img src="images/tmt.jpg" alt="Broadband Atmospheric Dispersion Corrector for HROS-TMT">
+    </div>
+
+    <div class="highlight-text">
+      <h3>Broadband Atmospheric Dispersion Corrector for HROS–TMT</h3>
+
+      <p>
+        I designed and optimized a broadband rotational atmospheric dispersion corrector
+        for the multi-object mode of the High-Resolution Optical Spectrograph proposed
+        for the Thirty Meter Telescope.
+      </p>
+
+      <p>
+        The design provides wavelength coverage from 0.31–1.0 µm and maintains residual
+        atmospheric dispersion below 0.25 arcsec over zenith angles from 0° to 60°.
+      </p>
+
+      <p class="importance">
+        <strong>Why it matters:</strong> Atmospheric dispersion can significantly affect
+        precision spectroscopy. This design provides a solution for broadband observations
+        with future extremely large telescopes.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 2. Hanle Dispersion -->
+  <div class="research-highlight" id="hanle-dispersion">
+    <div class="figure">
+      <img src="images/dispersion.jpg" alt="Atmospheric dispersion measurements at Hanle">
+    </div>
+
+    <div class="highlight-text">
+      <h3>Direct Measurement of Atmospheric Dispersion at Hanle</h3>
+
+      <p>
+        I carried out direct measurements of atmospheric dispersion at the Hanle observing
+        site using observations obtained with HFOSC on the Himalayan Chandra Telescope.
+      </p>
+
+      <p>
+        The measured atmospheric dispersion agrees with the theoretical atmospheric refraction
+        models to within approximately 20 milliarcseconds when accurate site parameters
+        are used.
+      </p>
+
+      <p class="importance">
+        <strong>Why it matters:</strong> These measurements provide an observational
+        validation of atmospheric-refraction models under the conditions of the Hanle site
+        and are directly relevant for precision spectroscopy and atmospheric dispersion
+        correction.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 3. Systematics -->
+  <div class="research-highlight" id="mots-systematics">
+    <div class="figure">
+      <img src="images/systematics.jpg" alt="Systematics in multi-object transmission spectroscopy">
+    </div>
+
+    <div class="highlight-text">
+      <h3>Understanding Systematics in Multi-Object Transmission Spectroscopy</h3>
+
+      <p>
+        Using observations of WASP-33 b and WASP-12 b obtained with HCT-HFOSC,
+        I investigated elevation-dependent systematics affecting low-resolution
+        multi-object transmission spectroscopy.
+      </p>
+
+      <p>
+        The analysis identified instrumental flexure and field-dependent distortions
+        as important sources of systematic error that can affect the recovered
+        transmission spectrum.
+      </p>
+
+      <p class="importance">
+        <strong>Why it matters:</strong> Exoplanet atmospheric signals are extremely
+        small. Understanding how instrumental effects propagate into transmission
+        spectra is essential for distinguishing genuine planetary signals from
+        observational systematics.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 4. KELT-9 b -->
+  <div class="research-highlight" id="kelt9b-feii">
+    <div class="figure">
+      <img src="images/sys.jpg" alt="Possible Fe II detection in KELT-9 b">
+    </div>
+
+    <div class="highlight-text">
+      <h3>Evidence of Fe II in the Atmosphere of KELT-9 b</h3>
+
+      <p>
+        I developed and applied a high-resolution transmission spectroscopy analysis
+        pipeline to observations obtained with the Hanle Echelle Spectrograph.
+      </p>
+
+      <p>
+        The analysis of KELT-9 b shows evidence of a possible Fe II atmospheric
+        signal with a signal-to-noise ratio of approximately three.
+      </p>
+
+      <p class="importance">
+        <strong>Why it matters:</strong> KELT-9 b is an ultra-hot Jupiter with an
+        extremely irradiated atmosphere. Detecting ionized species such as Fe II
+        helps probe the composition and physical conditions of its atmosphere.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 5. MO-HRTS -->
+  <div class="research-highlight" id="mo-hrts">
+    <div class="figure">
+      <img src="images/mohrts.jpg" alt="Multi-Object High-Resolution Transmission Spectroscopy simulations">
+    </div>
+
+    <div class="highlight-text">
+      <h3>Multi-Object High-Resolution Transmission Spectroscopy</h3>
+
+      <p>
+        I developed a simulation-based framework for Multi-Object High-Resolution
+        Transmission Spectroscopy (MO-HRTS).
+      </p>
+
+      <p>
+        The simulations demonstrate that both broadband transmission spectra and
+        narrow-band high-resolution atmospheric features can be recovered from a
+        single high-resolution dataset.
+      </p>
+
+      <p class="importance">
+        <strong>Why it matters:</strong> This approach provides a possible pathway
+        toward combining the complementary strengths of low- and high-resolution
+        transmission spectroscopy in future multi-object spectroscopic observations.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 6. Fiber Positioning -->
+  <div class="research-highlight" id="elt-fiber">
+    <div class="figure">
+      <img src="images/fiber.jpg" alt="Multi-functional fiber positioning system">
+    </div>
+
+    <div class="highlight-text">
+      <h3>Multi-Functional Fiber Positioning for Extremely Large Telescopes</h3>
+
+      <p>
+        I contributed to the development of a multi-functional fiber-positioning
+        concept for extremely large telescopes, incorporating target allocation,
+        collision avoidance, and corrective optical elements within a unified system.
+      </p>
+
+      <p>
+        Simulations demonstrated near-complete target allocation efficiency while
+        supporting multiple observing modes.
+      </p>
+
+      <p class="importance">
+        <strong>Why it matters:</strong> Efficient fiber positioning is important
+        for future highly multiplexed spectroscopic facilities, where maximizing
+        the number of simultaneously observed targets directly improves scientific
+        efficiency.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- Lightbox Container for Enlarging Figures -->
+<div class="lightbox-overlay" id="figure-lightbox" aria-hidden="true">
+  <img src="" alt="Enlarged Research Figure" id="lightbox-img">
+</div>
+
+<footer>
+  <p>© Manjunath Bestha</p>
+</footer>
+
+<script>
+  // 1. Scroll-Triggered Reveal for Research Highlight Cards
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".research-highlight");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    // 2. Click-to-Enlarge Figure Lightbox
+    const lightbox = document.getElementById("figure-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const figures = document.querySelectorAll(".research-highlight .figure img");
+
+    figures.forEach((img) => {
+      img.parentElement.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("active")) {
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
