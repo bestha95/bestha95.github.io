@@ -1119,3 +1119,94 @@ code {
         font-size: 1.2rem;
     }
 }
+
+
+/* =========================================================
+   UPGRADE: CHAMPAGNE GOLD ACCENT & CURSOR SPOTLIGHT
+========================================================= */
+
+:root {
+    /* Champagne Gold Palette (Swap with Sapphire below if preferred) */
+    --accent-primary: #d4b483;
+    --accent-bright: #ecd5b0;
+    --accent-glow: rgba(212, 180, 131, 0.14);
+    --accent-border: rgba(212, 180, 131, 0.42);
+
+    /* Alternative: Deep Sapphire Palette (Uncomment to use)
+    --accent-primary: #60a5fa;
+    --accent-bright: #93c5fd;
+    --accent-glow: rgba(96, 165, 250, 0.15);
+    --accent-border: rgba(96, 165, 250, 0.42);
+    */
+}
+
+/* Subtle gold tint in headings, markers, and quotes */
+section h2::after {
+    background: linear-gradient(90deg, var(--accent-primary), transparent);
+    box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.center-text h2::after {
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+}
+
+blockquote {
+    border-left-color: var(--accent-primary);
+    background: linear-gradient(90deg, var(--accent-glow), transparent 70%);
+}
+
+li::marker,
+.dropdown-label,
+.dropdown-content a::after {
+    color: var(--accent-primary);
+}
+
+/* Refined Nav & Portrait Hover */
+header img:hover {
+    border-color: var(--accent-primary);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.95),
+        0 0 0 8px rgba(212, 180, 131, 0.06),
+        0 0 45px var(--accent-glow);
+}
+
+nav > a.active,
+.nav-dropdown.active > span,
+.nav-dropdown.active > a {
+    color: var(--accent-bright);
+    box-shadow: inset 0 1px 0 var(--accent-border);
+}
+
+/* Premium Gold-Accented Buttons */
+button:hover,
+.button:hover {
+    color: #040507;
+    background: var(--accent-bright);
+    border-color: var(--accent-bright);
+    box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+/* Cursor-Tracking Spotlight on Cards */
+.card::before,
+.publication::before,
+.research-card::before,
+.link-card::before {
+    background: radial-gradient(
+        520px circle at var(--mouse-x, 50%) var(--mouse-y, 0%),
+        var(--accent-glow),
+        transparent 55%
+    );
+}
+
+.card:hover,
+.publication:hover,
+.research-card:hover,
+.link-card:hover {
+    border-color: var(--accent-border);
+}
+
+.card:hover .icon-circle {
+    border-color: var(--accent-border);
+    color: var(--accent-bright);
+    box-shadow: 0 0 25px var(--accent-glow);
+}
